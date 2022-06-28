@@ -1,25 +1,55 @@
 ﻿@inherits LayoutComponentBase
+@inject IStringLocalizer<Resource> Localizer
 
-<MudThemeProvider/>
+<MudThemeProvider Theme="_theme"/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
-<div class="page">
-    <div class="sidebar">
+<MudLayout>
+    <MudAppBar>
+        <MudIconButton 
+            Icon="@Icons.Material.Filled.Menu" 
+            Color="Color.Inherit" 
+            Edge="Edge.Start" 
+            OnClick="@(DrawerToggle)" />
+        @Localizer[nameof(Resource.CompanyName)]
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" />
+    </MudAppBar>
+
+    <MudDrawer @bind-Open="@_drawerOpen">
         <NavMenu />
-    </div>
+    </MudDrawer>
+    
+    <MudMainContent MaxWidth="MaxWidth.Medium">
+        @Body
+    </MudMainContent>
+    
+    <MudAppBar Bottom="true" Fixed="true">
+        <CultureSelector />
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.FavoriteBorder" Color="Color.Inherit" Edge="Edge.End" />
+        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+    </MudAppBar>
+</MudLayout>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
+@code {
+    bool _drawerOpen = true;
 
-        <article class="content px-4">
-            @Body
-        </article>
-        
-        <div class="px-4">
-            <CultureSelector />
-        </div>
-    </main>
-</div>
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    readonly MudTheme _theme = new()
+    {
+        Typography = new()
+        {
+            Default = new()
+            {
+                FontFamily = new [] {"Arimo", "Helvetica", "Arial", "sans-serif"}
+            }
+        }
+    };
+
+}

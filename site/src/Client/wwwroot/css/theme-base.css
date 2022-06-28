@@ -1,23 +1,4 @@
-﻿@font-face {
-    font-family: Arimo-Bold;
-    src: url('../fonts/Arimo/Arimo-Bold.ttf')
-}
-
-@font-face {
-    font-family: Arimo-BoldItalic;
-    src: url('../fonts/Arimo/Arimo-BoldItalic.ttf')
-}
-
-
-@font-face {
-    font-family: Arimo-Italic;
-    src: url('../fonts/Arimo/Arimo-Italic.ttf')
-}
-
-@font-face {
-    font-family: Arimo;
-    src: url('../fonts/Arimo/Arimo-Regular.ttf')
-}
+﻿@import url('fonts.css');
 
 :root {
     --main-font-family: Arimo, Helvetica, Arial, sans-serif;

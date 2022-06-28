@@ -126,4 +126,7 @@
   <data name="IndexMeLine1" xml:space="preserve">
     <value>Mein Name ist Thomas Schulze, ich bin freiberuflicher Softwareentwickler und Architekt.</value>
   </data>
+  <data name="NavigationHome" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
 </root>

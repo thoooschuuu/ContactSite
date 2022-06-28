@@ -1,9 +1,10 @@
 ﻿@using  System.Globalization
 @using TSITSolutions.ContactSite.Client.Infrastructure
+
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
 
-<MudSelect T="string" @bind-Value="CurrentCulture" >
+<MudSelect T="string" @bind-Value="CurrentCulture">
     @foreach (var (displayName, cultureName) in LocalizerSettings.SupportedCulturesWithName)
     {
         <MudSelectItem Value="cultureName">@displayName</MudSelectItem>

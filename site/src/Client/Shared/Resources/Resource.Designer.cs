@@ -86,5 +86,14 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
                 return ResourceManager.GetString("IndexWelcomeMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Startseite.
+        /// </summary>
+        public static string NavigationHome {
+            get {
+                return ResourceManager.GetString("NavigationHome", resourceCulture);
+            }
+        }
     }
 }
