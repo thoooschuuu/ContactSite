@@ -4,7 +4,7 @@
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
 
-<MudSelect T="string" @bind-Value="CurrentCulture">
+<MudSelect Dense="true" T="string" @bind-Value="CurrentCulture" Variant="Variant.Text" >
     @foreach (var (displayName, cultureName) in LocalizerSettings.SupportedCulturesWithName)
     {
         <MudSelectItem Value="cultureName">@displayName</MudSelectItem>

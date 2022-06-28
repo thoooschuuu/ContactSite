@@ -2,4 +2,5 @@
 
 :root {
     --main-font-family: Arimo, Helvetica, Arial, sans-serif;
+    --mud-typography-default-family: var(--main-font-family);
 }

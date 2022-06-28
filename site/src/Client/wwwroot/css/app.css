@@ -7,7 +7,7 @@ html, body {
 }
 
 h1 {
-    color: var(--primary);
+    color: var(--text-primary);
 }
 
 h1:focus {

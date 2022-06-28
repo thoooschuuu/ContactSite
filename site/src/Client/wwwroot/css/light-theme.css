@@ -1,8 +1,9 @@
 ﻿:root {
-    --primary: #ffc250;
-    --primary: rgba(255, 194, 80, 1);
-    --secondary: #000000;
-    --secondary: rgba(0, 0, 0, 0.6);
+    --text-primary: #ffc250;
+    --text-primary: rgba(255, 194, 80, 1);
+    --text-secondary: #000000;
+    --text-secondary: rgba(0, 0, 0, 0.6);
     --background: #ffffff;
     --background: rgba(255, 255, 255, 1);
+    --appbar-background: green;
 }
