@@ -1,5 +1,8 @@
 ﻿@page "/"
+@inject IStringLocalizer<Resource> Localizer
 
-<PageTitle>Index</PageTitle>
+<PageTitle>@Localizer[nameof(Resource.CompanyName)]</PageTitle>
 
-<h1>Thomas Schulze</h1>
+<h1>@Localizer[nameof(Resource.IndexWelcomeMessage)]</h1>
+
+<p>@Localizer[nameof(Resource.IndexMeLine1)]</p>
