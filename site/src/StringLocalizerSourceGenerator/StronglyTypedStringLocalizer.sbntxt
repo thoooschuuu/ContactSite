@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.Extensions.Localization;
+
+namespace {{Namespace}}
+{
+    public class StronglyTypedStringLocalizerFor{{ResourceTypeName}}
+    {
+        private readonly IStringLocalizer<{{ResourceTypeName}}> _localizer;
+
+        public StronglyTypedStringLocalizerFor{{ResourceTypeName}}(IStringLocalizer<{{ResourceTypeName}}> localizer)
+        {
+            _localizer = localizer;
+        }
+
+{{~ for resource in Resources ~}}
+        public string {{resource}} => _localizer[nameof({{ResourceTypeName}}.{{resource}})];
+{{~ end ~}}
+    }
+}

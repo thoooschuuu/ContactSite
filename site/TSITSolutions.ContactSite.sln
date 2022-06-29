@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSITSolutions.ContactSite.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSITSolutions.ContactSite.Shared", "src\Shared\TSITSolutions.ContactSite.Shared.csproj", "{2D47627A-472E-4C65-BDF7-0E09D2F76536}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.StringLocalizerSourceGenerator", "src\StringLocalizerSourceGenerator\TSITSolutions.StringLocalizerSourceGenerator.csproj", "{BE13F939-11E8-4C00-B5EB-D3CEEF45D26C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2D47627A-472E-4C65-BDF7-0E09D2F76536}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D47627A-472E-4C65-BDF7-0E09D2F76536}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D47627A-472E-4C65-BDF7-0E09D2F76536}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE13F939-11E8-4C00-B5EB-D3CEEF45D26C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE13F939-11E8-4C00-B5EB-D3CEEF45D26C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE13F939-11E8-4C00-B5EB-D3CEEF45D26C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE13F939-11E8-4C00-B5EB-D3CEEF45D26C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,5 @@
 ﻿@inherits LayoutComponentBase
-@inject IStringLocalizer<Resource> Localizer
+@inject StronglyTypedStringLocalizerForResource Localizer
 
 <MudThemeProvider Theme="_theme"/>
 <MudDialogProvider/>
@@ -12,7 +12,7 @@
             Color="Color.Inherit" 
             Edge="Edge.Start" 
             OnClick="@(DrawerToggle)" />
-        @Localizer[nameof(Resource.CompanyName)]
+        @Localizer.CompanyName
         <MudSpacer />
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/badbredren/ContactSite" Target="_blank"/>
     </MudAppBar>

@@ -129,4 +129,10 @@
   <data name="NavigationHome" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="IndexMeLine2Part1" xml:space="preserve">
+    <value>Since 2008 I'm working as agile software developer and architect.</value>
+  </data>
+  <data name="IndexMeLine2Part2" xml:space="preserve">
+    <value>I also took on various additional non-developmental roles in agile teams on various projects.</value>
+  </data>
 </root>

@@ -1,8 +1,14 @@
 ﻿@page "/"
-@inject IStringLocalizer<Resource> Localizer
+@inject StronglyTypedStringLocalizerForResource Localizer
 
-<PageTitle>@Localizer[nameof(Resource.CompanyName)]</PageTitle>
+<PageTitle>@Localizer.CompanyName</PageTitle>
 
-<h1>@Localizer[nameof(Resource.IndexWelcomeMessage)]</h1>
+<h1>@Localizer.IndexWelcomeMessage</h1>
 
-<p>@Localizer[nameof(Resource.IndexMeLine1)]</p>
+<section>
+    <p>@Localizer.IndexMeLine1</p>
+
+    <p>
+        @Localizer.IndexMeLine2Part1<br/>
+    </p>
+</section>

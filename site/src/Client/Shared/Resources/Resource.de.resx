@@ -129,4 +129,10 @@
   <data name="NavigationHome" xml:space="preserve">
     <value>Startseite</value>
   </data>
+  <data name="IndexMeLine2Part1" xml:space="preserve">
+    <value>Seit 2008 bin ich im Bereich agile Softwareentwicklung und  -architektur branchenübergreifend tätig.</value>
+  </data>
+  <data name="IndexMeLine2Part2" xml:space="preserve">
+    <value>Auch übernahm ich an verschiedenen Stationen zusätzlich verschiedene nicht entwicklungsspezifische Rollen in agilen Teams.</value>
+  </data>
 </root>

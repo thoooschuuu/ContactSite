@@ -79,6 +79,24 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Seit 2008 bin ich im Bereich agile Softwareentwicklung und  -architektur branchenübergreifend tätig..
+        /// </summary>
+        public static string IndexMeLine2Part1 {
+            get {
+                return ResourceManager.GetString("IndexMeLine2Part1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auch übernahm ich an verschiedenen Stationen zusätzlich verschiedene nicht entwicklungsspezifische Rollen in agilen Teams..
+        /// </summary>
+        public static string IndexMeLine2Part2 {
+            get {
+                return ResourceManager.GetString("IndexMeLine2Part2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Herzlich willkommen.
         /// </summary>
         public static string IndexWelcomeMessage {

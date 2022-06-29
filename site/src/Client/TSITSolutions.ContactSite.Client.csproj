@@ -18,6 +18,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Shared\TSITSolutions.ContactSite.Shared.csproj" />
+		<ProjectReference Include="..\StringLocalizerSourceGenerator\TSITSolutions.StringLocalizerSourceGenerator.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
 	</ItemGroup>
 
 	<ItemGroup>
