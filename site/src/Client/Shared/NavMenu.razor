@@ -1,5 +1,5 @@
-﻿@inject IStringLocalizer<Resource> Localizer
+﻿@inject StronglyTypedStringLocalizerForResource Localizer
 
 <MudNavMenu>
-    <MudNavLink Href="/" Match="NavLinkMatch.All">@Localizer[nameof(Resource.NavigationHome)]</MudNavLink>
+    <MudNavLink Href="/" Match="NavLinkMatch.All">@Localizer.NavigationHome</MudNavLink>
 </MudNavMenu>
