@@ -1,5 +1,14 @@
 ﻿@page "/"
+@inject StronglyTypedStringLocalizerForResource Localizer
 
-<PageTitle>Index</PageTitle>
+<PageTitle>@Localizer.CompanyName</PageTitle>
 
-<h1>Thomas Schulze</h1>
+<h1>@Localizer.IndexWelcomeMessage</h1>
+
+<section>
+    <p>@Localizer.IndexMeLine1</p>
+
+    <p>
+        @Localizer.IndexMeLine2Part1<br/>
+    </p>
+</section>

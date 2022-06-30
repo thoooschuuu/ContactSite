@@ -1,0 +1,34 @@
+﻿@using System.Globalization
+@using TSITSolutions.ContactSite.Client.Infrastructure
+
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+
+<MudSelect Dense="true" T="string" @bind-Value="CurrentCulture" Variant="Variant.Text" >
+    @foreach (var (displayName, cultureName) in LocalizerSettings.SupportedCulturesWithName)
+    {
+        <MudSelectItem Value="cultureName">@displayName</MudSelectItem>
+    }
+</MudSelect>
+
+@code
+{
+    protected override Task OnInitializedAsync()
+    {
+        _currentCultureBackingField = CultureInfo.CurrentCulture.Name;
+        return base.OnInitializedAsync();
+    }
+
+    private string _currentCultureBackingField = LocalizerSettings.NeutralCulture;
+
+    private string CurrentCulture
+    {
+        get => _currentCultureBackingField;
+        set
+        {
+            _currentCultureBackingField = value;
+            LocalStorage.SetItemAsync("culture", value);
+            NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+        }
+    }
+}
