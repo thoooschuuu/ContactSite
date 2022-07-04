@@ -113,5 +113,14 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
                 return ResourceManager.GetString("NavigationHome", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Impressum.
+        /// </summary>
+        public static string NavigationLegalInformation {
+            get {
+                return ResourceManager.GetString("NavigationLegalInformation", resourceCulture);
+            }
+        }
     }
 }
