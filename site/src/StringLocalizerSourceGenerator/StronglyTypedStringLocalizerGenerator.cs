@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 using TSITSolutions.StringLocalizerSourceGenerator;
 
@@ -18,14 +21,6 @@ public class StronglyTypedStringLocalizerGenerator : ISourceGenerator
             DiagnosticSeverity.Info,
             true);
 
-    internal static readonly DiagnosticDescriptor FoundResourcesDescriptor =
-        new("STSLG002",
-            "Found Resource types",
-            "Found {0} Resource types",
-            "STSLGenerator",
-            DiagnosticSeverity.Info,
-            true);
-
     internal static readonly DiagnosticDescriptor GenerationErrorDescriptor =
         new("STSLG003",
             "StronglyTypedStringLocalizer generator falied",
@@ -36,12 +31,12 @@ public class StronglyTypedStringLocalizerGenerator : ISourceGenerator
 
     public void Initialize(GeneratorInitializationContext context)
     {
-//#if DEBUG
-//        if (!Debugger.IsAttached)
-//        {
-//            Debugger.Launch();
-//        }
-//#endif 
+// #if DEBUG
+//         if (!Debugger.IsAttached)
+//         {
+//             Debugger.Launch();
+//         }
+// #endif 
         context.RegisterForSyntaxNotifications(() => new ResourceSyntaxReceiver());
     }
 
@@ -69,11 +64,13 @@ public class StronglyTypedStringLocalizerGenerator : ISourceGenerator
         {
             if (context.Compilation.GetSemanticModel(cds.SyntaxTree).GetDeclaredSymbol(cds) is ITypeSymbol type)
             {
+                var properties = cds.Members.OfType<PropertyDeclarationSyntax>();
+
                 var source = TemplateFileRenderer.RenderContent("StronglyTypedStringLocalizer.sbntxt",
                     new StronglyTypedStringLocalizerRendererModel(
                         type.ContainingNamespace.ToDisplayString(),
                         type.Name,
-                        GetResourceEntries(type).ToArray()
+                        GetResourceEntries(properties, context.Compilation).ToArray()
                     ));
 
                 context.AddSource($"StronglyTypedStringLocalizerFor{type.Name}.g.cs", SourceText.From(source, Encoding.UTF8));
@@ -81,19 +78,47 @@ public class StronglyTypedStringLocalizerGenerator : ISourceGenerator
         }
     }
 
-    private static IEnumerable<string> GetResourceEntries(ITypeSymbol type)
-        => type.GetMembers().OfType<IPropertySymbol>()
+    private static IEnumerable<Resource> GetResourceEntries(IEnumerable<PropertyDeclarationSyntax> properties, Compilation compilation)
+        => properties
+            .Select(p => new Property(p, compilation))
             .Where(p => 
-                p.IsDefinition &&
-                p.DeclaredAccessibility == Accessibility.Public &&
-                p.Kind == SymbolKind.Property &&
-                p.Type.ToDisplayString().Equals("string", StringComparison.OrdinalIgnoreCase))
-            .Select(p => p.Name);
+                p.Symbol is
+                {
+                    IsDefinition: true, 
+                    DeclaredAccessibility: Accessibility.Public, 
+                    Kind: SymbolKind.Property
+                } &&
+                p.Symbol.Type.ToDisplayString().Equals("string", StringComparison.OrdinalIgnoreCase))
+            .Select(GenerateResource);
+
+    private static readonly Regex DocRegex = new(@"(?'doc'(?<=\/\/\/   ).+(?!<\/summary>))", RegexOptions.Compiled | RegexOptions.Multiline);
+    private static Resource GenerateResource(Property property)
+    {
+        var trivia = property.Syntax
+            .GetLeadingTrivia()
+            .SingleOrDefault(t =>
+                t.IsKind(SyntaxKind.SingleLineDocumentationCommentTrivia));
+
+        var match = DocRegex.Match(trivia.ToFullString());
+        var documentation = match.Groups["doc"].Value.Trim();
+        return new Resource(property.Symbol!.Name, documentation);
+    }
+}
+
+internal class Property
+{
+    public Property(PropertyDeclarationSyntax syntax, Compilation compilation)
+    {
+        Syntax = syntax;
+        Symbol = ModelExtensions.GetDeclaredSymbol(compilation.GetSemanticModel(syntax.SyntaxTree), syntax) as IPropertySymbol;
+    }
+    public PropertyDeclarationSyntax Syntax { get; }
+    public IPropertySymbol? Symbol { get; }
 }
 
 internal class StronglyTypedStringLocalizerRendererModel
 {
-    public StronglyTypedStringLocalizerRendererModel(string ns, string resourceTypeName, IReadOnlyList<string> resources)
+    public StronglyTypedStringLocalizerRendererModel(string ns, string resourceTypeName, IReadOnlyList<Resource> resources)
     {
         Resources = resources;
         ResourceTypeName = resourceTypeName;
@@ -102,5 +127,17 @@ internal class StronglyTypedStringLocalizerRendererModel
 
     public string Namespace { get; }
     public string ResourceTypeName { get; }
-    public IReadOnlyList<string> Resources { get; }
+    public IReadOnlyList<Resource> Resources { get; }
+}
+
+internal class Resource
+{
+    public Resource(string name, string documentation)
+    {
+        Name = name;
+        Documentation = documentation;
+    }
+
+    public string Name { get; }
+    public string Documentation { get; }
 }

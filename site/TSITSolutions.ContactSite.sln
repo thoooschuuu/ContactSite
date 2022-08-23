@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
@@ -10,6 +10,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSITSolutions.ContactSite.Shared", "src\Shared\TSITSolutions.ContactSite.Shared.csproj", "{2D47627A-472E-4C65-BDF7-0E09D2F76536}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.StringLocalizerSourceGenerator", "src\StringLocalizerSourceGenerator\TSITSolutions.StringLocalizerSourceGenerator.csproj", "{BE13F939-11E8-4C00-B5EB-D3CEEF45D26C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.StringLocalizerSourceGenerator.Tests.Integration", "tests\TSITSolutions.StringLocalizerSourceGenerator.Tests.Integration\TSITSolutions.StringLocalizerSourceGenerator.Tests.Integration.csproj", "{F23A940B-E172-497D-B849-BB7BC3FD272D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{32DDFF2E-EED1-4926-B077-E01D885E0F18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,11 +39,22 @@ Global
 		{BE13F939-11E8-4C00-B5EB-D3CEEF45D26C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE13F939-11E8-4C00-B5EB-D3CEEF45D26C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE13F939-11E8-4C00-B5EB-D3CEEF45D26C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F23A940B-E172-497D-B849-BB7BC3FD272D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F23A940B-E172-497D-B849-BB7BC3FD272D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F23A940B-E172-497D-B849-BB7BC3FD272D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F23A940B-E172-497D-B849-BB7BC3FD272D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {513FCF4C-E438-4349-A5CD-D7A1E7655160}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4995E658-4D5B-4D80-9BDE-0C743C38B083} = {E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}
+		{3EDB989B-3E37-4BC4-90E9-C5C179F10BAD} = {E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}
+		{2D47627A-472E-4C65-BDF7-0E09D2F76536} = {E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}
+		{BE13F939-11E8-4C00-B5EB-D3CEEF45D26C} = {E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}
+		{F23A940B-E172-497D-B849-BB7BC3FD272D} = {32DDFF2E-EED1-4926-B077-E01D885E0F18}
 	EndGlobalSection
 EndGlobal
