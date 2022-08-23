@@ -130,12 +130,22 @@
     <value>Startseite</value>
   </data>
   <data name="IndexMeLine2Part1" xml:space="preserve">
-    <value>Seit 2008 bin ich im Bereich agile Softwareentwicklung und  -architektur branchenübergreifend tätig.</value>
+    <value>Meine Leidenschaft ist die Entwicklung von leicht erweiterbaren Lösungen, die vor allem durch ihre Architektur
+und User Experience herausstechen. Seien es dabei Microservices mit gut und transparent definierten und
+dokumentierten REST-APIs oder auch Event-getriebene serverlose Lösungen in der Cloud. An erster Stelle
+steht für mich immer der größtmögliche Wert für die Benutzer. Genauso wichtig ist es mir, kontinuierlich genau
+diesen Wert in kurzen Feedbackschleifen mit etablierten DevOps-Praktiken zu liefern.</value>
   </data>
   <data name="IndexMeLine2Part2" xml:space="preserve">
-    <value>Auch übernahm ich an verschiedenen Stationen zusätzlich verschiedene nicht entwicklungsspezifische Rollen in agilen Teams.</value>
+    <value>Kontinuierlicher Wissensaustausch sowie die Verbesserung der Prozesse inner- und außerhalb agiler Teams,
+Clean Code und Architekturthemen sind ein großer Teil meines Interessengebietes.</value>
   </data>
   <data name="NavigationLegalInformation" xml:space="preserve">
     <value>Impressum</value>
+  </data>
+  <data name="IndexMeLine3Part1" xml:space="preserve">
+    <value>Technisch zuhause fühle ich mich in allen Bereichen von Microsoft .NET (C#, ASP.NET Core 6 APIs, Hosted
+Services als Backend, Azure Functions, AWS Lambdas etc.) und Azure. Kleinere Ausflüge mit Blazor WASM,
+Angular und React haben mich aber auch für die Entwicklung von „Mobile First“-Webseiten begeistert.</value>
   </data>
 </root>
