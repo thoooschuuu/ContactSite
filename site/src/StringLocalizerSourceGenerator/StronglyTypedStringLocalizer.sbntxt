@@ -14,8 +14,11 @@ namespace {{Namespace}}
             _localizer = localizer;
         }
 
-{{~ for resource in Resources ~}}
-        public string {{resource}} => _localizer[nameof({{ResourceTypeName}}.{{resource}})];
+{{~ for resource in Resources ~}}        
+        /// <summary>
+        ///    {{resource.Documentation}}
+        /// </summary>
+        public string {{resource.Name}} => _localizer[nameof({{ResourceTypeName}}.{{resource.Name}})];
 {{~ end ~}}
     }
 }

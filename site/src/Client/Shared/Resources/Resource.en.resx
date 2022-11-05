@@ -130,9 +130,21 @@
     <value>Home</value>
   </data>
   <data name="IndexMeLine2Part1" xml:space="preserve">
-    <value>Since 2008 I'm working as agile software developer and architect.</value>
+    <value>My passion is the development of easily extensible solutions, which stand out mainly due to their architecture
+and user experience. Be it microservices with well and transparently defined and documented
+documented REST APIs or event-driven serverless solutions in the cloud. In the first place
+for me is always the greatest possible value for the user. Equally important to me is to continuously deliver this value in short feedback loops with established DevOps practices.
+
+Translated with www.DeepL.com/Translator (free version)</value>
   </data>
   <data name="IndexMeLine2Part2" xml:space="preserve">
-    <value>I also took on various additional non-developmental roles in agile teams on various projects.</value>
+    <value>Continuous knowledge exchange and improvement of processes within and outside of agile teams, Clean Code and architecture topics are a big part of my area of interest.</value>
+  </data>
+  <data name="NavigationLegalInformation" xml:space="preserve">
+    <value>Legal Information</value>
+  </data>
+  <data name="IndexMeLine3Part1" xml:space="preserve">
+    <value>Technically, I feel at home in all areas of Microsoft .NET (C#, ASP.NET Core 6 APIs, Hosted
+Services as backend, Azure Functions, AWS Lambdas etc.) and Azure. Smaller projects with Blazor WASM, Angular and React got me excited to develop mobile first websites.</value>
   </data>
 </root>
