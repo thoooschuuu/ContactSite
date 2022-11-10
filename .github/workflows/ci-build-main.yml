@@ -20,7 +20,9 @@ jobs:
       uses: actions/setup-dotnet@v3.0.3
       with:
         dotnet-version: 7.0.x
-        include-prerelease: true
+        
+    - name: dotnet workload restore
+      run: dotnet workload restore ./site/TSITSolutions.ContactSite.sln
 
     - name: Restore dependencies
       run: dotnet restore ./site/TSITSolutions.ContactSite.sln
