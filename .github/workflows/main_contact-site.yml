@@ -16,14 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up .NET Core
+      - name: Set up .NET
         uses: actions/setup-dotnet@v3.0.3
         with:
           dotnet-version: '7.0.x'
-          include-prerelease: true
-
-      - name: Build with dotnet        
-        run: dotnet build ./site/TSITSolutions.ContactSite.sln --configuration Release
+      
+      - name: restore wasm-tools
+        run: dotnet workload restore ./site/TSITSolutions.ContactSite.sln
 
       - name: dotnet publish
         run: dotnet publish ./site/src/Server/TSITSolutions.ContactSite.Server.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
