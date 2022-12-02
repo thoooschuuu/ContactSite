@@ -4,9 +4,9 @@
         <AzureFunctionsVersion>V4</AzureFunctionsVersion>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage.Blobs" Version="5.0.1" />
-        <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.3" />
-        <PackageReference Include="SixLabors.ImageSharp" Version="2.1.3" />
+        <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage.Blobs"/>
+        <PackageReference Include="Microsoft.NET.Sdk.Functions"/>
+        <PackageReference Include="SixLabors.ImageSharp"/>
     </ItemGroup>
     <ItemGroup>
         <None Update="host.json">

@@ -1,24 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.0-rc.2.22476.2" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Client\TSITSolutions.ContactSite.Client.csproj" />
-    <ProjectReference Include="..\Shared\TSITSolutions.ContactSite.Shared.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Client\TSITSolutions.ContactSite.Client.csproj"/>
+        <ProjectReference Include="..\Shared\TSITSolutions.ContactSite.Shared.csproj"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Controllers\"/>
+    </ItemGroup>
 
 
 </Project>

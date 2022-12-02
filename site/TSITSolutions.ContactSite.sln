@@ -25,6 +25,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{32DDFF2E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.ImageResizer", "src\TSITSolutions.ImageResizer\TSITSolutions.ImageResizer.csproj", "{76465391-3D20-4D03-BF8E-353AB0C31E8B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{51671727-8984-42ED-9568-7D8B8FE7FBE5}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Packages.Props = Directory.Packages.Props
+		Directory.Build.Props = Directory.Build.Props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
