@@ -13,7 +13,7 @@
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
         <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" />
         <PackageReference Include="Microsoft.CSharp" />
-        <PackageReference Include="Scriban" />
+        <PackageReference Include="Scriban" IncludeAssets="build" />
     </ItemGroup>
 
     <ItemGroup>
