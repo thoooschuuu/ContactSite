@@ -6,21 +6,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentAssertions"/>
-        <PackageReference Include="FluentAssertions.Analyzers"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.Common"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.SourceGenerators.Testing.XUnit"/>
-        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
-        <PackageReference Include="xunit"/>
-        <PackageReference Include="xunit.runner.visualstudio"/>
-        <PackageReference Include="coverlet.collector"/>
+        <PackageReference Include="FluentAssertions" />
+        <PackageReference Include="FluentAssertions.Analyzers" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Common" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.SourceGenerators.Testing.XUnit" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+        <PackageReference Include="xunit" />
+        <PackageReference Include="xunit.runner.visualstudio" />
+        <PackageReference Include="coverlet.collector" />
         <!-- those packages are used for the source generation. Do not remove-->
-        <PackageReference Include="Basic.Reference.Assemblies.NetStandard20"/>
+        <PackageReference Include="Basic.Reference.Assemblies.NetStandard20" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\StringLocalizerSourceGenerator\TSITSolutions.StringLocalizerSourceGenerator.csproj"/>
+        <ProjectReference Include="..\..\src\StringLocalizerSourceGenerator\TSITSolutions.StringLocalizerSourceGenerator.csproj" />
     </ItemGroup>
 
 </Project>
