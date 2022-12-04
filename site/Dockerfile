@@ -1,4 +1,4 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+﻿FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
 WORKDIR /app
 
 # Copy everything
@@ -14,7 +14,7 @@ COPY . .
 RUN dotnet build ./src/Server -c Release --no-restore
 RUN dotnet publish ./src/Server -c Release -o out --no-build
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=build-env /app/out .
 COPY ["src/Server/cert.pfx", "/https/cert.pfx"]

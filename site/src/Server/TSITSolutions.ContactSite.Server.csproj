@@ -2,11 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <ContainerImageName>contact-site</ContainerImageName>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+        <PackageReference Include="Microsoft.NET.Build.Containers" />
     </ItemGroup>
 
     <ItemGroup>
