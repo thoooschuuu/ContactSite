@@ -21,8 +21,11 @@ jobs:
       with:
         dotnet-version: 7.0.x
         
-    - name: dotnet workload restore
-      run: dotnet workload restore ./site/TSITSolutions.ContactSite.sln
+    - name: install wasm tools
+      run: dotnet workload install wasm-tools
+    
+    #- name: dotnet workload restore
+    # run: dotnet workload restore ./site/TSITSolutions.ContactSite.sln
 
     - name: Restore dependencies
       run: dotnet restore ./site/TSITSolutions.ContactSite.sln
