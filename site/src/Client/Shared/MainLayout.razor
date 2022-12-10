@@ -7,26 +7,28 @@
 
 <MudLayout>
     <MudAppBar>
-        <MudIconButton 
-            Icon="@Icons.Material.Filled.Menu" 
-            Color="Color.Inherit" 
-            Edge="Edge.Start" 
-            OnClick="@(DrawerToggle)" />
+        <MudIconButton
+            Icon="@Icons.Material.Filled.Menu"
+            Color="Color.Inherit"
+            Edge="Edge.Start"
+            OnClick="@(DrawerToggle)"/>
         @Localizer.CompanyName
-        <MudSpacer />
+        <MudSpacer/>
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/thoooschuuu/ContactSite" Target="_blank" Edge="Edge.End"/>
     </MudAppBar>
 
     <MudDrawer @bind-Open="@_drawerOpen">
-        <NavMenu />
+        <NavMenu/>
     </MudDrawer>
-    
-    <MudMainContent MaxWidth="MaxWidth.Medium">
-        @Body
+
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.Large" Class="main-content">
+            @Body
+        </MudContainer>
     </MudMainContent>
-    
+
     <MudAppBar Bottom="true" Fixed="true">
-        <CultureSelector />
+        <CultureSelector/>
     </MudAppBar>
 </MudLayout>
 
@@ -44,7 +46,7 @@
         {
             Default = new()
             {
-                FontFamily = new [] {"Arimo", "Helvetica", "Arial", "sans-serif"}
+                FontFamily = new[] { "Arimo", "Helvetica", "Arial", "sans-serif" }
             }
         }
     };

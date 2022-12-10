@@ -6,8 +6,7 @@ html, body {
     background-color: var(--background);
 }
 
-.mud-main-content {
-    max-width: 76%;
+.main-content {
     margin: 0 auto 100px auto;
 }
 
