@@ -20,8 +20,3 @@ resource "azurerm_application_insights" "appi" {
   tags                = local.resource_tags
   retention_in_days   = local.retention_in_days
 }
-
-output "instrumentation_key" {
-  value = azurerm_application_insights.appi.instrumentation_key
-  sensitive = true
-}

@@ -25,5 +25,6 @@ locals {
     app_service_environment = "ase"
     application_insights    = "appi"
     log_analytics_workspace = "log"
+    app_configuration_store = "appcs"
   }
 }
