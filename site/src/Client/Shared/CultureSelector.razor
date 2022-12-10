@@ -4,12 +4,16 @@
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
 
-<MudSelect Dense="true" T="string" @bind-Value="CurrentCulture" Variant="Variant.Text" >
-    @foreach (var (displayName, cultureName) in LocalizerSettings.SupportedCulturesWithName)
+@foreach (var (displayName, cultureName) in LocalizerSettings.SupportedCulturesWithName)
     {
-        <MudSelectItem Value="cultureName">@displayName</MudSelectItem>
+        <MudButton
+            Variant="Variant.Filled"
+            Color="@GetColorForButton(cultureName)"
+            OnClick="@(() => CurrentCulture = cultureName)"
+            Disabled="@(cultureName==CurrentCulture)">
+            @displayName
+        </MudButton>
     }
-</MudSelect>
 
 @code
 {
@@ -30,5 +34,10 @@
             LocalStorage.SetItemAsync("culture", value);
             NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
         }
+    }
+    
+    private Color GetColorForButton(string cultureName)
+    {
+        return cultureName == CurrentCulture ? Color.Error : Color.Secondary;
     }
 }

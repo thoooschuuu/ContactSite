@@ -6,12 +6,17 @@ html, body {
     background-color: var(--background);
 }
 
-h1 {
+.mud-main-content {
+    max-width: 76%;
+    margin: 0 auto 100px auto;
+}
+
+h1, h2, h3, h4, h5 {
     color: var(--text-primary);
 }
 
-h1:focus {
-    outline: none;
+h5 {
+    padding-top: 0.5rem;
 }
 
 a, .btn-link {

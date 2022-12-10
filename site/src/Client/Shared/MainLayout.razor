@@ -14,7 +14,7 @@
             OnClick="@(DrawerToggle)" />
         @Localizer.CompanyName
         <MudSpacer />
-        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/thoooschuuu/ContactSite" Target="_blank"/>
+        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/thoooschuuu/ContactSite" Target="_blank" Edge="Edge.End"/>
     </MudAppBar>
 
     <MudDrawer @bind-Open="@_drawerOpen">
@@ -27,14 +27,11 @@
     
     <MudAppBar Bottom="true" Fixed="true">
         <CultureSelector />
-        <MudSpacer />
-        <MudIconButton Icon="@Icons.Material.Filled.FavoriteBorder" Color="Color.Inherit" Edge="Edge.End" />
-        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
     </MudAppBar>
 </MudLayout>
 
 @code {
-    bool _drawerOpen = true;
+    bool _drawerOpen = false;
 
     void DrawerToggle()
     {
