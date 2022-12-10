@@ -4,10 +4,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationInsightsTelemetry();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure Health Checks
+app.MapHealthChecks("/health");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
