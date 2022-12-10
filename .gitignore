@@ -359,3 +359,10 @@ MigrationBackup/
 __azurite_db*.json
 __blobstorage__
 __queuestorage__
+
+
+# Terraform
+*.tfstate
+.terraform.lock.hcl
+
+*.exe

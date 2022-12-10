@@ -1,4 +1,4 @@
-resource "azurerm_app_service_plan" "plan" {
+resource "azurerm_service_plan" "plan" {
     resource_group_name = azurerm_resource_group.rg.name
     name                = format(local.resource_name_template, local.resource_type_abbreviations["app_service_plan"])
     location            = local.location
@@ -8,15 +8,15 @@ resource "azurerm_app_service_plan" "plan" {
 
 resource "azurerm_linux_web_app" "app" {
     resource_group_name = azurerm_resource_group.rg.name
-    name                = format(local.resource_name_template, local.resource_type_abbreviations["app_service"])
+    name                = format(local.resource_name_template, local.resource_type_abbreviations["app_service_environment"])
     location            = local.location
-    app_service_plan_id = azurerm_app_service_plan.plan.id
+    service_plan_id     = azurerm_service_plan.plan.id
     
     site_config {
-        ftps_state = "Disabled"
-        health_check_path = "/health"
-        http2_enabled = true
-        use_32_bit_worker_process = false
+        ftps_state          = "Disabled"
+        health_check_path   = "/health"
+        http2_enabled       = true
+        use_32_bit_worker   = false
         
         application_stack {
             dotnet_version = "7.0"
