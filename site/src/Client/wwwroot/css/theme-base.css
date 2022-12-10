@@ -3,4 +3,6 @@
 :root {
     --main-font-family: Arimo, Helvetica, Arial, sans-serif;
     --mud-typography-default-family: var(--main-font-family);
+    --text-primary: #ffc250;
+    --text-primary: rgba(255, 194, 80, 1);
 }

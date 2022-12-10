@@ -1,7 +1,8 @@
 ﻿@inherits LayoutComponentBase
 @inject StronglyTypedStringLocalizerForResource Localizer
+@inject ILocalStorageService LocalStorage
 
-<MudThemeProvider Theme="_theme"/>
+<MudThemeProvider Theme="_theme" @bind-IsDarkMode="@IsDarkMode" />
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
@@ -29,15 +30,37 @@
 
     <MudAppBar Bottom="true" Fixed="true">
         <CultureSelector/>
+        <MudSpacer/>
+        <MudSwitch @bind-Checked="@_isDarkMode" Color="Color.Primary" Class="ma-4" T="bool" Label="Toggle Light/Dark Mode"/>
     </MudAppBar>
 </MudLayout>
 
 @code {
-    bool _drawerOpen = false;
+    bool _drawerOpen;
+    bool _isDarkMode;
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _isDarkMode = await LocalStorage.GetItemAsync<bool>("IsDarkMode");
+            StateHasChanged();
+        }
+    }
+    
     void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
+    }
+
+    private bool IsDarkMode
+    {
+        get => _isDarkMode;
+        set
+        {
+            LocalStorage.SetItemAsync("IsDarkMode", value);
+            _isDarkMode = value;
+        }
     }
 
     readonly MudTheme _theme = new()
