@@ -45,3 +45,9 @@ resource "azurerm_linux_web_app" "website_app" {
     app_service_name    = azurerm_linux_web_app.website_app.name
     resource_group_name = azurerm_resource_group.rg.name
 }
+
+  resource "azurerm_app_service_custom_hostname_binding" "de_binding" {
+    hostname            = "thomas-schulze-it-solutions.de"
+    app_service_name    = azurerm_linux_web_app.website_app.name
+    resource_group_name = azurerm_resource_group.rg.name
+}
