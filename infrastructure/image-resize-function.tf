@@ -1,13 +1,14 @@
 resource "azurerm_service_plan" "resize_function_plan" {
-  name                = format(local.resource_name_template, local.resource_type_abbreviations.app_service_plan)
+  name                = format(local.resource_type_templates.app_service_plan, "resize")
   location            = local.location
   resource_group_name = azurerm_resource_group.rg.name
   os_type             = "Linux"
   sku_name            = "Y1"
+  tags                = local.resource_tags
 }
 
 resource "azurerm_linux_function_app" "resize_function" {
-  name                = format(local.resource_name_template, local.resource_type_abbreviations.function_app)
+  name                = format(local.resource_type_templates.function_app, "resize")
   resource_group_name = azurerm_resource_group.rg.name
   location            = local.location
 

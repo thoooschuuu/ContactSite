@@ -1,14 +1,15 @@
 resource "azurerm_service_plan" "website_plan" {
   resource_group_name = azurerm_resource_group.rg.name
-  name                = format(local.resource_name_template, local.resource_type_abbreviations["app_service_plan"])
+  name                = format(local.resource_type_templates.app_service_plan, "website")
   location            = local.location
   os_type             = "Linux"
   sku_name            = "B1"
+  tags                = local.resource_tags
 }
 
 resource "azurerm_linux_web_app" "website_app" {
   resource_group_name = azurerm_resource_group.rg.name
-  name                = format(local.resource_name_template, local.resource_type_abbreviations["app_service_environment"])
+  name                = format(local.resource_type_templates.app_service_environment, "website")
   location            = local.location
   service_plan_id     = azurerm_service_plan.website_plan.id
 
