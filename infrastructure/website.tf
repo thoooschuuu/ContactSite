@@ -1,4 +1,4 @@
-resource "azurerm_service_plan" "plan" {
+resource "azurerm_service_plan" "website_plan" {
   resource_group_name = azurerm_resource_group.rg.name
   name                = format(local.resource_name_template, local.resource_type_abbreviations["app_service_plan"])
   location            = local.location
@@ -6,11 +6,11 @@ resource "azurerm_service_plan" "plan" {
   sku_name            = "B1"
 }
 
-resource "azurerm_linux_web_app" "app" {
+resource "azurerm_linux_web_app" "website_app" {
   resource_group_name = azurerm_resource_group.rg.name
   name                = format(local.resource_name_template, local.resource_type_abbreviations["app_service_environment"])
   location            = local.location
-  service_plan_id     = azurerm_service_plan.plan.id
+  service_plan_id     = azurerm_service_plan.website_plan.id
 
   site_config {
     ftps_state        = "Disabled"

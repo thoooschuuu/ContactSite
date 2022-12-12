@@ -2,6 +2,7 @@ locals {
   # project settingds
   location         = "westeurope"
   project          = "contactsite"
+  project_short    = "cs"
   environment_name = "prod"
 
   resource_tags = {
@@ -15,7 +16,7 @@ locals {
   # example: rg-contactsite-prod-westeurope
   resource_name_template = "%s-${local.project}-${local.environment_name}-${local.location}"
   # example: st1contactsite1prod1westeurope
-  storage_name_template = "%s1${local.project}1${local.environment_name}1${local.location}"
+  storage_name_template = "%s1${local.project_short}1${local.environment_name}1${local.location}"
 
   # list of abbreviations for resource types
   resource_type_abbreviations = {
@@ -23,6 +24,7 @@ locals {
     storage_account         = "st"
     app_service_plan        = "asp"
     app_service_environment = "ase"
+    function_app            = "func"
     application_insights    = "appi"
     log_analytics_workspace = "log"
     app_configuration_store = "appcs"
