@@ -12,12 +12,13 @@ resource "azurerm_linux_web_app" "website_app" {
   name                = format(local.resource_type_templates.app_service_environment, "website")
   location            = local.location
   service_plan_id     = azurerm_service_plan.website_plan.id
+  https_only          = true
 
   site_config {
     ftps_state        = "Disabled"
     health_check_path = "/health"
     http2_enabled     = true
-    use_32_bit_worker = false
+    use_32_bit_worker = false    
 
     application_stack {
       dotnet_version = "7.0"
@@ -37,4 +38,10 @@ resource "azurerm_linux_web_app" "website_app" {
     XDT_MicrosoftApplicationInsights_Mode       = "recommended"
     XDT_MicrosoftApplicationInsights_PreemptSdk = "1"
   }
+
+  resource "azurerm_app_service_custom_hostname_binding" "de_binding" {
+    hostname            = "www.thomas-schulze-it-solutions.de"
+    app_service_name    = azurerm_linux_web_app.website_app.name
+    resource_group_name = azurerm_resource_group.rg.name
+}
 }
