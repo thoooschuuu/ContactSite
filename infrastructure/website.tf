@@ -49,7 +49,6 @@ resource "azurerm_app_service_custom_hostname_binding" "website_www" {
 
 resource "azurerm_app_service_managed_certificate" "website_www" {
   custom_hostname_binding_id = azurerm_app_service_custom_hostname_binding.website_www.id
-  tags                       = local.resource_tags
 }
 
 resource "azurerm_app_service_certificate_binding" "website_wwww" {
@@ -67,7 +66,6 @@ resource "azurerm_app_service_custom_hostname_binding" "website_plain" {
 
 resource "azurerm_app_service_managed_certificate" "website_plain" {
   custom_hostname_binding_id = azurerm_app_service_custom_hostname_binding.website_plain.id
-  tags                       = local.resource_tags
 }
 
 resource "azurerm_app_service_certificate_binding" "website_plain" {
