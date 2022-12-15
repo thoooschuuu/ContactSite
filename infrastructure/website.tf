@@ -40,23 +40,6 @@ resource "azurerm_linux_web_app" "website_app" {
   }
 }
 
-# www domain with managed certificate
-resource "azurerm_app_service_custom_hostname_binding" "website_www" {
-  hostname            = "www.thomas-schulze-it-solutions.de"
-  app_service_name    = azurerm_linux_web_app.website_app.name
-  resource_group_name = azurerm_resource_group.rg.name
-}
-
-resource "azurerm_app_service_managed_certificate" "website_www" {
-  custom_hostname_binding_id = azurerm_app_service_custom_hostname_binding.website_www.id
-}
-
-resource "azurerm_app_service_certificate_binding" "website_wwww" {
-  hostname_binding_id = azurerm_app_service_custom_hostname_binding.website_www.id
-  certificate_id      = azurerm_app_service_managed_certificate.website_www.id
-  ssl_state           = "SniEnabled"
-}
-
 # plain domain with managed certificate
 resource "azurerm_app_service_custom_hostname_binding" "website_plain" {
   hostname            = "thomas-schulze-it-solutions.de"
@@ -71,5 +54,23 @@ resource "azurerm_app_service_managed_certificate" "website_plain" {
 resource "azurerm_app_service_certificate_binding" "website_plain" {
   hostname_binding_id = azurerm_app_service_custom_hostname_binding.website_plain.id
   certificate_id      = azurerm_app_service_managed_certificate.website_plain.id
+  ssl_state           = "SniEnabled"
+}
+
+# www domain with managed certificate
+resource "azurerm_app_service_custom_hostname_binding" "website_www" {
+  hostname            = "www.thomas-schulze-it-solutions.de"
+  app_service_name    = azurerm_linux_web_app.website_app.name
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
+resource "azurerm_app_service_managed_certificate" "website_www" {
+  custom_hostname_binding_id = azurerm_app_service_custom_hostname_binding.website_www.id
+  canonical_name             = azurerm_app_service_custom_hostname_binding.website_plain.hostname
+}
+
+resource "azurerm_app_service_certificate_binding" "website_wwww" {
+  hostname_binding_id = azurerm_app_service_custom_hostname_binding.website_www.id
+  certificate_id      = azurerm_app_service_managed_certificate.website_www.id
   ssl_state           = "SniEnabled"
 }
