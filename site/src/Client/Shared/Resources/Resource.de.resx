@@ -148,4 +148,16 @@ Clean Code und Architekturthemen sind ein großer Teil meines Interessengebietes
 Services als Backend, Azure Functions, AWS Lambdas etc.) und Azure. Kleinere Ausflüge mit Blazor WASM,
 Angular und React haben mich aber auch für die Entwicklung von „Mobile First“-Webseiten begeistert.</value>
   </data>
+  <data name="LegalInformationPageTitle" xml:space="preserve">
+    <value>Impressum</value>
+  </data>
+  <data name="ProjectsPageTitle" xml:space="preserve">
+    <value>Projekte</value>
+  </data>
+  <data name="ProjectsHeader" xml:space="preserve">
+    <value>Projekte</value>
+  </data>
+  <data name="NavigationProjects" xml:space="preserve">
+    <value>Projekte</value>
+  </data>
 </root>

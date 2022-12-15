@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -150,5 +150,14 @@ Angular und React haben mich aber auch für die Entwicklung von „Mobile First�
   </data>
   <data name="LegalInformationPageTitle" xml:space="preserve">
     <value>Impressum</value>
+  </data>
+  <data name="ProjectsPageTitle" xml:space="preserve">
+    <value>Projekte</value>
+  </data>
+  <data name="ProjectsHeader" xml:space="preserve">
+    <value>Projekte</value>
+  </data>
+  <data name="NavigationProjects" xml:space="preserve">
+    <value>Projekte</value>
   </data>
 </root>
