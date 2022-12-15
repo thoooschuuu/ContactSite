@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -147,5 +147,8 @@ Clean Code und Architekturthemen sind ein großer Teil meines Interessengebietes
     <value>Technisch zuhause fühle ich mich in allen Bereichen von Microsoft .NET (C#, ASP.NET Core 6 APIs, Hosted
 Services als Backend, Azure Functions, AWS Lambdas etc.) und Azure. Kleinere Ausflüge mit Blazor WASM,
 Angular und React haben mich aber auch für die Entwicklung von „Mobile First“-Webseiten begeistert.</value>
+  </data>
+  <data name="LegalInformationPageTitle" xml:space="preserve">
+    <value>Impressum</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -140,5 +140,8 @@
   </data>
   <data name="IndexMeLine3Part1" xml:space="preserve">
     <value>Technically, I feel at home in all areas of Microsoft .NET (C#, ASP.NET Core 6 APIs, Hosted Services as backend, Azure Functions, AWS Lambdas etc.) and Azure. Smaller projects with Blazor WASM, Angular and React got me excited to develop mobile first websites.</value>
+  </data>
+  <data name="LegalInformationPageTitle" xml:space="preserve">
+    <value>Legal Information</value>
   </data>
 </root>
