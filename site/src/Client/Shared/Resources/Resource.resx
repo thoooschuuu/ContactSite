@@ -160,4 +160,13 @@ Angular und React haben mich aber auch für die Entwicklung von „Mobile First�
   <data name="NavigationProjects" xml:space="preserve">
     <value>Projekte</value>
   </data>
+  <data name="Main_DarkMode_Text" xml:space="preserve">
+    <value>Dark Mode ist</value>
+  </data>
+  <data name="Main_DarkMode_On" xml:space="preserve">
+    <value>An</value>
+  </data>
+  <data name="Main_DarkMode_Off" xml:space="preserve">
+    <value>Aus</value>
+  </data>
 </root>

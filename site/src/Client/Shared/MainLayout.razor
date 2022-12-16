@@ -2,7 +2,7 @@
 @inject StronglyTypedStringLocalizerForResource Localizer
 @inject ILocalStorageService LocalStorage
 
-<MudThemeProvider Theme="_theme" @bind-IsDarkMode="@IsDarkMode" />
+<MudThemeProvider @ref="@_mudThemeProvider" Theme="_theme" @bind-IsDarkMode="@IsDarkMode" />
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
@@ -31,19 +31,33 @@
     <MudAppBar Bottom="true" Fixed="true">
         <CultureSelector/>
         <MudSpacer/>
-        <MudSwitch @bind-Checked="@_isDarkMode" Color="Color.Primary" T="bool" ThumbIcon="@Icons.Filled.DarkMode"/>
+        <MudToggleIconButton 
+            @bind-Toggled="@IsDarkMode"
+            Icon="@Icons.Filled.DarkMode"
+            ToggledIcon="@Icons.Filled.DarkMode"/>
+        <MudText>@Localizer.Main_DarkMode_Text @(IsDarkMode ? Localizer.Main_DarkMode_On : Localizer.Main_DarkMode_Off)</MudText>
     </MudAppBar>
 </MudLayout>
 
 @code {
+    const string IsDarkModeStorageKey = "IsDarkMode";
     bool _drawerOpen;
     bool _isDarkMode;
+    
+    private MudThemeProvider _mudThemeProvider;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            _isDarkMode = await LocalStorage.GetItemAsync<bool>("IsDarkMode");
+            if(await LocalStorage.ContainKeyAsync(IsDarkModeStorageKey))
+            {
+                IsDarkMode = await LocalStorage.GetItemAsync<bool>(IsDarkModeStorageKey);
+            }
+            else
+            {
+                IsDarkMode = await _mudThemeProvider.GetSystemPreference();
+            }
             StateHasChanged();
         }
     }
@@ -58,7 +72,7 @@
         get => _isDarkMode;
         set
         {
-            LocalStorage.SetItemAsync("IsDarkMode", value);
+            LocalStorage.SetItemAsync(IsDarkModeStorageKey, value);
             _isDarkMode = value;
         }
     }

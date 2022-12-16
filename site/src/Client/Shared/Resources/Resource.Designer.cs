@@ -130,6 +130,33 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aus.
+        /// </summary>
+        public static string Main_DarkMode_Off {
+            get {
+                return ResourceManager.GetString("Main_DarkMode_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An.
+        /// </summary>
+        public static string Main_DarkMode_On {
+            get {
+                return ResourceManager.GetString("Main_DarkMode_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Mode ist.
+        /// </summary>
+        public static string Main_DarkMode_Text {
+            get {
+                return ResourceManager.GetString("Main_DarkMode_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Startseite.
         /// </summary>
         public static string NavigationHome {
