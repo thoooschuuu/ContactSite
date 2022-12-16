@@ -44,7 +44,7 @@
     bool _drawerOpen;
     bool _isDarkMode;
     
-    private MudThemeProvider _mudThemeProvider;
+    private MudThemeProvider? _mudThemeProvider;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -56,7 +56,7 @@
             }
             else
             {
-                IsDarkMode = await _mudThemeProvider.GetSystemPreference();
+                IsDarkMode = await _mudThemeProvider!.GetSystemPreference();
             }
             StateHasChanged();
         }
