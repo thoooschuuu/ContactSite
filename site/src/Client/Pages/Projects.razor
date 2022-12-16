@@ -5,7 +5,35 @@
 
 <MudText Typo="Typo.h3">@Localizer.ProjectsHeader</MudText>
 
+<MudGrid>
+    @foreach (var project in _projects)
+    {
+        <MudItem xs="12" sm="6" md="4" lg="3">
+            <MudCard Outlined="true">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">@project.Name</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText Typo="Typo.caption">@project.Skills</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@("/ProjectDetails/" + project.Id)">Read More</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+    }
+</MudGrid>
 
-@code {
-    
+@code
+{
+    record Project(Guid Id, string Name, string Description, string Domain, List<string> Skills);
+
+    readonly Project[] _projects = {
+        new Project(Guid.NewGuid(), "Software Architect and Product Owner", "I am responsible for the architecture and the product management of the software. I am also responsible for the development of the software.", "Integration Platform", new List<string> { "C#", "ASP.NET Core", "Blazor", "Entity Framework Core", "SQL Server", "Azure", "Docker", "Kubernetes", "Git", "Azure DevOps", "Scrum", "Agile" }),
+        new Project(Guid.NewGuid(), "Software Architect", "I am responsible for the architecture of the software. I am also responsible for the development of the software.", "Integration Platform", new List<string> { "C#", "ASP.NET Core", "Blazor", "Entity Framework Core", "SQL Server", "Azure", "Docker", "Kubernetes", "Git", "Azure DevOps", "Scrum", "Agile" }),
+        new Project(Guid.NewGuid(), "Software Developer", "I am responsible for the development of the software.", "Integration Platform", new List<string> { "C#", "ASP.NET Core", "Blazor", "Entity Framework Core", "SQL Server", "Azure", "Docker", "Kubernetes", "Git", "Azure DevOps", "Scrum", "Agile" }),
+        new Project(Guid.NewGuid(), "Software Developer", "I am responsible for the development of the software.", "Integration Platform", new List<string> { "C#", "ASP.NET Core", "Blazor", "Entity Framework Core", "SQL Server", "Azure", "Docker", "Kubernetes", "Git", "Azure DevOps", "Scrum", "Agile" }),
+    };
 }

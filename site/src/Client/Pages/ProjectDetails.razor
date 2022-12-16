@@ -1,6 +1,7 @@
-﻿@page "/ProjectDetails"
+﻿@page "/ProjectDetails/{projectId:guid?}"
 <h3>ProjectDetails</h3>
 
 @code {
-    
+    [Parameter]
+    public Guid? ProjectId { get; set; }
 }
