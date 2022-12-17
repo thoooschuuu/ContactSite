@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.ContactSite.Server.Core", "src\TSITSolutions.ContactSite.Server.Core\TSITSolutions.ContactSite.Server.Core.csproj", "{05D825F5-E3DD-4567-9B3C-AC4F2DD6F702}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.ContactSite.Client.Tests.Unit", "tests\TSITSolutions.ContactSite.Client.Tests.Unit\TSITSolutions.ContactSite.Client.Tests.Unit.csproj", "{A73C8C75-0F3C-4F59-BBCD-01C0E65CBBF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{05D825F5-E3DD-4567-9B3C-AC4F2DD6F702}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05D825F5-E3DD-4567-9B3C-AC4F2DD6F702}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05D825F5-E3DD-4567-9B3C-AC4F2DD6F702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A73C8C75-0F3C-4F59-BBCD-01C0E65CBBF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A73C8C75-0F3C-4F59-BBCD-01C0E65CBBF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A73C8C75-0F3C-4F59-BBCD-01C0E65CBBF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A73C8C75-0F3C-4F59-BBCD-01C0E65CBBF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,5 +88,6 @@ Global
 		{F23A940B-E172-497D-B849-BB7BC3FD272D} = {32DDFF2E-EED1-4926-B077-E01D885E0F18}
 		{76465391-3D20-4D03-BF8E-353AB0C31E8B} = {E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}
 		{05D825F5-E3DD-4567-9B3C-AC4F2DD6F702} = {E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}
+		{A73C8C75-0F3C-4F59-BBCD-01C0E65CBBF9} = {32DDFF2E-EED1-4926-B077-E01D885E0F18}
 	EndGlobalSection
 EndGlobal
