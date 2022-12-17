@@ -1,4 +1,4 @@
-﻿namespace TSITSolutions.ContactSite.Server.Projects.Contracts;
+﻿namespace TSITSolutions.ContactSite.Shared.Projects;
 
 public class ProjectsResponse
 {

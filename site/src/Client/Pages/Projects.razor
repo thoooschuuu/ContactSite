@@ -1,5 +1,7 @@
 ﻿@page "/Projects"
+@using TSITSolutions.ContactSite.Shared.Projects
 @inject StronglyTypedStringLocalizerForResource Localizer
+@inject HttpClient Http
 
 <PageTitle>@Localizer.CompanyName - @Localizer.ProjectsPageTitle</PageTitle>
 
@@ -12,11 +14,11 @@
             <MudCard Outlined="true">
                 <MudCardHeader>
                     <CardHeaderContent>
-                        <MudText Typo="Typo.h6">@project.Name</MudText>
+                        <MudText Typo="Typo.h6">@project.Title</MudText>
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent>
-                    <MudText Typo="Typo.caption">@project.Skills</MudText>
+                    <MudText Typo="Typo.caption">@project.Technologies</MudText>
                 </MudCardContent>
                 <MudCardActions>
                     <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@("/ProjectDetails/" + project.Id)">Read More</MudButton>
@@ -28,12 +30,11 @@
 
 @code
 {
-    record Project(Guid Id, string Name, string Description, string Domain, List<string> Skills);
+    private List<ProjectResponse> _projects = new();
 
-    readonly Project[] _projects = {
-        new Project(Guid.NewGuid(), "Software Architect and Product Owner", "I am responsible for the architecture and the product management of the software. I am also responsible for the development of the software.", "Integration Platform", new List<string> { "C#", "ASP.NET Core", "Blazor", "Entity Framework Core", "SQL Server", "Azure", "Docker", "Kubernetes", "Git", "Azure DevOps", "Scrum", "Agile" }),
-        new Project(Guid.NewGuid(), "Software Architect", "I am responsible for the architecture of the software. I am also responsible for the development of the software.", "Integration Platform", new List<string> { "C#", "ASP.NET Core", "Blazor", "Entity Framework Core", "SQL Server", "Azure", "Docker", "Kubernetes", "Git", "Azure DevOps", "Scrum", "Agile" }),
-        new Project(Guid.NewGuid(), "Software Developer", "I am responsible for the development of the software.", "Integration Platform", new List<string> { "C#", "ASP.NET Core", "Blazor", "Entity Framework Core", "SQL Server", "Azure", "Docker", "Kubernetes", "Git", "Azure DevOps", "Scrum", "Agile" }),
-        new Project(Guid.NewGuid(), "Software Developer", "I am responsible for the development of the software.", "Integration Platform", new List<string> { "C#", "ASP.NET Core", "Blazor", "Entity Framework Core", "SQL Server", "Azure", "Docker", "Kubernetes", "Git", "Azure DevOps", "Scrum", "Agile" }),
-    };
+    protected override async Task OnInitializedAsync()
+    {
+        var projectsResponse =  await Http.GetFromJsonAsync<ProjectsResponse>("/api/Projects");
+        _projects = projectsResponse.Projects.ToList();
+    }
 }

@@ -5,7 +5,6 @@ public record Project(
     string Title, 
     string Description, 
     string CustomerDomain,
-    bool IsCurrent,
     DateOnly StartDate,
     DateOnly? EndDate,
     IReadOnlyCollection<string> Technologies

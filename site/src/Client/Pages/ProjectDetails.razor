@@ -1,7 +1,31 @@
 ﻿@page "/ProjectDetails/{projectId:guid?}"
+@using TSITSolutions.ContactSite.Shared.Projects
+@inject HttpClient Http
+
+<MudLink Href="/Projects" Class="mud-link mud-link-underline">&lt; zurück zu den Projekten</MudLink>
+
 <h3>ProjectDetails</h3>
+
+@if(_project == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <p>@_project.Title</p>
+}
 
 @code {
     [Parameter]
     public Guid? ProjectId { get; set; }
+    
+    private ProjectResponse? _project;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        if (ProjectId.HasValue)
+        {
+            _project = await Http.GetFromJsonAsync<ProjectResponse>($"api/projects/{ProjectId}");
+        }
+    }
 }
