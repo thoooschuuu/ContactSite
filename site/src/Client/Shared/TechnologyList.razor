@@ -6,6 +6,7 @@
 @code {
     private static Dictionary<string, Color> _colorMap = new();
     private Color[] _colors = { Color.Primary, Color.Secondary, Color.Tertiary, Color.Info, Color.Success, Color.Warning, Color.Error, Color.Dark, Color.Surface };
+    private int _colorIndex = 0;
 
     [Parameter]
     public IEnumerable<string> Technologies { get; set; }
@@ -14,15 +15,17 @@
     {
         if (!_colorMap.ContainsKey(technology))
         {
-            _colorMap[technology] = FirstUnusedColor();
+            var color = GetNextColor();
+            _colorMap.Add(technology, color);
         }
 
         return _colorMap[technology];
     }
     
-    private Color FirstUnusedColor()
+    private Color GetNextColor()
     {
-        var usedColors = _colorMap.Values.ToList();
-        return _colors.First(c => !usedColors.Contains(c));
+        var color = _colors[_colorIndex];
+        _colorIndex = (_colorIndex + 1) % _colors.Length;
+        return color;
     }
 }
