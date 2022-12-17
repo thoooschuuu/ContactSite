@@ -1,23 +1,33 @@
 ﻿@page "/Projects"
 @using TSITSolutions.ContactSite.Shared.Projects
+@using TSITSolutions.ContactSite.Client.Infrastructure
 @inject StronglyTypedStringLocalizerForResource Localizer
+@inject TechnologyService TechnologyService
 @inject HttpClient Http
 
 <PageTitle>@Localizer.CompanyName - @Localizer.ProjectsPageTitle</PageTitle>
 
 <MudText Typo="Typo.h3">@Localizer.ProjectsHeader</MudText>
 
-@if (_projects == null)
+@if (_filteredProjects == null)
 {
     <MudText Typo="Typo.body1">@Localizer.Shared_Loading</MudText>
 }
 else
 {
     <MudGrid Justify="Justify.Center">
+        <MudItem xs="12">
+            <MudChipSet MultiSelection="true" Filter="true" SelectedChipsChanged="ApplyTechnologyFilter">
+                @foreach (var technology in _technologies)
+                {
+                    <MudChip Text="@technology" Color="@TechnologyService.GetColor(technology)"></MudChip>
+                }
+            </MudChipSet>
+        </MudItem>
         <MudItem xs="12" sm="8">
             <MudTimeline >
 
-                @foreach (var project in _projects)
+                @foreach (var project in _filteredProjects)
                 {
                     <MudTimelineItem Color="Color.Info" Size="Size.Medium">
                         <ItemOpposite>
@@ -31,7 +41,7 @@ else
                                     </CardHeaderContent>
                                 </MudCardHeader>
                                 <MudCardContent>
-                                <TechnologyList Technologies="@project.Technologies" />
+                                    <TechnologyList Technologies="@project.Technologies"/>
                                 </MudCardContent>
                                 <MudCardActions>
                                     <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@("/ProjectDetails/" + project.Id)">Read More</MudButton>
@@ -48,17 +58,26 @@ else
 
 @code
 {
-    private List<ProjectResponse>? _projects = new();
+    private List<ProjectResponse>? _projects;
+    private List<ProjectResponse>? _filteredProjects;
+    private List<string> _technologies = new();
 
     protected override async Task OnInitializedAsync()
     {
         var projectsResponse = await Http.GetFromJsonAsync<ProjectsResponse>("/api/Projects");
-        _projects = projectsResponse.Projects.OrderByDescending(p => p.StartDate).ToList();
+        _projects = projectsResponse?.Projects.OrderByDescending(p => p.StartDate).ToList() ?? new();
+        _filteredProjects = _projects!.ToList();
+        _technologies = _projects!.SelectMany(p => p.Technologies).Distinct().ToList();
     }
 
     private string GetYearRange(ProjectResponse project)
     {
         var endDate = project.EndDate.HasValue ? project.EndDate.Value.Year.ToString() : Localizer.Projects_Timeline_today;
         return $"{project.StartDate.Year} - {endDate}";
+    }
+    
+    private void ApplyTechnologyFilter(MudChip[] selected)
+    {
+        _filteredProjects = _projects!.Where(p => selected.Select(c => c.Text).All(t => p.Technologies.Contains(t))).ToList();
     }
 }
