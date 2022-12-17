@@ -184,6 +184,15 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to heute.
+        /// </summary>
+        public static string Projects_Timeline_today {
+            get {
+                return ResourceManager.GetString("Projects_Timeline_today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Projekte.
         /// </summary>
         public static string ProjectsHeader {
@@ -198,6 +207,15 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
         public static string ProjectsPageTitle {
             get {
                 return ResourceManager.GetString("ProjectsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lade....
+        /// </summary>
+        public static string Shared_Loading {
+            get {
+                return ResourceManager.GetString("Shared_Loading", resourceCulture);
             }
         }
     }

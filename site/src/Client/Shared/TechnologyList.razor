@@ -1,0 +1,28 @@
+﻿@foreach (var t in Technologies)
+{
+    <MudChip Color="@GetColor(t)">@t</MudChip>
+}
+
+@code {
+    private static Dictionary<string, Color> _colorMap = new();
+    private Color[] _colors = { Color.Primary, Color.Secondary, Color.Tertiary, Color.Info, Color.Success, Color.Warning, Color.Error, Color.Dark, Color.Surface };
+
+    [Parameter]
+    public IEnumerable<string> Technologies { get; set; }
+    
+    private Color GetColor(string technology)
+    {
+        if (!_colorMap.ContainsKey(technology))
+        {
+            _colorMap[technology] = FirstUnusedColor();
+        }
+
+        return _colorMap[technology];
+    }
+    
+    private Color FirstUnusedColor()
+    {
+        var usedColors = _colorMap.Values.ToList();
+        return _colors.First(c => !usedColors.Contains(c));
+    }
+}

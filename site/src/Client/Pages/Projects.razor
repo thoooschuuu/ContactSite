@@ -7,34 +7,58 @@
 
 <MudText Typo="Typo.h3">@Localizer.ProjectsHeader</MudText>
 
-<MudGrid>
-    @foreach (var project in _projects)
-    {
-        <MudItem xs="12" sm="6" md="4" lg="3">
-            <MudCard Outlined="true">
-                <MudCardHeader>
-                    <CardHeaderContent>
-                        <MudText Typo="Typo.h6">@project.Title</MudText>
-                    </CardHeaderContent>
-                </MudCardHeader>
-                <MudCardContent>
-                    <MudText Typo="Typo.caption">@project.Technologies</MudText>
-                </MudCardContent>
-                <MudCardActions>
-                    <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@("/ProjectDetails/" + project.Id)">Read More</MudButton>
-                </MudCardActions>
-            </MudCard>
+@if (_projects == null)
+{
+    <MudText Typo="Typo.body1">@Localizer.Shared_Loading</MudText>
+}
+else
+{
+    <MudGrid Justify="Justify.Center">
+        <MudItem xs="12" sm="8">
+            <MudTimeline >
+
+                @foreach (var project in _projects)
+                {
+                    <MudTimelineItem Color="Color.Info" Size="Size.Medium">
+                        <ItemOpposite>
+                            <MudText Typo="Typo.h5" Color="Color.Info">@GetYearRange(project)</MudText>
+                        </ItemOpposite>
+                        <ItemContent>
+                            <MudCard Outlined="false">
+                                <MudCardHeader>
+                                    <CardHeaderContent>
+                                        <MudText Typo="Typo.h6">@project.Title</MudText>
+                                    </CardHeaderContent>
+                                </MudCardHeader>
+                                <MudCardContent>
+                                <TechnologyList Technologies="@project.Technologies" />
+                                </MudCardContent>
+                                <MudCardActions>
+                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@("/ProjectDetails/" + project.Id)">Read More</MudButton>
+                                </MudCardActions>
+                            </MudCard>
+                        </ItemContent>
+                    </MudTimelineItem>
+                }
+
+            </MudTimeline>
         </MudItem>
-    }
-</MudGrid>
+    </MudGrid>
+}
 
 @code
 {
-    private List<ProjectResponse> _projects = new();
+    private List<ProjectResponse>? _projects = new();
 
     protected override async Task OnInitializedAsync()
     {
-        var projectsResponse =  await Http.GetFromJsonAsync<ProjectsResponse>("/api/Projects");
-        _projects = projectsResponse.Projects.ToList();
+        var projectsResponse = await Http.GetFromJsonAsync<ProjectsResponse>("/api/Projects");
+        _projects = projectsResponse.Projects.OrderByDescending(p => p.StartDate).ToList();
+    }
+
+    private string GetYearRange(ProjectResponse project)
+    {
+        var endDate = project.EndDate.HasValue ? project.EndDate.Value.Year.ToString() : Localizer.Projects_Timeline_today;
+        return $"{project.StartDate.Year} - {endDate}";
     }
 }

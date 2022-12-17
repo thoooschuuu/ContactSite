@@ -169,4 +169,10 @@ Angular und React haben mich aber auch für die Entwicklung von „Mobile First�
   <data name="Main_DarkMode_Off" xml:space="preserve">
     <value>Aus</value>
   </data>
+  <data name="Shared_Loading" xml:space="preserve">
+    <value>Lade...</value>
+  </data>
+  <data name="Projects_Timeline_today" xml:space="preserve">
+    <value>heute</value>
+  </data>
 </root>
