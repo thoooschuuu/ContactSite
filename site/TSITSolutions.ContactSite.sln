@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		Directory.Build.Props = Directory.Build.Props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.AspNetCore.RequestHandling", "src\TSITSolutions.AspNetCore.RequestHandling\TSITSolutions.AspNetCore.RequestHandling.csproj", "{12467C70-0249-4B0B-BC52-2C7FADCDB28A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.ContactSite.Server.Core", "src\TSITSolutions.ContactSite.Server.Core\TSITSolutions.ContactSite.Server.Core.csproj", "{05D825F5-E3DD-4567-9B3C-AC4F2DD6F702}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,10 +63,10 @@ Global
 		{76465391-3D20-4D03-BF8E-353AB0C31E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76465391-3D20-4D03-BF8E-353AB0C31E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76465391-3D20-4D03-BF8E-353AB0C31E8B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2956F63A-B5F4-4E5D-8E72-3D106AEEBE48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2956F63A-B5F4-4E5D-8E72-3D106AEEBE48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2956F63A-B5F4-4E5D-8E72-3D106AEEBE48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2956F63A-B5F4-4E5D-8E72-3D106AEEBE48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05D825F5-E3DD-4567-9B3C-AC4F2DD6F702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05D825F5-E3DD-4567-9B3C-AC4F2DD6F702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05D825F5-E3DD-4567-9B3C-AC4F2DD6F702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05D825F5-E3DD-4567-9B3C-AC4F2DD6F702}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +81,6 @@ Global
 		{BE13F939-11E8-4C00-B5EB-D3CEEF45D26C} = {E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}
 		{F23A940B-E172-497D-B849-BB7BC3FD272D} = {32DDFF2E-EED1-4926-B077-E01D885E0F18}
 		{76465391-3D20-4D03-BF8E-353AB0C31E8B} = {E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}
-		{2956F63A-B5F4-4E5D-8E72-3D106AEEBE48} = {E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}
+		{05D825F5-E3DD-4567-9B3C-AC4F2DD6F702} = {E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}
 	EndGlobalSection
 EndGlobal
