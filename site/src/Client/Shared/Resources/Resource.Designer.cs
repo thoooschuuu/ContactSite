@@ -193,6 +193,15 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filter.
+        /// </summary>
+        public static string Projects_Toolbar_Filter {
+            get {
+                return ResourceManager.GetString("Projects_Toolbar_Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Projekte.
         /// </summary>
         public static string ProjectsHeader {

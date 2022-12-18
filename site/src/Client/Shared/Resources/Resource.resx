@@ -175,4 +175,7 @@ Angular und React haben mich aber auch für die Entwicklung von „Mobile First�
   <data name="Projects_Timeline_today" xml:space="preserve">
     <value>heute</value>
   </data>
+  <data name="Projects_Toolbar_Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
 </root>

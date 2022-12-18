@@ -19,7 +19,7 @@ else
         <MudItem xs="12">
             <MudPaper Elevation="25" Class="pa-8 pa-sm-4 pa-md-0">
                 <MudToolBar>
-                    <MudText Typo="Typo.h6">Filter:</MudText>
+                    <MudText Typo="Typo.h6">@Localizer.Projects_Toolbar_Filter:</MudText>
                     <MudChipSet MultiSelection="true" Filter="true" SelectedChipsChanged="ApplyTechnologyFilter">
                         @foreach (var technology in _technologies)
                         {

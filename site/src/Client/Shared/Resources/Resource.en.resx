@@ -168,4 +168,7 @@
   <data name="Projects_Timeline_today" xml:space="preserve">
     <value>today</value>
   </data>
+  <data name="Projects_Toolbar_Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
 </root>

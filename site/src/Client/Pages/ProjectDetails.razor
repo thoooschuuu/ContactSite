@@ -1,27 +1,46 @@
 ﻿@page "/ProjectDetails/{projectId:guid?}"
 
 @using TSITSolutions.ContactSite.Shared.Projects
+@inject StronglyTypedStringLocalizerForResource Localizer
 @inject HttpClient Http
 
 <MudLink Href="/Projects" Class="mud-link mud-link-underline">&lt; zurück zu den Projekten</MudLink>
 
-<h3>ProjectDetails</h3>
+<PageTitle>@Localizer.CompanyName - @Localizer.ProjectsPageTitle | @(_project?.Title ?? "...")</PageTitle>
 
-@if(_project == null)
+@if (_project == null)
 {
-    <p>Loading...</p>
+    <MudText Typo="Typo.body1">@Localizer.Shared_Loading</MudText>
 }
 else
 {
-    <p>@_project.Title</p>
+    <MudGrid>
+        <MudItem xs="12">
+            <MudText Typo="Typo.h3">@_project.Title</MudText>
+        </MudItem>
+        
+        <MudItem xs="12">
+            <MudPaper Elevation="25" Class="pa-8 pa-sm-4 pa-md-2">
+                <TechnologyList Technologies="@_project.Technologies"/>
+            </MudPaper>
+        </MudItem>
+        
+        <MudItem xs="12" sm="6">
+            <MudText Typo="Typo.body1">@_project.CustomerDomain</MudText>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudText Typo="Typo.body1">@GetYearRange()</MudText>
+        </MudItem>
+    </MudGrid>
 }
 
 @code {
+
     [Parameter]
     public Guid? ProjectId { get; set; }
-    
+
     private ProjectResponse? _project;
-    
+
     protected override async Task OnInitializedAsync()
     {
         if (ProjectId.HasValue)
@@ -29,4 +48,11 @@ else
             _project = await Http.GetFromJsonAsync<ProjectResponse>($"api/projects/{ProjectId}");
         }
     }
+
+    private string GetYearRange()
+    {
+        var endDate = _project.EndDate.HasValue ? _project.EndDate.Value.Year.ToString() : Localizer.Projects_Timeline_today;
+        return $"{_project.StartDate.Year} - {endDate}";
+    }
+
 }
