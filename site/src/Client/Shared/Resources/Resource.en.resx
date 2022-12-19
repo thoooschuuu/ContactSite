@@ -171,4 +171,16 @@
   <data name="Projects_Toolbar_Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="ProjectDetails_Grid_CustomerDomain" xml:space="preserve">
+    <value>Customer Domain</value>
+  </data>
+  <data name="ProjectDetails_Grid_Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="ProjectDetails_Grid_MyRole" xml:space="preserve">
+    <value>My Role</value>
+  </data>
+  <data name="ProjectDetails_Grid_ProjectDescription" xml:space="preserve">
+    <value>Project description</value>
+  </data>
 </root>

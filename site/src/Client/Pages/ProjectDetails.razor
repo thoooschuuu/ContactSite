@@ -26,10 +26,20 @@ else
         </MudItem>
         
         <MudItem xs="12" sm="6">
+            <MudText Typo="Typo.h5">@Localizer.ProjectDetails_Grid_CustomerDomain</MudText>
             <MudText Typo="Typo.body1">@_project.CustomerDomain</MudText>
         </MudItem>
         <MudItem xs="12" sm="6">
+            <MudText Typo="Typo.h5">@Localizer.ProjectDetails_Grid_Duration</MudText>
             <MudText Typo="Typo.body1">@GetYearRange()</MudText>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudText Typo="Typo.h5">@Localizer.ProjectDetails_Grid_ProjectDescription</MudText>
+            <MudText Typo="Typo.body1">@_project.Description</MudText>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudText Typo="Typo.h5">@Localizer.ProjectDetails_Grid_MyRole</MudText>
+            <MudText Typo="Typo.body1">@_project.Role</MudText>
         </MudItem>
     </MudGrid>
 }

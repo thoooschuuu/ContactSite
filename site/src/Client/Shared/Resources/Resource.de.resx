@@ -178,4 +178,16 @@ Angular und React haben mich aber auch für die Entwicklung von „Mobile First�
   <data name="Projects_Toolbar_Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="ProjectDetails_Grid_CustomerDomain" xml:space="preserve">
+    <value>Kundendomäne</value>
+  </data>
+  <data name="ProjectDetails_Grid_Duration" xml:space="preserve">
+    <value>Dauer</value>
+  </data>
+  <data name="ProjectDetails_Grid_MyRole" xml:space="preserve">
+    <value>Meine Rolle</value>
+  </data>
+  <data name="ProjectDetails_Grid_ProjectDescription" xml:space="preserve">
+    <value>Projektbeschreibung</value>
+  </data>
 </root>

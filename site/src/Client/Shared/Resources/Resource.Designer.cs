@@ -184,6 +184,42 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kundendomäne.
+        /// </summary>
+        public static string ProjectDetails_Grid_CustomerDomain {
+            get {
+                return ResourceManager.GetString("ProjectDetails_Grid_CustomerDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dauer.
+        /// </summary>
+        public static string ProjectDetails_Grid_Duration {
+            get {
+                return ResourceManager.GetString("ProjectDetails_Grid_Duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meine Rolle.
+        /// </summary>
+        public static string ProjectDetails_Grid_MyRole {
+            get {
+                return ResourceManager.GetString("ProjectDetails_Grid_MyRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projektbeschreibung.
+        /// </summary>
+        public static string ProjectDetails_Grid_ProjectDescription {
+            get {
+                return ResourceManager.GetString("ProjectDetails_Grid_ProjectDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to heute.
         /// </summary>
         public static string Projects_Timeline_today {
