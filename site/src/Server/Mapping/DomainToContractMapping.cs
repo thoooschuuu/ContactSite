@@ -1,5 +1,4 @@
 ﻿using TSITSolutions.ContactSite.Server.Core;
-using TSITSolutions.ContactSite.Server.Projects.Contracts;
 using TSITSolutions.ContactSite.Shared.Projects;
 
 namespace TSITSolutions.ContactSite.Server.Mapping;
@@ -12,8 +11,8 @@ internal static class DomainToContractMapping
             Id = project.Id,
             Title = project.Title,
             Description = project.Description,
+            Role = project.Role,
             CustomerDomain = project.CustomerDomain,
-            IsCurrent = project.EndDate == null,
             StartDate = project.StartDate,
             EndDate = project.EndDate,
             Technologies = project.Technologies,

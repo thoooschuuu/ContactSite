@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using TSITSolutions.ContactSite.Server.Core.Services;
 using TSITSolutions.ContactSite.Server.Mapping;
-using TSITSolutions.ContactSite.Server.Projects.Contracts;
 using TSITSolutions.ContactSite.Shared.Projects;
 
 namespace TSITSolutions.ContactSite.Server.Projects;

@@ -4,6 +4,7 @@ public record Project(
     Guid Id, 
     string Title, 
     string Description, 
+    string Role,
     string CustomerDomain,
     DateOnly StartDate,
     DateOnly? EndDate,
