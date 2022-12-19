@@ -130,7 +130,7 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aus.
+        ///   Looks up a localized string similar to aus.
         /// </summary>
         public static string Main_DarkMode_Off {
             get {
@@ -139,7 +139,7 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An.
+        ///   Looks up a localized string similar to an.
         /// </summary>
         public static string Main_DarkMode_On {
             get {
@@ -180,6 +180,15 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
         public static string NavigationProjects {
             get {
                 return ResourceManager.GetString("NavigationProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to zurück zu den Projekten.
+        /// </summary>
+        public static string ProjectDetails_Back {
+            get {
+                return ResourceManager.GetString("ProjectDetails_Back", resourceCulture);
             }
         }
         
@@ -252,6 +261,15 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
         public static string ProjectsPageTitle {
             get {
                 return ResourceManager.GetString("ProjectsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string Shared_Home {
+            get {
+                return ResourceManager.GetString("Shared_Home", resourceCulture);
             }
         }
         

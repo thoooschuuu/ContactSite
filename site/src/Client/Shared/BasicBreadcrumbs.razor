@@ -1,0 +1,17 @@
+﻿@inject StronglyTypedStringLocalizerForResource Localizer
+
+<MudBreadcrumbs Items="_items" Separator=">" />
+
+@code {
+
+    [Parameter]
+    public List<BreadcrumbItem> AdditionalItems { get; set; } = new();
+
+    readonly List<BreadcrumbItem> _items = new();
+    
+    protected override void OnInitialized()
+    {
+        _items.Add(new BreadcrumbItem(Localizer.Shared_Home, href: "/"));
+        _items.AddRange(AdditionalItems);
+    }
+}

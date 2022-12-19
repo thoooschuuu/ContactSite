@@ -183,4 +183,10 @@
   <data name="ProjectDetails_Grid_ProjectDescription" xml:space="preserve">
     <value>Project description</value>
   </data>
+  <data name="ProjectDetails_Back" xml:space="preserve">
+    <value>back to projects</value>
+  </data>
+  <data name="Shared_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
 </root>

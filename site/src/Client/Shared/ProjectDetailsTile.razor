@@ -1,0 +1,14 @@
+﻿<MudItem xs="12" sm="6">
+    <MudPaper Elevation="5" Class="pa-2 px-4">
+        <MudText Typo="Typo.h5">@Title</MudText>
+        <MudText Typo="Typo.body1">@Content</MudText>
+    </MudPaper>
+</MudItem>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+    
+    [Parameter]
+    public string Content { get; set; }
+}

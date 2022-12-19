@@ -164,10 +164,10 @@ Angular und React haben mich aber auch für die Entwicklung von „Mobile First�
     <value>Dark Mode ist</value>
   </data>
   <data name="Main_DarkMode_On" xml:space="preserve">
-    <value>An</value>
+    <value>an</value>
   </data>
   <data name="Main_DarkMode_Off" xml:space="preserve">
-    <value>Aus</value>
+    <value>aus</value>
   </data>
   <data name="Shared_Loading" xml:space="preserve">
     <value>Lade...</value>
@@ -189,5 +189,11 @@ Angular und React haben mich aber auch für die Entwicklung von „Mobile First�
   </data>
   <data name="ProjectDetails_Grid_MyRole" xml:space="preserve">
     <value>Meine Rolle</value>
+  </data>
+  <data name="ProjectDetails_Back" xml:space="preserve">
+    <value>zurück zu den Projekten</value>
+  </data>
+  <data name="Shared_Home" xml:space="preserve">
+    <value>Start</value>
   </data>
 </root>

@@ -121,7 +121,7 @@
     <value>Thomas Schulze IT Solutions</value>
   </data>
   <data name="IndexWelcomeMessage" xml:space="preserve">
-    <value>Herzlich Wilkommen</value>
+    <value>Herzlich willkommen</value>
   </data>
   <data name="IndexMeLine1" xml:space="preserve">
     <value>Mein Name ist Thomas Schulze, ich bin freiberuflicher Softwareentwickler und Architekt.</value>
@@ -189,5 +189,11 @@ Angular und React haben mich aber auch für die Entwicklung von „Mobile First�
   </data>
   <data name="ProjectDetails_Grid_ProjectDescription" xml:space="preserve">
     <value>Projektbeschreibung</value>
+  </data>
+  <data name="ProjectDetails_Back" xml:space="preserve">
+    <value>zurück zu den Projekten</value>
+  </data>
+  <data name="Shared_Home" xml:space="preserve">
+    <value>Start</value>
   </data>
 </root>

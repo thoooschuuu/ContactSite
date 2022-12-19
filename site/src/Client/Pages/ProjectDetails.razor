@@ -4,43 +4,36 @@
 @inject StronglyTypedStringLocalizerForResource Localizer
 @inject HttpClient Http
 
-<MudLink Href="/Projects" Class="mud-link mud-link-underline">&lt; zurück zu den Projekten</MudLink>
-
 <PageTitle>@Localizer.CompanyName - @Localizer.ProjectsPageTitle | @(_project?.Title ?? "...")</PageTitle>
 
 @if (_project == null)
 {
+    <MudLink Href="/Projects" Underline="Underline.None">
+        <MudText Typo="Typo.body1">&lt; @Localizer.ProjectDetails_Back</MudText>
+    </MudLink>
+    
     <MudText Typo="Typo.body1">@Localizer.Shared_Loading</MudText>
 }
 else
 {
-    <MudGrid>
+    <BasicBreadcrumbs AdditionalItems="_breadcrumbs" />
+
+    <MudGrid Spacing="2">
         <MudItem xs="12">
             <MudText Typo="Typo.h3">@_project.Title</MudText>
         </MudItem>
-        
+
         <MudItem xs="12">
-            <MudPaper Elevation="25" Class="pa-8 pa-sm-4 pa-md-2">
+            <MudPaper Elevation="5" Class="pa-8 pa-sm-4 pa-md-2">
                 <TechnologyList Technologies="@_project.Technologies"/>
             </MudPaper>
         </MudItem>
+
+        <ProjectDetailsTile Title="@Localizer.ProjectDetails_Grid_CustomerDomain" Content="@_project.CustomerDomain" />
+        <ProjectDetailsTile Title="@Localizer.ProjectDetails_Grid_Duration" Content="@GetYearRange()" />
+        <ProjectDetailsTile Title="@Localizer.ProjectDetails_Grid_ProjectDescription" Content="@_project.Description" />
+        <ProjectDetailsTile Title="@Localizer.ProjectDetails_Grid_MyRole" Content="@_project.Role" />
         
-        <MudItem xs="12" sm="6">
-            <MudText Typo="Typo.h5">@Localizer.ProjectDetails_Grid_CustomerDomain</MudText>
-            <MudText Typo="Typo.body1">@_project.CustomerDomain</MudText>
-        </MudItem>
-        <MudItem xs="12" sm="6">
-            <MudText Typo="Typo.h5">@Localizer.ProjectDetails_Grid_Duration</MudText>
-            <MudText Typo="Typo.body1">@GetYearRange()</MudText>
-        </MudItem>
-        <MudItem xs="12" sm="6">
-            <MudText Typo="Typo.h5">@Localizer.ProjectDetails_Grid_ProjectDescription</MudText>
-            <MudText Typo="Typo.body1">@_project.Description</MudText>
-        </MudItem>
-        <MudItem xs="12" sm="6">
-            <MudText Typo="Typo.h5">@Localizer.ProjectDetails_Grid_MyRole</MudText>
-            <MudText Typo="Typo.body1">@_project.Role</MudText>
-        </MudItem>
     </MudGrid>
 }
 
@@ -50,12 +43,16 @@ else
     public Guid? ProjectId { get; set; }
 
     private ProjectResponse? _project;
+    private readonly List<BreadcrumbItem> _breadcrumbs = new();
 
     protected override async Task OnInitializedAsync()
     {
         if (ProjectId.HasValue)
         {
             _project = await Http.GetFromJsonAsync<ProjectResponse>($"api/projects/{ProjectId}");
+            _breadcrumbs.Clear();
+            _breadcrumbs.Add(new BreadcrumbItem(Localizer.ProjectsPageTitle, href: "/Projects"));
+            _breadcrumbs.Add(new BreadcrumbItem($"{_project.Title} | {GetYearRange()}", href: null, disabled: true));
         }
     }
 
