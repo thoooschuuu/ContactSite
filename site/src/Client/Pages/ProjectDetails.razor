@@ -31,8 +31,8 @@ else
 
         <ProjectDetailsTile Title="@Localizer.ProjectDetails_Grid_CustomerDomain" Content="@_project.CustomerDomain" />
         <ProjectDetailsTile Title="@Localizer.ProjectDetails_Grid_Duration" Content="@GetYearRange()" />
-        <ProjectDetailsTile Title="@Localizer.ProjectDetails_Grid_ProjectDescription" Content="@_project.Description" />
-        <ProjectDetailsTile Title="@Localizer.ProjectDetails_Grid_MyRole" Content="@_project.Role" />
+        <ProjectDetailsTile Title="@Localizer.ProjectDetails_Grid_ProjectDescription" Content="@_project.Description" IsMarkdown="true"/>
+        <ProjectDetailsTile Title="@Localizer.ProjectDetails_Grid_MyRole" Content="@_project.Role" IsMarkdown="true" />
         
     </MudGrid>
 }
