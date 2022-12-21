@@ -18,7 +18,7 @@
         <ProjectReference Include="..\Client\TSITSolutions.ContactSite.Client.csproj" />
         <ProjectReference Include="..\Shared\TSITSolutions.ContactSite.Shared.csproj" />
         <ProjectReference Include="..\TSITSolutions.ContactSite.Server.Core\TSITSolutions.ContactSite.Server.Core.csproj" />
-        <ProjectReference Include="..\TSITSolutions.ContactSite.Server.CosmosDb\TSITSolutions.ContactSite.Server.CosmosDb.csproj" />
+        <ProjectReference Include="..\TSITSolutions.ContactSite.Server.MongoDb\TSITSolutions.ContactSite.Server.MongoDb.csproj" />
     </ItemGroup>
 
 

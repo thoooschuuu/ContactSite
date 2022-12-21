@@ -1,6 +1,6 @@
 ﻿using TSITSolutions.ContactSite.Server.Core;
 
-namespace TSITSolutions.ContactSite.Server.CosmosDb.Model;
+namespace TSITSolutions.ContactSite.Server.MongoDb.Model;
 
 public record StoreProject(
     Guid Id, 
@@ -8,8 +8,8 @@ public record StoreProject(
     string Description, 
     string Role,
     string CustomerDomain,
-    DateOnly StartDate,
-    DateOnly? EndDate,
+    DateTime StartDate,
+    DateTime? EndDate,
     IReadOnlyCollection<string> Technologies
 )
 {
@@ -20,8 +20,8 @@ public record StoreProject(
             Description,
             Role,
             CustomerDomain,
-            StartDate,
-            EndDate,
+            DateOnly.FromDateTime(StartDate), 
+            EndDate.HasValue ? DateOnly.FromDateTime(EndDate.Value) : null,
             Technologies
         );
 }

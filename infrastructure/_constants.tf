@@ -31,6 +31,7 @@ locals {
     app_configuration_store = "appcs"
     cosmosdb                = "cosmos"
     cosmosdb_no_sql         = "cosno"
+    cosmosdb_mongo_db       = "cosmon"
   }
 
   resource_type_templates = {
@@ -44,5 +45,6 @@ locals {
     app_configuration_store = format(local.resource_name_template, local.resource_type_abbreviations.app_configuration_store, "%s")
     cosmosdb                = format(local.resource_name_template, local.resource_type_abbreviations.cosmosdb, "%s")
     cosmosdb_no_sql         = format(local.resource_name_template, local.resource_type_abbreviations.cosmosdb_no_sql, "%s")
+    cosmosdb_mongo_db       = format(local.resource_name_template, local.resource_type_abbreviations.cosmosdb_mongo_db, "%s")
   }
 }

@@ -2,7 +2,7 @@ using FastEndpoints;
 using FastEndpoints.Swagger;
 using TSITSolutions.ContactSite.Server.Core;
 using TSITSolutions.ContactSite.Server.Core.Services;
-using TSITSolutions.ContactSite.Server.CosmosDb;
+using TSITSolutions.ContactSite.Server.MongoDb;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddHealthChecks();
 
-builder.Services.AddCosmosDbStore(builder.Configuration);
+builder.Services.AddMongoDbStore(builder.Configuration);
 // builder.Services.AddSingleton<IProjectRepository, InMemoryProjectRepo>();
 
 var app = builder.Build();

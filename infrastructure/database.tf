@@ -3,7 +3,7 @@ resource "azurerm_cosmosdb_account" "db_account" {
   location                        = local.location
   resource_group_name             = azurerm_resource_group.rg.name
   offer_type                      = "Standard"
-  kind                            = "GlobalDocumentDB"
+  kind                            = "MongoDB"
   enable_free_tier                = true
   enable_automatic_failover       = false
   enable_multiple_write_locations = false
@@ -22,18 +22,17 @@ resource "azurerm_cosmosdb_account" "db_account" {
   }
 }
 
-resource "azurerm_cosmosdb_sql_database" "db" {
-  name                = format(local.resource_type_templates.cosmosdb_no_sql, "db")
+resource "azurerm_cosmosdb_mongo_database" "db" {
+  name                = format(local.resource_type_templates.cosmosdb_mongo_db, "db")
   resource_group_name = azurerm_resource_group.rg.name
   account_name        = azurerm_cosmosdb_account.db_account.name
   throughput          = 400
 }
 
-resource "azurerm_cosmosdb_sql_container" "container" {
+resource "azurerm_cosmosdb_mongo_collection" "collection" {
   name                = "Projects"
   resource_group_name = azurerm_resource_group.rg.name
   account_name        = azurerm_cosmosdb_account.db_account.name
-  database_name       = azurerm_cosmosdb_sql_database.db.name
-  partition_key_path  = "/id"
+  database_name       = azurerm_cosmosdb_mongo_database.db.name
   throughput          = 400
 }

@@ -35,7 +35,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.ContactSite.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.ContactSite.Client.Tests.Unit", "tests\TSITSolutions.ContactSite.Client.Tests.Unit\TSITSolutions.ContactSite.Client.Tests.Unit.csproj", "{A73C8C75-0F3C-4F59-BBCD-01C0E65CBBF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.ContactSite.Server.CosmosDb", "src\TSITSolutions.ContactSite.Server.CosmosDb\TSITSolutions.ContactSite.Server.CosmosDb.csproj", "{993E8904-F6F3-4847-B824-BC1E20C5884E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.ContactSite.Server.MongoDb", "src\TSITSolutions.ContactSite.Server.MongoDb\TSITSolutions.ContactSite.Server.MongoDb.csproj", "{993E8904-F6F3-4847-B824-BC1E20C5884E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSITSolutions.ContactSite.Server.Tests.Integration", "tests\TSITSolutions.ContactSite.Server.Tests.Integration\TSITSolutions.ContactSite.Server.Tests.Integration.csproj", "{385D8598-978B-4BCC-978C-948195CB42F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{993E8904-F6F3-4847-B824-BC1E20C5884E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{993E8904-F6F3-4847-B824-BC1E20C5884E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{993E8904-F6F3-4847-B824-BC1E20C5884E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{385D8598-978B-4BCC-978C-948195CB42F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{385D8598-978B-4BCC-978C-948195CB42F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{385D8598-978B-4BCC-978C-948195CB42F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{385D8598-978B-4BCC-978C-948195CB42F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,5 +102,6 @@ Global
 		{05D825F5-E3DD-4567-9B3C-AC4F2DD6F702} = {E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}
 		{A73C8C75-0F3C-4F59-BBCD-01C0E65CBBF9} = {32DDFF2E-EED1-4926-B077-E01D885E0F18}
 		{993E8904-F6F3-4847-B824-BC1E20C5884E} = {E6C8AB91-6FAE-4248-80B3-0CE9AB625C55}
+		{385D8598-978B-4BCC-978C-948195CB42F3} = {32DDFF2E-EED1-4926-B077-E01D885E0F18}
 	EndGlobalSection
 EndGlobal
