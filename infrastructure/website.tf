@@ -37,9 +37,9 @@ resource "azurerm_linux_web_app" "website_app" {
     ApplicationInsightsAgent_EXTENSION_VERSION  = "~3"
     XDT_MicrosoftApplicationInsights_Mode       = "recommended"
     XDT_MicrosoftApplicationInsights_PreemptSdk = "1"
-    "ProjectsDatabase:ConnectionString"         = azurerm_cosmosdb_account.db_account.endpoint
-    "ProjectsDatabase:DatabaseName"             = azurerm_cosmosdb_mongo_database.db.name
-    "ProjectsDatabase:CollectionName"           = azurerm_cosmosdb_mongo_collection.collection.name
+    PROJECTS_DATABASE_CONNECTIONSTRING          = azurerm_cosmosdb_account.db_account.endpoint
+    PROJECTS_DATABASE_DATABASE_NAME             = azurerm_cosmosdb_mongo_database.db.name
+    PROJECTS_DATABASE_COLLECTION_NAME           = azurerm_cosmosdb_mongo_collection.collection.name
   }
 }
 

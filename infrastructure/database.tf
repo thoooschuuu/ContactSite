@@ -38,7 +38,7 @@ resource "azurerm_cosmosdb_mongo_collection" "collection" {
   default_ttl_seconds = "-1"
 
   index {
-    keys = ["_id"]
+    keys   = ["_id"]
     unique = true
   }
 }
