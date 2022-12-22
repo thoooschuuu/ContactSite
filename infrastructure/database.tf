@@ -35,4 +35,11 @@ resource "azurerm_cosmosdb_mongo_collection" "collection" {
   account_name        = azurerm_cosmosdb_account.db_account.name
   database_name       = azurerm_cosmosdb_mongo_database.db.name
   throughput          = 400
+
+  default_ttl_seconds = "-1"
+
+  index {
+    keys = ["_id"]
+    unique = true
+  }
 }
