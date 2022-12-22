@@ -1,4 +1,3 @@
-using FluentAssertions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using TSITSolutions.StringLocalizerSourceGenerator.Tests.Integration.Helper;
@@ -71,7 +70,7 @@ public class Resource {
     {
         GeneratorDriver driver = CSharpGeneratorDriver.Create(new StronglyTypedStringLocalizerGenerator());
 
-        driver = driver.RunGeneratorsAndUpdateCompilation(_inputCompilation, out var outputCompilation, out _);
+        driver = driver.RunGeneratorsAndUpdateCompilation(_inputCompilation, out _, out _);
 
         var result = driver.GetRunResult();
 

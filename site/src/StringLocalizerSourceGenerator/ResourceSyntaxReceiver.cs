@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+
+namespace TSITSolutions.StringLocalizerSourceGenerator;
 
 internal class ResourceSyntaxReceiver : ISyntaxReceiver
 {

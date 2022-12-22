@@ -60,7 +60,7 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
         _storeProjectCollection = database.GetCollection<StoreProject>("Projects");
     }
 
-    public async Task DisposeAsync()
+    public new async Task DisposeAsync()
     {
         await _projectsDatabase.StopAsync();
     }

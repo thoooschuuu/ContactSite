@@ -50,6 +50,10 @@ else
         if (ProjectId.HasValue)
         {
             _project = await Http.GetFromJsonAsync<ProjectResponse>($"api/projects/{ProjectId}");
+            if (_project == null)
+            {
+                return;
+            }
             _breadcrumbs.Clear();
             _breadcrumbs.Add(new BreadcrumbItem(Localizer.ProjectsPageTitle, href: "/Projects"));
             _breadcrumbs.Add(new BreadcrumbItem($"{_project.Title} | {GetYearRange()}", href: null, disabled: true));
@@ -58,7 +62,7 @@ else
 
     private string GetYearRange()
     {
-        var endDate = _project.EndDate.HasValue ? _project.EndDate.Value.Year.ToString() : Localizer.Projects_Timeline_today;
+        var endDate = _project!.EndDate.HasValue ? _project.EndDate.Value.Year.ToString() : Localizer.Projects_Timeline_today;
         return $"{_project.StartDate.Year} - {endDate}";
     }
 

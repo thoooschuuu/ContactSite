@@ -1,4 +1,3 @@
-using System.IO;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using SixLabors.ImageSharp;

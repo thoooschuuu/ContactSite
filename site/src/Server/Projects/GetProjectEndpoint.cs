@@ -17,7 +17,7 @@ public class GetProjectEndpoint : Endpoint<GetProjectRequest>
         _projectRepository = projectRepository;
     }
 
-    public override async Task HandleAsync(GetProjectRequest request, CancellationToken ct = default)
+    public override async Task HandleAsync(GetProjectRequest request, CancellationToken ct)
     {
         var project = await _projectRepository.GetByIdAsync(request.Id, ct);
 
