@@ -4,7 +4,7 @@ services:
   
   db:
     image: mongo
-    restart: unless-stopped
+    restart: always
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=changeme
@@ -16,7 +16,7 @@ services:
   
   mongo-express:
     image: mongo-express
-    restart: unless-stopped
+    restart: always
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=root
       - ME_CONFIG_MONGODB_ADMINPASSWORD=changeme

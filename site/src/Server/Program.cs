@@ -1,5 +1,6 @@
 using FastEndpoints;
 using FastEndpoints.Swagger;
+using TSITSolutions.ContactSite.Server.Caching;
 using TSITSolutions.ContactSite.Server.MongoDb;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,12 @@ builder.Services.AddApplicationInsightsTelemetry();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddHealthChecks();
+
+builder.Services.Configure<CachingSettings>(builder.Configuration.GetSection("Caching"));
+builder.Services.AddResponseCaching(options =>
+{
+    options.UseCaseSensitivePaths = false;
+});
 
 builder.Services.AddMongoDbStore(builder.Configuration);
 
@@ -29,6 +36,10 @@ else
 }
 
 app.UseHttpsRedirection();
+if(!app.Environment.IsDevelopment())
+{
+    app.UseResponseCaching();
+}
 
 app.UseFastEndpoints(x =>
     x.Errors.ResponseBuilder = (failures, _, _) => failures.Select(f => f.ErrorMessage)
