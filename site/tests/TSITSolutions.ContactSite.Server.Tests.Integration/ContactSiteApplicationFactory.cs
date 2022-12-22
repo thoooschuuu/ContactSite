@@ -40,9 +40,9 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
         {
             configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
             {
-                ["Database:ConnectionString"] = _projectsDatabase.ConnectionString,
-                ["Database:DatabaseName"] = _projectsDatabase.Database,
-                ["Database:ProjectsCollectionName"] = "Projects"
+                ["ProjectsDatabase:ConnectionString"] = _projectsDatabase.ConnectionString,
+                ["ProjectsDatabase:DatabaseName"] = _projectsDatabase.Database,
+                ["ProjectsDatabase:CollectionName"] = "Projects"
             });
         });
     }

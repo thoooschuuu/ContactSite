@@ -8,7 +8,7 @@ public static class Registration
 {
     public static IServiceCollection AddMongoDbStore(this IServiceCollection services, IConfiguration configuration)
     {
-        services.Configure<MongoDbOptions>(configuration.GetSection("Database"));
+        services.Configure<MongoDbOptions>(configuration.GetSection("ProjectsDatabase"));
         services.AddSingleton<IProjectRepository, MongoDbProjectRepository>();
         return services;
     }
@@ -18,6 +18,6 @@ public class MongoDbOptions
 {
     public string ConnectionString { get; set; }
     public string DatabaseName { get; set; }
-    public string ProjectsCollectionName { get; set; }
+    public string CollectionName { get; set; }
 }
 

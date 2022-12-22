@@ -14,7 +14,7 @@ public class MongoDbProjectRepository : IProjectRepository
     {
         var client = new MongoClient(options.CurrentValue.ConnectionString);
         var database = client.GetDatabase(options.CurrentValue.DatabaseName);
-        _projectsCollection = database.GetCollection<StoreProject>(options.CurrentValue.ProjectsCollectionName);
+        _projectsCollection = database.GetCollection<StoreProject>(options.CurrentValue.CollectionName);
     }
 
     public async ValueTask<IEnumerable<Project>> GetAllAsync(CancellationToken ct = default)
