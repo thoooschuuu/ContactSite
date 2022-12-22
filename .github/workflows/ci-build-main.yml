@@ -23,14 +23,12 @@ jobs:
         
     - name: install wasm tools
       run: dotnet workload install wasm-tools
-    
-    #- name: dotnet workload restore
-    # run: dotnet workload restore ./site/TSITSolutions.ContactSite.sln
 
     - name: Restore dependencies
       run: dotnet restore ./site/TSITSolutions.ContactSite.sln
 
     - name: Build
       run: dotnet build ./site/TSITSolutions.ContactSite.sln --no-restore
-    # - name: Test
-    #   run: dotnet test --no-build --verbosity normal
+    
+    - name: Test
+      run: dotnet test ./site/TSITSolutions.ContactSite.sln --no-build --verbosity normal

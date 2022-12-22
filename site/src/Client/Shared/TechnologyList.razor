@@ -1,0 +1,14 @@
+﻿@using TSITSolutions.ContactSite.Client.Infrastructure
+@inject TechnologyService TechnologyService
+
+@foreach (var t in Technologies)
+{
+    <MudChip Color="@TechnologyService.GetColor(t)">@t</MudChip>
+}
+
+@code {
+
+    [Parameter]
+    public IEnumerable<string> Technologies { get; set; }
+    
+}

@@ -141,4 +141,52 @@
   <data name="IndexMeLine3Part1" xml:space="preserve">
     <value>Technically, I feel at home in all areas of Microsoft .NET (C#, ASP.NET Core 6 APIs, Hosted Services as backend, Azure Functions, AWS Lambdas etc.) and Azure. Smaller projects with Blazor WASM, Angular and React got me excited to develop mobile first websites.</value>
   </data>
+  <data name="LegalInformationPageTitle" xml:space="preserve">
+    <value>Legal Information</value>
+  </data>
+  <data name="ProjectsPageTitle" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="ProjectsHeader" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="NavigationProjects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="Main_DarkMode_Off" xml:space="preserve">
+    <value>off</value>
+  </data>
+  <data name="Main_DarkMode_On" xml:space="preserve">
+    <value>on</value>
+  </data>
+  <data name="Main_DarkMode_Text" xml:space="preserve">
+    <value>Dark Mode is</value>
+  </data>
+  <data name="Shared_Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="Projects_Timeline_today" xml:space="preserve">
+    <value>today</value>
+  </data>
+  <data name="Projects_Toolbar_Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="ProjectDetails_Grid_CustomerDomain" xml:space="preserve">
+    <value>Customer Domain</value>
+  </data>
+  <data name="ProjectDetails_Grid_Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="ProjectDetails_Grid_MyRole" xml:space="preserve">
+    <value>My Role</value>
+  </data>
+  <data name="ProjectDetails_Grid_ProjectDescription" xml:space="preserve">
+    <value>Project description</value>
+  </data>
+  <data name="ProjectDetails_Back" xml:space="preserve">
+    <value>back to projects</value>
+  </data>
+  <data name="Shared_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
 </root>

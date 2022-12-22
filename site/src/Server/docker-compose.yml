@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  
+  db:
+    image: mongo
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=changeme
+      - MONGO_INITDB_DATABASE=contact-site
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./data/db:/data/db 
+  
+  mongo-express:
+    image: mongo-express
+    restart: unless-stopped
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=changeme
+      - ME_CONFIG_MONGODB_URL=mongodb://root:changeme@db:27017
+      - ME_CONFIG_BASICAUTH_USERNAME=mexpress
+      - ME_CONFIG_BASICAUTH_PASSWORD=mexpress
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db

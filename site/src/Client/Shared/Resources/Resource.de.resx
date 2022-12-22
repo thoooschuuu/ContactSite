@@ -121,7 +121,7 @@
     <value>Thomas Schulze IT Solutions</value>
   </data>
   <data name="IndexWelcomeMessage" xml:space="preserve">
-    <value>Herzlich Wilkommen</value>
+    <value>Herzlich willkommen</value>
   </data>
   <data name="IndexMeLine1" xml:space="preserve">
     <value>Mein Name ist Thomas Schulze, ich bin freiberuflicher Softwareentwickler und Architekt.</value>
@@ -147,5 +147,53 @@ Clean Code und Architekturthemen sind ein großer Teil meines Interessengebietes
     <value>Technisch zuhause fühle ich mich in allen Bereichen von Microsoft .NET (C#, ASP.NET Core 6 APIs, Hosted
 Services als Backend, Azure Functions, AWS Lambdas etc.) und Azure. Kleinere Ausflüge mit Blazor WASM,
 Angular und React haben mich aber auch für die Entwicklung von „Mobile First“-Webseiten begeistert.</value>
+  </data>
+  <data name="LegalInformationPageTitle" xml:space="preserve">
+    <value>Impressum</value>
+  </data>
+  <data name="ProjectsPageTitle" xml:space="preserve">
+    <value>Projekte</value>
+  </data>
+  <data name="ProjectsHeader" xml:space="preserve">
+    <value>Projekte</value>
+  </data>
+  <data name="NavigationProjects" xml:space="preserve">
+    <value>Projekte</value>
+  </data>
+  <data name="Main_DarkMode_Off" xml:space="preserve">
+    <value>aus</value>
+  </data>
+  <data name="Main_DarkMode_On" xml:space="preserve">
+    <value>an</value>
+  </data>
+  <data name="Main_DarkMode_Text" xml:space="preserve">
+    <value>Dark Mode ist</value>
+  </data>
+  <data name="Shared_Loading" xml:space="preserve">
+    <value>Lade...</value>
+  </data>
+  <data name="Projects_Timeline_today" xml:space="preserve">
+    <value>heute</value>
+  </data>
+  <data name="Projects_Toolbar_Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="ProjectDetails_Grid_CustomerDomain" xml:space="preserve">
+    <value>Kundendomäne</value>
+  </data>
+  <data name="ProjectDetails_Grid_Duration" xml:space="preserve">
+    <value>Dauer</value>
+  </data>
+  <data name="ProjectDetails_Grid_MyRole" xml:space="preserve">
+    <value>Meine Rolle</value>
+  </data>
+  <data name="ProjectDetails_Grid_ProjectDescription" xml:space="preserve">
+    <value>Projektbeschreibung</value>
+  </data>
+  <data name="ProjectDetails_Back" xml:space="preserve">
+    <value>zurück zu den Projekten</value>
+  </data>
+  <data name="Shared_Home" xml:space="preserve">
+    <value>Start</value>
   </data>
 </root>

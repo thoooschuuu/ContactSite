@@ -1,0 +1,103 @@
+﻿@page "/Projects"
+@using TSITSolutions.ContactSite.Shared.Projects
+@using TSITSolutions.ContactSite.Client.Infrastructure
+@inject StronglyTypedStringLocalizerForResource Localizer
+@inject TechnologyService TechnologyService
+@inject HttpClient Http
+
+<PageTitle>@Localizer.CompanyName - @Localizer.ProjectsPageTitle</PageTitle>
+
+<BasicBreadcrumbs AdditionalItems="_breadcrumbs" />
+
+<MudText Typo="Typo.h3" GutterBottom="true">@Localizer.ProjectsHeader</MudText>
+
+@if (_filteredProjects == null)
+{
+    <MudText Typo="Typo.body1">@Localizer.Shared_Loading</MudText>
+}
+else
+{
+    <MudGrid Justify="Justify.Center">
+        <MudItem xs="12">
+            <MudPaper Elevation="5" Class="d-block overflow-auto pa-14 pa-sm-9 pa-md-4 pa-lg-0">
+                <MudToolBar>
+                    <MudText Typo="Typo.h6">@Localizer.Projects_Toolbar_Filter:</MudText>
+                    <MudChipSet MultiSelection="true" Filter="true" SelectedValuesChanged="ApplyTechnologyFilter" Class="d-block pt-8 pt-sm-4 pt-md-2 pt-lg-0">
+                        @foreach (var technology in _filteredTechnologies)
+                        {
+                            <MudChip Value="@technology.Name" Text="@(technology.Name + " (" + technology.Count + ")")" Color="@TechnologyService.GetColor(technology.Name)"></MudChip>
+                        }
+                    </MudChipSet>
+                </MudToolBar>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="8">
+            <MudTimeline >
+
+                @foreach (var project in _filteredProjects)
+                {
+                    <MudTimelineItem Color="Color.Info" Size="Size.Medium">
+                        <ItemOpposite>
+                            <MudText Typo="Typo.h5" Color="Color.Info">@GetYearRange(project)</MudText>
+                        </ItemOpposite>
+                        <ItemContent>
+                            <MudCard Outlined="false" Elevation="10">
+                                <MudCardHeader>
+                                    <CardHeaderContent>
+                                        <MudText Typo="Typo.h6">@project.Title</MudText>
+                                    </CardHeaderContent>
+                                </MudCardHeader>
+                                <MudCardContent>
+                                    <TechnologyList Technologies="@project.Technologies"/>
+                                </MudCardContent>
+                                <MudCardActions>
+                                    <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@("/ProjectDetails/" + project.Id)">Read More</MudButton>
+                                </MudCardActions>
+                            </MudCard>
+                        </ItemContent>
+                    </MudTimelineItem>
+                }
+
+            </MudTimeline>
+        </MudItem>
+    </MudGrid>
+}
+
+@code
+{
+    private List<ProjectResponse>? _projects = new();
+    private List<ProjectResponse>? _filteredProjects = new();
+    private List<string> _allTechnologies = new();
+    private List<(string Name, int Count)> _filteredTechnologies = new();
+    private readonly List<BreadcrumbItem> _breadcrumbs = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _breadcrumbs.Clear();
+        _breadcrumbs.Add(new BreadcrumbItem(Localizer.ProjectsPageTitle, href: null, disabled: true));
+        
+        var projectsResponse = await Http.GetFromJsonAsync<ProjectsResponse>("/api/Projects");
+        _projects = projectsResponse?.Projects.OrderByDescending(p => p.StartDate).ToList() ?? new();
+        _filteredProjects = _projects!.ToList();
+        
+        _allTechnologies = _projects.SelectMany(p => p.Technologies).Distinct().ToList();
+        CalculateFilteredTechnologies();
+    }
+
+    private string GetYearRange(ProjectResponse project)
+    {
+        var endDate = project.EndDate.HasValue ? project.EndDate.Value.Year.ToString() : Localizer.Projects_Timeline_today;
+        return $"{project.StartDate.Year} - {endDate}";
+    }
+
+    private void ApplyTechnologyFilter(ICollection<object> values)
+    {
+        _filteredProjects = _projects!.Where(p => values.Select(c => (string)c).All(t => p.Technologies.Contains(t))).ToList();
+        CalculateFilteredTechnologies();
+    }
+    
+    private void CalculateFilteredTechnologies()
+    {
+        _filteredTechnologies = _allTechnologies.Select(t => (t, _filteredProjects!.Count(p => p.Technologies.Contains(t)))).ToList();
+    }
+}

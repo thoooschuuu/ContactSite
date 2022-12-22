@@ -366,3 +366,6 @@ __queuestorage__
 .terraform.lock.hcl
 
 *.exe
+
+appsettings.Development.json
+data

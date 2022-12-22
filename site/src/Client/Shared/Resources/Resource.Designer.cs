@@ -121,6 +121,42 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Impressum.
+        /// </summary>
+        public static string LegalInformationPageTitle {
+            get {
+                return ResourceManager.GetString("LegalInformationPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to aus.
+        /// </summary>
+        public static string Main_DarkMode_Off {
+            get {
+                return ResourceManager.GetString("Main_DarkMode_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to an.
+        /// </summary>
+        public static string Main_DarkMode_On {
+            get {
+                return ResourceManager.GetString("Main_DarkMode_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Mode ist.
+        /// </summary>
+        public static string Main_DarkMode_Text {
+            get {
+                return ResourceManager.GetString("Main_DarkMode_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Startseite.
         /// </summary>
         public static string NavigationHome {
@@ -135,6 +171,114 @@ namespace TSITSolutions.ContactSite.Client.Shared.Resources {
         public static string NavigationLegalInformation {
             get {
                 return ResourceManager.GetString("NavigationLegalInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projekte.
+        /// </summary>
+        public static string NavigationProjects {
+            get {
+                return ResourceManager.GetString("NavigationProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to zurück zu den Projekten.
+        /// </summary>
+        public static string ProjectDetails_Back {
+            get {
+                return ResourceManager.GetString("ProjectDetails_Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kundendomäne.
+        /// </summary>
+        public static string ProjectDetails_Grid_CustomerDomain {
+            get {
+                return ResourceManager.GetString("ProjectDetails_Grid_CustomerDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dauer.
+        /// </summary>
+        public static string ProjectDetails_Grid_Duration {
+            get {
+                return ResourceManager.GetString("ProjectDetails_Grid_Duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meine Rolle.
+        /// </summary>
+        public static string ProjectDetails_Grid_MyRole {
+            get {
+                return ResourceManager.GetString("ProjectDetails_Grid_MyRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projektbeschreibung.
+        /// </summary>
+        public static string ProjectDetails_Grid_ProjectDescription {
+            get {
+                return ResourceManager.GetString("ProjectDetails_Grid_ProjectDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to heute.
+        /// </summary>
+        public static string Projects_Timeline_today {
+            get {
+                return ResourceManager.GetString("Projects_Timeline_today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter.
+        /// </summary>
+        public static string Projects_Toolbar_Filter {
+            get {
+                return ResourceManager.GetString("Projects_Toolbar_Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projekte.
+        /// </summary>
+        public static string ProjectsHeader {
+            get {
+                return ResourceManager.GetString("ProjectsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projekte.
+        /// </summary>
+        public static string ProjectsPageTitle {
+            get {
+                return ResourceManager.GetString("ProjectsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string Shared_Home {
+            get {
+                return ResourceManager.GetString("Shared_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lade....
+        /// </summary>
+        public static string Shared_Loading {
+            get {
+                return ResourceManager.GetString("Shared_Loading", resourceCulture);
             }
         }
     }
