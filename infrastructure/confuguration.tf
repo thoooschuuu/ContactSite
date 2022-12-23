@@ -19,6 +19,12 @@ resource "azurerm_role_assignment" "site_group_data_owner" {
   principal_id         = data.azuread_group.owner.object_id
 }
 
+resource "azurerm_role_assignment" "site_group_data_reader" {
+  scope                = azurerm_key_vault.keyvault.id
+  role_definition_name = "App Configuration Data Reader"
+  principal_id         = data.azuread_group.owner.object_id
+}
+
 # key vault
 
 resource "azurerm_key_vault" "keyvault" {
@@ -53,4 +59,10 @@ resource "azurerm_role_assignment" "deployment_account_keyvault_reader" {
   scope                = azurerm_key_vault.keyvault.id
   role_definition_name = "Key Vault Reader"
   principal_id         = data.azuread_service_principal.deployment_account.object_id
+}
+
+resource "azurerm_role_assignment" "site_group_keyvault_reader" {
+  scope                = azurerm_key_vault.keyvault.id
+  role_definition_name = "Key Vault Reader"
+  principal_id         = data.azuread_group.owner.object_id
 }
