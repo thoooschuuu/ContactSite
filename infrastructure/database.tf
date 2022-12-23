@@ -38,3 +38,15 @@ resource "azurerm_cosmosdb_mongo_collection" "collection" {
     unique = true
   }
 }
+
+# Configurations
+
+resource "azurerm_key_vault_secret" "projects_database_connection_string" {
+  name         = "ProjectsDatabase-ConnectionString"
+  value        = azurerm_cosmosdb_account.db_account.connection_strings[0]
+  key_vault_id = azurerm_key_vault.keyvault.id
+
+  depends_on = [
+    azurerm_role_assignment.deployment_account_data_owner
+  ]
+}

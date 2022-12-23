@@ -3,3 +3,9 @@ resource "azurerm_resource_group" "rg" {
   location = local.location
   tags     = local.resource_tags
 }
+
+data "azurerm_client_config" "current" {}
+
+data "azuread_service_principal" "deployment_account" {
+  application_id = data.azurerm_client_config.current.client_id
+}

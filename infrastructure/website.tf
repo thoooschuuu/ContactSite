@@ -37,9 +37,7 @@ resource "azurerm_linux_web_app" "website_app" {
     ApplicationInsightsAgent_EXTENSION_VERSION  = "~3"
     XDT_MicrosoftApplicationInsights_Mode       = "recommended"
     XDT_MicrosoftApplicationInsights_PreemptSdk = "1"
-    ProjectsDatabase__ConnectionString          = azurerm_cosmosdb_account.db_account.connection_strings[0]
-    ProjectsDatabase__DatabaseName              = azurerm_cosmosdb_mongo_database.db.name
-    ProjectsDatabase__CollectionName            = azurerm_cosmosdb_mongo_collection.collection.name
+    ConnectionStrings__AppConfig                = azurerm_app_configuration.config.endpoint
   }
 }
 
@@ -75,4 +73,40 @@ resource "azurerm_app_service_certificate_binding" "website_wwww" {
   hostname_binding_id = azurerm_app_service_custom_hostname_binding.website_www.id
   certificate_id      = azurerm_app_service_managed_certificate.website_www.id
   ssl_state           = "SniEnabled"
+}
+
+# configuration
+
+resource "azurerm_app_configuration_key" "projects_database_connection_string" {
+  configuration_store_id = azurerm_app_configuration.config.id
+  key                    = "ProjectsDatabase:ConnectionString"
+  type                   = "vault"
+  label                  = "contact-site"
+  vault_key_reference    = azurerm_key_vault_secret.projects_database_connection_string.id
+
+  depends_on = [
+    azurerm_role_assignment.deployment_account_data_owner
+  ]
+}
+
+resource "azurerm_app_configuration_key" "projects_database_database_name" {
+  configuration_store_id = azurerm_app_configuration.config.id
+  key                    = "ProjectsDatabase:CollectionName"
+  label                  = "contact-site"
+  value                  = azurerm_cosmosdb_mongo_database.db.name
+
+  depends_on = [
+    azurerm_role_assignment.deployment_account_data_owner
+  ]
+}
+
+resource "azurerm_app_configuration_key" "projects_database_collection_name" {
+  configuration_store_id = azurerm_app_configuration.config.id
+  key                    = "ProjectsDatabase:DatabaseName"
+  label                  = "contact-site"
+  value                  = azurerm_cosmosdb_mongo_database.db.name
+
+  depends_on = [
+    azurerm_role_assignment.deployment_account_data_owner
+  ]
 }

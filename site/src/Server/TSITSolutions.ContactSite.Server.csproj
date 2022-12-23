@@ -6,11 +6,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Azure.Identity" />
         <PackageReference Include="FastEndpoints" />
         <PackageReference Include="FastEndpoints.Swagger" />
         <PackageReference Include="Markdig" />
         <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.AzureAppConfiguration" />
         <PackageReference Include="Microsoft.NET.Build.Containers" />
     </ItemGroup>
 

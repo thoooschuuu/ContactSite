@@ -1,9 +1,27 @@
+using Azure.Identity;
 using FastEndpoints;
 using FastEndpoints.Swagger;
+using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 using TSITSolutions.ContactSite.Server.Caching;
 using TSITSolutions.ContactSite.Server.MongoDb;
 
 var builder = WebApplication.CreateBuilder(args);
+
+if (!builder.Environment.IsDevelopment())
+{
+    builder.Configuration.AddAzureAppConfiguration(configBuilder =>
+    {
+        var connectionString = builder.Configuration.GetConnectionString("AppConfig");
+        configBuilder.Connect(connectionString)
+            .ConfigureKeyVault(kv => kv.SetCredential(new DefaultAzureCredential()))
+            .Select(KeyFilter.Any, "contact-site")
+            .ConfigureRefresh(refresh =>
+            {
+                refresh.Register("contact-site:Cache:Refresh", refreshAll: true)
+                    .SetCacheExpiration(TimeSpan.FromMinutes(30));
+            });
+    });
+}
 
 builder.Services.AddFastEndpoints();
 builder.Services.AddSwaggerDoc();

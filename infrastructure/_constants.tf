@@ -14,9 +14,11 @@ locals {
 
   # templates
 
-  # example: rg-contactsite-prod-westeurope
+  # example: rg-contactsite-main-prod-westeurope
   resource_name_template = "%s-${local.project}-%s-${local.environment_name}-${local.location}"
-  # example: st1contactsite1prod1westeurope
+  # example: rg-cs-main-prod-weu
+  resource_name_template_short = "%s1${local.project_short}1%s1${local.environment_name}1${local.location_short}"
+  # example: st1cs1main1prod1weu
   storage_name_template = "%s1${local.project_short}1%s1${local.environment_name}1${local.location_short}"
 
   # list of abbreviations for resource types
@@ -29,6 +31,7 @@ locals {
     application_insights    = "appi"
     log_analytics_workspace = "log"
     app_configuration_store = "appcs"
+    key_vault               = "kv"
     cosmosdb                = "cosmos"
     cosmosdb_no_sql         = "cosno"
     cosmosdb_mongo_db       = "cosmon"
@@ -43,6 +46,7 @@ locals {
     application_insights    = format(local.resource_name_template, local.resource_type_abbreviations.application_insights, "%s")
     log_analytics_workspace = format(local.resource_name_template, local.resource_type_abbreviations.log_analytics_workspace, "%s")
     app_configuration_store = format(local.resource_name_template, local.resource_type_abbreviations.app_configuration_store, "%s")
+    key_vault               = format(local.resource_name_template_short, local.resource_type_abbreviations.key_vault, "%s")
     cosmosdb                = format(local.resource_name_template, local.resource_type_abbreviations.cosmosdb, "%s")
     cosmosdb_no_sql         = format(local.resource_name_template, local.resource_type_abbreviations.cosmosdb_no_sql, "%s")
     cosmosdb_mongo_db       = format(local.resource_name_template, local.resource_type_abbreviations.cosmosdb_mongo_db, "%s")
