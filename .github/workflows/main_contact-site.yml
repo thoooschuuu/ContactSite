@@ -1,12 +1,12 @@
 name: Build and Deploy to App Service
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
     paths:
      - '!infrastructure/**'
-  workflow_dispatch:
 
 jobs:
   build:
