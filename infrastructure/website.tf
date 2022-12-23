@@ -75,6 +75,20 @@ resource "azurerm_app_service_certificate_binding" "website_wwww" {
   ssl_state           = "SniEnabled"
 }
 
+# roles
+
+resource "azurerm_role_assignment" "website_app_key_vault_reader" {
+  scope                = azurerm_key_vault.keyvault.id
+  role_definition_name = "Key Vault Reader"
+  principal_id         = azurerm_linux_web_app.website_app.identity[0].principal_id
+}
+
+resource "azurerm_role_assignment" "website_app_app_config_reader" {
+  scope                = azurerm_key_vault.keyvault.id
+  role_definition_name = "App Configuration Data Reader"
+  principal_id         = azurerm_linux_web_app.website_app.identity[0].principal_id
+}
+
 # configuration
 
 resource "azurerm_app_configuration_key" "projects_database_connection_string" {
