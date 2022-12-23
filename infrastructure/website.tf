@@ -93,7 +93,7 @@ resource "azurerm_app_configuration_key" "projects_database_database_name" {
   configuration_store_id = azurerm_app_configuration.config.id
   key                    = "ProjectsDatabase:CollectionName"
   label                  = "contact-site"
-  value                  = azurerm_cosmosdb_mongo_database.db.name
+  value                  = azurerm_cosmosdb_mongo_collection.collection.name
 
   depends_on = [
     azurerm_role_assignment.deployment_account_data_owner

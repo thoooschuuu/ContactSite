@@ -13,6 +13,12 @@ resource "azurerm_role_assignment" "deployment_account_data_owner" {
   principal_id         = data.azuread_service_principal.deployment_account.object_id
 }
 
+resource "azurerm_role_assignment" "site_group_data_owner" {
+  scope                = azurerm_app_configuration.config.id
+  role_definition_name = "App Configuration Data Owner"
+  principal_id         = data.azuread_group.owner.object_id
+}
+
 # key vault
 
 resource "azurerm_key_vault" "keyvault" {
