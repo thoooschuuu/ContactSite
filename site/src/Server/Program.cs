@@ -12,8 +12,9 @@ if (!builder.Environment.IsDevelopment())
     builder.Configuration.AddAzureAppConfiguration(configBuilder =>
     {
         var connectionString = builder.Configuration.GetConnectionString("AppConfig");
-        configBuilder.Connect(connectionString)
-            .ConfigureKeyVault(kv => kv.SetCredential(new DefaultAzureCredential()))
+        var credential = new DefaultAzureCredential();
+        configBuilder.Connect(new Uri(connectionString), credential)
+            .ConfigureKeyVault(kv => kv.SetCredential(credential))
             .Select(KeyFilter.Any, "contact-site")
             .ConfigureRefresh(refresh =>
             {
