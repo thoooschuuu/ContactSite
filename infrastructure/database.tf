@@ -16,10 +16,6 @@ resource "azurerm_cosmosdb_account" "db_account" {
     location          = local.location
     failover_priority = 0
   }
-
-  capacity {
-    total_throughput_limit = 400
-  }
 }
 
 resource "azurerm_cosmosdb_mongo_database" "db" {
