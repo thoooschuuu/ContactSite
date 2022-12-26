@@ -28,51 +28,14 @@ resource "azurerm_role_assignment" "site_group_data_reader" {
 # key vault
 
 resource "azurerm_key_vault" "keyvault" {
-  name                     = format(local.resource_type_templates.key_vault, "main")
-  resource_group_name      = azurerm_resource_group.rg.name
-  location                 = local.location
-  tags                     = local.resource_tags
-  sku_name                 = "standard"
-  tenant_id                = data.azurerm_client_config.current.tenant_id
-  purge_protection_enabled = false
-
-  access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.object_id
-
-    key_permissions = [
-      "Create",
-      "Get",
-    ]
-
-    secret_permissions = [
-      "Set",
-      "Get",
-      "Delete",
-      "Purge",
-      "Recover"
-    ]
-  }
-
-  access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = azurerm_linux_web_app.website_app.identity[0].principal_id
-
-    secret_permissions = [
-      "Get",
-      "List"
-    ]
-  }
-
-  access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azuread_group.owner.object_id
-
-    secret_permissions = [
-      "Get",
-      "List"
-    ]
-  }
+  name                      = format(local.resource_type_templates.key_vault, "main")
+  resource_group_name       = azurerm_resource_group.rg.name
+  location                  = local.location
+  tags                      = local.resource_tags
+  sku_name                  = "standard"
+  tenant_id                 = data.azurerm_client_config.current.tenant_id
+  purge_protection_enabled  = false
+  enable_rbac_authorization = true
 }
 
 resource "azurerm_role_assignment" "deployment_account_keyvault_reader" {
@@ -81,8 +44,20 @@ resource "azurerm_role_assignment" "deployment_account_keyvault_reader" {
   principal_id         = data.azuread_service_principal.deployment_account.object_id
 }
 
+resource "azurerm_role_assignment" "deployment_account_keyvault_admin" {
+  scope                = azurerm_key_vault.keyvault.id
+  role_definition_name = "Key Vault Administrator"
+  principal_id         = data.azuread_service_principal.deployment_account.object_id
+}
+
 resource "azurerm_role_assignment" "site_group_keyvault_reader" {
   scope                = azurerm_key_vault.keyvault.id
   role_definition_name = "Key Vault Reader"
+  principal_id         = data.azuread_group.owner.object_id
+}
+
+resource "azurerm_role_assignment" "site_group_keyvault_secrets_user" {
+  scope                = azurerm_key_vault.keyvault.id
+  role_definition_name = "Key Vault Secrets User"
   principal_id         = data.azuread_group.owner.object_id
 }
