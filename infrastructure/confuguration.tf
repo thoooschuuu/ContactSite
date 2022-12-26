@@ -53,6 +53,26 @@ resource "azurerm_key_vault" "keyvault" {
       "Recover"
     ]
   }
+
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = azurerm_linux_web_app.website_app.identity[0].principal_id
+
+    secret_permissions = [
+      "Get",
+      "List"
+    ]
+  }
+
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = data.azuread_group.owner.object_id
+
+    secret_permissions = [
+      "Get",
+      "List"
+    ]
+  }
 }
 
 resource "azurerm_role_assignment" "deployment_account_keyvault_reader" {
