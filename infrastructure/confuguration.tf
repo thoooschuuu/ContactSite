@@ -20,7 +20,7 @@ resource "azurerm_role_assignment" "site_group_data_owner" {
 }
 
 resource "azurerm_role_assignment" "site_group_data_reader" {
-  scope                = azurerm_key_vault.keyvault.id
+  scope                = azurerm_app_configuration.config.id
   role_definition_name = "App Configuration Data Reader"
   principal_id         = data.azuread_group.owner.object_id
 }
