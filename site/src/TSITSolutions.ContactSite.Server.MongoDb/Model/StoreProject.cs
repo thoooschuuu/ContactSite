@@ -13,13 +13,13 @@ public record StoreProject(
     IReadOnlyCollection<string> Technologies
 )
 {
-    public Project ToProject() =>
+    public Project ToProject(CultureSpecificStoreProject? projectOverride = null) =>
         new(
             Id,
-            Title,
-            Description,
-            Role,
-            CustomerDomain,
+            projectOverride?.Title ?? Title,
+            projectOverride?.Description ?? Description,
+            projectOverride?.Role ?? Role,
+            projectOverride?.CustomerDomain ?? CustomerDomain,
             DateOnly.FromDateTime(StartDate), 
             EndDate.HasValue ? DateOnly.FromDateTime(EndDate.Value) : null,
             Technologies

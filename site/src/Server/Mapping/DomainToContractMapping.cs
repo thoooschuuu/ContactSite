@@ -12,8 +12,8 @@ internal static class DomainToContractMapping
         {
             Id = project.Id,
             Title = project.Title,
-            Description = Markdown.ToHtml(project.Description, MarkdownPipeline),
-            Role = Markdown.ToHtml(project.Role, MarkdownPipeline),
+            Description = Markdown.ToHtml(project.Description, MarkdownPipeline).Trim(),
+            Role = Markdown.ToHtml(project.Role, MarkdownPipeline).Trim(),
             CustomerDomain = project.CustomerDomain,
             StartDate = project.StartDate,
             EndDate = project.EndDate,

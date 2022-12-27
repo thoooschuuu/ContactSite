@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
+using TSITSolutions.ContactSite.Server.MongoDb;
 using TSITSolutions.ContactSite.Server.MongoDb.Model;
 using Xunit.Abstractions;
 
@@ -15,6 +16,7 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
 {
     public ITestOutputHelper? Output { get; set; }
     private IMongoCollection<StoreProject>? _storeProjectCollection;
+    private IMongoCollection<CultureSpecificStoreProject>? _languageSpecificStoreProjectCollection;
 
     private readonly TestcontainerDatabase _projectsDatabase = new TestcontainersBuilder<MongoDbTestcontainer>()
         .WithDatabase(new MongoDbTestcontainerConfiguration
@@ -51,13 +53,25 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
     {
         await _storeProjectCollection!.InsertOneAsync(project);
     }
+    
+    public async Task AddCultureSpecificProject(CultureSpecificStoreProject project)
+    {
+        await _languageSpecificStoreProjectCollection!.InsertOneAsync(project);
+    }
+    
+    public async Task ClearCollections()
+    {
+        await _storeProjectCollection!.DeleteManyAsync(FilterDefinition<StoreProject>.Empty);
+        await _languageSpecificStoreProjectCollection!.DeleteManyAsync(FilterDefinition<CultureSpecificStoreProject>.Empty);
+    }
 
     public async Task InitializeAsync()
     {
         await _projectsDatabase.StartAsync();
         var client = new MongoClient(_projectsDatabase.ConnectionString);
         var database = client.GetDatabase(_projectsDatabase.Database);
-        _storeProjectCollection = database.GetCollection<StoreProject>("Projects");
+        _storeProjectCollection = database.GetCollection<StoreProject>(MongoSpecs.ProjectsCollectionName);
+        _languageSpecificStoreProjectCollection = database.GetCollection<CultureSpecificStoreProject>(MongoSpecs.CultureSpecificProjectsCollectionName);
     }
 
     public new async Task DisposeAsync()
