@@ -41,7 +41,7 @@ public class MongoDbProjectRepository : IProjectRepository
         {
             return Project.Empty;
         }
-        var languageOverride = await _languageSpecificProjectsCollection.Find(p => p.ProjectId == id).SingleOrDefaultAsync(ct);
+        var languageOverride = await _languageSpecificProjectsCollection.Find(p => p.ProjectId == id && p.Language.Equals(language)).SingleOrDefaultAsync(ct);
         return storeProject.ToProject(languageOverride);
     }
 }
