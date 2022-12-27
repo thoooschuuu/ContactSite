@@ -1,6 +1,6 @@
 # Overview
 
-I'm a freelancer software architect for Azure, C#/.NEt. 
+I'm a freelancer software architect for Azure, C#/.NET. 
 This is my contact site page for my company Thomas Schulze IT Solutions.
 
 It fulfills two purposes. 
