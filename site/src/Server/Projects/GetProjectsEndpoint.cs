@@ -31,7 +31,7 @@ public class GetProjectsEndpoint : Endpoint<GetProjectsRequest, ProjectsResponse
 
     public override async Task HandleAsync(GetProjectsRequest request, CancellationToken ct)
     {
-        var projects = await _projectRepository.GetAllAsync(request.Language, ct);
+        var projects = await _projectRepository.GetAllAsync(request.Culture, ct);
 
         await SendOkAsync(projects.ToContract(), ct);
     }

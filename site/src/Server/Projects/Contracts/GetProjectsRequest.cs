@@ -2,5 +2,5 @@
 
 public class GetProjectsRequest
 {
-    public string? Language { get; set; }
+    public string? Culture { get; set; }
 }

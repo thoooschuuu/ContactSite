@@ -55,14 +55,14 @@ public class GetProjectEndpointTests : IClassFixture<ContactSiteApplicationFacto
     }
     
     [Fact]
-    public async Task Endpoint_ReturnsSingleProjectWithLanguageSpecificOverrides_WhenAskedTo()
+    public async Task Endpoint_ReturnsSingleProjectWithCultureSpecificOverrides_WhenAskedTo()
     {
         var id2 = Guid.NewGuid();
         await _factory.AddProject(new StoreProject(id2, "p2", "d2", "r2", "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31), new []{ "t3", "t4" }));
-        await _factory.AddLanguageSpecificProject(new LanguageSpecificStoreProject(Guid.NewGuid(), id2, "en", "p2-en", "d2-en", "r2-en", "en-US"));
+        await _factory.AddCultureSpecificProject(new CultureSpecificStoreProject(Guid.NewGuid(), id2, "en", "p2-en", "d2-en", "r2-en", "en-US"));
         
         var client = _factory.CreateClient();
-        var response = await client.GetAsync($"/api/projects/{id2}?language=en-US");
+        var response = await client.GetAsync($"/api/projects/{id2}?culture=en-US");
         
         response.IsSuccessStatusCode.Should().BeTrue();
         

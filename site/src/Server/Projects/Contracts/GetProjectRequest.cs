@@ -3,5 +3,5 @@
 public class GetProjectRequest
 {
     public Guid Id { get; set; }
-    public string? Language { get; set; }
+    public string? Culture { get; set; }
 }

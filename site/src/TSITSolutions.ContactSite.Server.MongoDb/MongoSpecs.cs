@@ -3,8 +3,8 @@
 internal static class MongoSpecs
 {
     public const string ProjectsCollectionName = "Projects";
-    public const string LanguageSpecificProjectsCollectionName = "LanguageSpecificProjects";
+    public const string CultureSpecificProjectsCollectionName = "CultureSpecificProjects";
 
-    public static string[] Collections => new[] { ProjectsCollectionName, LanguageSpecificProjectsCollectionName };
+    public static string[] Collections => new[] { ProjectsCollectionName, CultureSpecificProjectsCollectionName };
     
 }

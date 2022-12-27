@@ -9,7 +9,7 @@ namespace TSITSolutions.ContactSite.Server.MongoDb;
 public class MongoDbProjectRepository : IProjectRepository
 {
     private readonly IMongoCollection<StoreProject> _projectsCollection;
-    private readonly IMongoCollection<LanguageSpecificStoreProject> _languageSpecificProjectsCollection;
+    private readonly IMongoCollection<CultureSpecificStoreProject> _cultureSpecificProjectsCollection;
 
     public MongoDbProjectRepository(IOptionsMonitor<MongoDbOptions> options)
     {
@@ -17,31 +17,31 @@ public class MongoDbProjectRepository : IProjectRepository
         var database = client.GetDatabase(options.CurrentValue.DatabaseName);
 
         _projectsCollection = database.GetCollection<StoreProject>(MongoSpecs.ProjectsCollectionName);
-        _languageSpecificProjectsCollection = database.GetCollection<LanguageSpecificStoreProject>(MongoSpecs.LanguageSpecificProjectsCollectionName);
+        _cultureSpecificProjectsCollection = database.GetCollection<CultureSpecificStoreProject>(MongoSpecs.CultureSpecificProjectsCollectionName);
     }
 
-    public async ValueTask<IEnumerable<Project>> GetAllAsync(string? language = null, CancellationToken ct = default)
+    public async ValueTask<IEnumerable<Project>> GetAllAsync(string? culture = null, CancellationToken ct = default)
     {
         var storeProjects = await _projectsCollection.Find(_ => true).ToListAsync(ct);
-        var languageSpecificStoreProjects = 
-            await _languageSpecificProjectsCollection
-                .Find(p => p.Language.Equals(language))
+        var cultureSpecificStoreProjects = 
+            await _cultureSpecificProjectsCollection
+                .Find(p => p.Culture.Equals(culture))
                 .ToListAsync(ct)
-            ?? new List<LanguageSpecificStoreProject>();
+            ?? new List<CultureSpecificStoreProject>();
         
-        LanguageSpecificStoreProject? GetById(Guid id) => languageSpecificStoreProjects.FirstOrDefault(p => p.ProjectId == id);
+        CultureSpecificStoreProject? GetById(Guid id) => cultureSpecificStoreProjects.FirstOrDefault(p => p.ProjectId == id);
         
         return storeProjects.Select(p => p.ToProject(GetById(p.Id)));
     }
 
-    public async ValueTask<Project> GetByIdAsync(Guid id, string? language = null, CancellationToken ct = default)
+    public async ValueTask<Project> GetByIdAsync(Guid id, string? culture = null, CancellationToken ct = default)
     {
         var storeProject = await _projectsCollection.Find(p => p.Id == id).SingleOrDefaultAsync(ct);
         if(storeProject is null)
         {
             return Project.Empty;
         }
-        var languageOverride = await _languageSpecificProjectsCollection.Find(p => p.ProjectId == id && p.Language.Equals(language)).SingleOrDefaultAsync(ct);
-        return storeProject.ToProject(languageOverride);
+        var cultureOverride = await _cultureSpecificProjectsCollection.Find(p => p.ProjectId == id && p.Culture.Equals(culture)).SingleOrDefaultAsync(ct);
+        return storeProject.ToProject(cultureOverride);
     }
 }

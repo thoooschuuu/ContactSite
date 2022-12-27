@@ -32,7 +32,7 @@ public class GetProjectEndpoint : Endpoint<GetProjectRequest, ProjectResponse>
 
     public override async Task HandleAsync(GetProjectRequest request, CancellationToken ct)
     {
-        var project = await _projectRepository.GetByIdAsync(request.Id, request.Language, ct);
+        var project = await _projectRepository.GetByIdAsync(request.Id, request.Culture, ct);
 
         if (project == Project.Empty)
         {

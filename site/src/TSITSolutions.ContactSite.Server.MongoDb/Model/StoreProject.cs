@@ -13,7 +13,7 @@ public record StoreProject(
     IReadOnlyCollection<string> Technologies
 )
 {
-    public Project ToProject(LanguageSpecificStoreProject? projectOverride = null) =>
+    public Project ToProject(CultureSpecificStoreProject? projectOverride = null) =>
         new(
             Id,
             projectOverride?.Title ?? Title,

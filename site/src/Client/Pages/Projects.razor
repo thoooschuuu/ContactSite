@@ -81,7 +81,7 @@ else
         _currentCulture = await LocalStorage.GetItemAsync<string>("culture");
         if(!string.IsNullOrEmpty(_currentCulture))
         {
-            route += "?language=" + _currentCulture;
+            route += "?culture=" + _currentCulture;
         }
         var projectsResponse = await Http.GetFromJsonAsync<ProjectsResponse>(route);
         _projects = projectsResponse?.Projects.OrderByDescending(p => p.StartDate).ToList() ?? new();

@@ -15,7 +15,7 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
 {
     public ITestOutputHelper? Output { get; set; }
     private IMongoCollection<StoreProject>? _storeProjectCollection;
-    private IMongoCollection<LanguageSpecificStoreProject>? _languageSpecificStoreProjectCollection;
+    private IMongoCollection<CultureSpecificStoreProject>? _languageSpecificStoreProjectCollection;
 
     private readonly TestcontainerDatabase _projectsDatabase = new TestcontainersBuilder<MongoDbTestcontainer>()
         .WithDatabase(new MongoDbTestcontainerConfiguration
@@ -53,7 +53,7 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
         await _storeProjectCollection!.InsertOneAsync(project);
     }
     
-    public async Task AddLanguageSpecificProject(LanguageSpecificStoreProject project)
+    public async Task AddCultureSpecificProject(CultureSpecificStoreProject project)
     {
         await _languageSpecificStoreProjectCollection!.InsertOneAsync(project);
     }
@@ -61,7 +61,7 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
     public async Task ClearCollections()
     {
         await _storeProjectCollection!.DeleteManyAsync(FilterDefinition<StoreProject>.Empty);
-        await _languageSpecificStoreProjectCollection!.DeleteManyAsync(FilterDefinition<LanguageSpecificStoreProject>.Empty);
+        await _languageSpecificStoreProjectCollection!.DeleteManyAsync(FilterDefinition<CultureSpecificStoreProject>.Empty);
     }
 
     public async Task InitializeAsync()
@@ -70,7 +70,7 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
         var client = new MongoClient(_projectsDatabase.ConnectionString);
         var database = client.GetDatabase(_projectsDatabase.Database);
         _storeProjectCollection = database.GetCollection<StoreProject>("Projects");
-        _languageSpecificStoreProjectCollection = database.GetCollection<LanguageSpecificStoreProject>("LanguageSpecificProjects");
+        _languageSpecificStoreProjectCollection = database.GetCollection<CultureSpecificStoreProject>("LanguageSpecificProjects");
     }
 
     public new async Task DisposeAsync()

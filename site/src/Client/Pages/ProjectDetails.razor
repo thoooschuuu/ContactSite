@@ -51,7 +51,7 @@ else
     {
         if (ProjectId.HasValue)
         {
-            _project = await Http.GetFromJsonAsync<ProjectResponse>($"api/projects/{ProjectId}" + (string.IsNullOrEmpty(_currentCulture) ? string.Empty : $"?language={_currentCulture}"));
+            _project = await Http.GetFromJsonAsync<ProjectResponse>($"api/projects/{ProjectId}" + (string.IsNullOrEmpty(_currentCulture) ? string.Empty : $"?culture={_currentCulture}"));
             if (_project == null)
             {
                 return;
