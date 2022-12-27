@@ -25,20 +25,6 @@ resource "azurerm_cosmosdb_mongo_database" "db" {
   throughput          = 400
 }
 
-resource "azurerm_cosmosdb_mongo_collection" "collection" {
-  name                = "Projects"
-  resource_group_name = azurerm_resource_group.rg.name
-  account_name        = azurerm_cosmosdb_account.db_account.name
-  database_name       = azurerm_cosmosdb_mongo_database.db.name
-
-  default_ttl_seconds = "-1"
-
-  index {
-    keys   = ["_id"]
-    unique = true
-  }
-}
-
 # Configurations
 
 resource "azurerm_key_vault_secret" "projects_database_connection_string" {
