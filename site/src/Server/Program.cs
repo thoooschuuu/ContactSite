@@ -41,6 +41,8 @@ builder.Services.AddMongoDbStore(builder.Configuration);
 
 var app = builder.Build();
 
+app.InitializeMongoDbStore();
+
 app.MapHealthChecks("/health");
 
 if (app.Environment.IsDevelopment())

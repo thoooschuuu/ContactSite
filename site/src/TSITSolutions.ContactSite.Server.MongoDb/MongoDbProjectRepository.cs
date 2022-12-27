@@ -15,8 +15,9 @@ public class MongoDbProjectRepository : IProjectRepository
     {
         var client = new MongoClient(options.CurrentValue.ConnectionString);
         var database = client.GetDatabase(options.CurrentValue.DatabaseName);
-        _projectsCollection = database.GetCollection<StoreProject>("Projects");
-        _languageSpecificProjectsCollection = database.GetCollection<LanguageSpecificStoreProject>("LanguageSpecificProjects");
+
+        _projectsCollection = database.GetCollection<StoreProject>(MongoSpecs.ProjectsCollectionName);
+        _languageSpecificProjectsCollection = database.GetCollection<LanguageSpecificStoreProject>(MongoSpecs.LanguageSpecificProjectsCollectionName);
     }
 
     public async ValueTask<IEnumerable<Project>> GetAllAsync(string? language = null, CancellationToken ct = default)
