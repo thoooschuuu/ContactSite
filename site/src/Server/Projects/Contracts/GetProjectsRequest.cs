@@ -1,7 +1,6 @@
 ﻿namespace TSITSolutions.ContactSite.Server.Projects.Contracts;
 
-public class GetProjectRequest
+public class GetProjectsRequest
 {
-    public Guid Id { get; set; }
     public string? Language { get; set; }
 }

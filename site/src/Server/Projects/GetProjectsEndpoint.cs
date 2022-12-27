@@ -3,11 +3,12 @@ using Microsoft.Extensions.Options;
 using TSITSolutions.ContactSite.Server.Caching;
 using TSITSolutions.ContactSite.Server.Core.Services;
 using TSITSolutions.ContactSite.Server.Mapping;
+using TSITSolutions.ContactSite.Server.Projects.Contracts;
 using TSITSolutions.ContactSite.Shared.Projects;
 
 namespace TSITSolutions.ContactSite.Server.Projects;
 
-public class GetProjectsEndpoint : EndpointWithoutRequest<ProjectsResponse>
+public class GetProjectsEndpoint : Endpoint<GetProjectsRequest, ProjectsResponse>
 {
     private readonly IProjectRepository _projectRepository;
     private readonly IOptionsMonitor<CachingSettings> _cachingSettingsMonitor;
@@ -28,9 +29,9 @@ public class GetProjectsEndpoint : EndpointWithoutRequest<ProjectsResponse>
         }
     }
 
-    public override async Task HandleAsync(CancellationToken ct)
+    public override async Task HandleAsync(GetProjectsRequest request, CancellationToken ct)
     {
-        var projects = await _projectRepository.GetAllAsync(ct);
+        var projects = await _projectRepository.GetAllAsync(request.Language, ct);
 
         await SendOkAsync(projects.ToContract(), ct);
     }
