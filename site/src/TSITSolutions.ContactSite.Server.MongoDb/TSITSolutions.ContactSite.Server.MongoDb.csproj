@@ -5,6 +5,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
+    
+    <ItemGroup>
+        <InternalsVisibleTo Include="TSITSolutions.ContactSite.Server.Tests.Integration" />
+    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\TSITSolutions.ContactSite.Server.Core\TSITSolutions.ContactSite.Server.Core.csproj" />

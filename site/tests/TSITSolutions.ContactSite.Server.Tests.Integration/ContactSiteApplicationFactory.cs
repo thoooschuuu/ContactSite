@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
+using TSITSolutions.ContactSite.Server.MongoDb;
 using TSITSolutions.ContactSite.Server.MongoDb.Model;
 using Xunit.Abstractions;
 
@@ -69,8 +70,8 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
         await _projectsDatabase.StartAsync();
         var client = new MongoClient(_projectsDatabase.ConnectionString);
         var database = client.GetDatabase(_projectsDatabase.Database);
-        _storeProjectCollection = database.GetCollection<StoreProject>("Projects");
-        _languageSpecificStoreProjectCollection = database.GetCollection<CultureSpecificStoreProject>("LanguageSpecificProjects");
+        _storeProjectCollection = database.GetCollection<StoreProject>(MongoSpecs.ProjectsCollectionName);
+        _languageSpecificStoreProjectCollection = database.GetCollection<CultureSpecificStoreProject>(MongoSpecs.CultureSpecificProjectsCollectionName);
     }
 
     public new async Task DisposeAsync()
