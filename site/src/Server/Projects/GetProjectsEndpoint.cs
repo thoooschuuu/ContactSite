@@ -25,7 +25,9 @@ public class GetProjectsEndpoint : Endpoint<GetProjectsRequest, ProjectsResponse
         AllowAnonymous();
         if(_cachingSettingsMonitor.CurrentValue.Enabled)
         {
-            ResponseCache(_cachingSettingsMonitor.CurrentValue.Duration);
+            ResponseCache(
+                durationSeconds:_cachingSettingsMonitor.CurrentValue.Duration,
+                varyByQueryKeys: new []{ "culture"});
         }
     }
 
