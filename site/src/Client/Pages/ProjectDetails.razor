@@ -49,6 +49,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        _currentCulture = await LocalStorage.GetItemAsync<string>("culture");
         if (ProjectId.HasValue)
         {
             _project = await Http.GetFromJsonAsync<ProjectResponse>($"api/projects/{ProjectId}" + (string.IsNullOrEmpty(_currentCulture) ? string.Empty : $"?culture={_currentCulture}"));
@@ -60,7 +61,6 @@ else
             _breadcrumbs.Add(new BreadcrumbItem(Localizer.ProjectsPageTitle, href: "/Projects"));
             _breadcrumbs.Add(new BreadcrumbItem($"{_project.Title} | {GetYearRange()}", href: null, disabled: true));
         }
-        _currentCulture = await LocalStorage.GetItemAsync<string>("culture");
     }
 
     private string GetYearRange()
