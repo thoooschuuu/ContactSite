@@ -54,3 +54,7 @@ h5 {
     transform-origin: left top;
     transition: scale ease-out 0.5s;
 }
+
+ul {
+    list-style: disc outside;
+}

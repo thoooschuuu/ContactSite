@@ -1,9 +1,9 @@
-﻿<MudItem xs="12" sm="6">
+﻿<MudItem sm="12" md="6">
     <MudPaper Elevation="5" Class="pa-2 px-4">
         <MudText Typo="Typo.h5">@Title</MudText>
         @if (IsMarkdown == true)
         {
-            <MudPaper Class="px-4">
+            <MudPaper Class="px-4 mud-typography mud-typography-body1" Elevation="0">
                 @((MarkupString)Content)
             </MudPaper>
         }
