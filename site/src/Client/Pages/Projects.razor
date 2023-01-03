@@ -8,7 +8,7 @@
 
 <PageTitle>@Localizer.CompanyName - @Localizer.ProjectsPageTitle</PageTitle>
 
-<BasicBreadcrumbs AdditionalItems="_breadcrumbs" />
+<BasicBreadcrumbs AdditionalItems="_breadcrumbs"/>
 
 <MudText Typo="Typo.h3" GutterBottom="true">@Localizer.ProjectsHeader</MudText>
 
@@ -18,21 +18,23 @@
 }
 else
 {
-    <MudGrid Justify="Justify.Center">
-        <MudItem xs="12">
-            <MudPaper Elevation="5" Class="d-block overflow-auto pa-14 pa-sm-9 pa-md-4 pa-lg-0">
-                <MudToolBar>
-                    <MudText Typo="Typo.h6">@Localizer.Projects_Toolbar_Filter:</MudText>
-                    <MudChipSet MultiSelection="true" Filter="true" SelectedValuesChanged="ApplyTechnologyFilter" Class="d-block pt-8 pt-sm-4 pt-md-2 pt-lg-0">
-                        @foreach (var technology in _filteredTechnologies)
-                        {
-                            <MudChip Value="@technology.Name" Text="@(technology.Name + " (" + technology.Count + ")")" Color="@TechnologyService.GetColor(technology.Name)"></MudChip>
-                        }
-                    </MudChipSet>
-                </MudToolBar>
+    <MudGrid Spacing="1">
+        <MudItem xs="2">
+            <MudPaper Elevation="0" Class="d-flex mud-width-full align-center justify-center pa-8">
+                <MudText Typo="Typo.h6">@Localizer.Projects_Toolbar_Filter:</MudText>
             </MudPaper>
         </MudItem>
-        <MudItem xs="12" sm="8">
+        <MudItem xs="10">
+            <MudPaper Elevation="5" Class="pa-2">
+                <MudChipSet MultiSelection="true" Filter="true" SelectedValuesChanged="ApplyTechnologyFilter">
+                    @foreach (var technology in _filteredTechnologies)
+                    {
+                        <MudChip Value="@technology.Name" Text="@(technology.Name + " (" + technology.Count + ")")" Color="@TechnologyService.GetColor(technology.Name)"></MudChip>
+                    }
+                </MudChipSet>
+            </MudPaper>
+        </MudItem>
+        <MudItem sm="12" md="8">
             <MudTimeline >
 
                 @foreach (var project in _filteredProjects)
@@ -79,14 +81,14 @@ else
         _breadcrumbs.Add(new BreadcrumbItem(Localizer.ProjectsPageTitle, href: null, disabled: true));
         var route = "/api/Projects";
         _currentCulture = await LocalStorage.GetItemAsync<string>("culture");
-        if(!string.IsNullOrEmpty(_currentCulture))
+        if (!string.IsNullOrEmpty(_currentCulture))
         {
             route += "?culture=" + _currentCulture;
         }
         var projectsResponse = await Http.GetFromJsonAsync<ProjectsResponse>(route);
         _projects = projectsResponse?.Projects.OrderByDescending(p => p.StartDate).ToList() ?? new();
         _filteredProjects = _projects!.ToList();
-        
+
         _allTechnologies = _projects.SelectMany(p => p.Technologies).Distinct().ToList();
         CalculateFilteredTechnologies();
     }
@@ -96,13 +98,13 @@ else
         var endDate = project.EndDate.HasValue ? project.EndDate.Value.Year.ToString() : Localizer.Projects_Timeline_today;
         return $"{project.StartDate.Year} - {endDate}";
     }
-    
+
     private void ApplyTechnologyFilter(ICollection<object> values)
     {
         _filteredProjects = _projects!.Where(p => values.Select(c => (string)c).All(t => p.Technologies.Contains(t))).ToList();
         CalculateFilteredTechnologies();
     }
-    
+
     private void CalculateFilteredTechnologies()
     {
         _filteredTechnologies = _allTechnologies.Select(t => (t, _filteredProjects!.Count(p => p.Technologies.Contains(t)))).ToList();
