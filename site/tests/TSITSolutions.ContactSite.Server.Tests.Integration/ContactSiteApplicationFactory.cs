@@ -44,7 +44,8 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
             {
                 ["ProjectsDatabase:ConnectionString"] = _projectsDatabase.ConnectionString,
                 ["ProjectsDatabase:DatabaseName"] = _projectsDatabase.Database,
-                ["ProjectsDatabase:CollectionName"] = "Projects"
+                ["ProjectsDatabase:CollectionName"] = "Projects",
+                ["Caching:Enabled"] = "false"
             });
         });
     }
