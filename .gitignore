@@ -369,3 +369,5 @@ __queuestorage__
 
 appsettings.Development.json
 data
+
+.DS_Store
