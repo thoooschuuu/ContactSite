@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <RunAOTCompilation>true</RunAOTCompilation>
+        <RunAOTCompilation Condition="!$([MSBuild]::IsOSPlatform('OSX'))">true</RunAOTCompilation>
         <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
         <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
     </PropertyGroup>
