@@ -7,18 +7,20 @@
 <MudSnackbarProvider/>
 
 <MudLayout>
-    <MudAppBar>
+    <MudAppBar Elevation="1">
         <MudIconButton
             Icon="@Icons.Material.Filled.Menu"
             Color="Color.Inherit"
             Edge="Edge.Start"
             OnClick="@(DrawerToggle)"/>
-        @Localizer.CompanyName
+        <MudImage Src="images/logo-without-text-nobackground.svg" Height="64"  />
+        <MudText Typo="Typo.body1">@Localizer.CompanyName</MudText>
+        
         <MudSpacer/>
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/thoooschuuu/ContactSite" Target="_blank" Edge="Edge.End"/>
     </MudAppBar>
 
-    <MudDrawer @bind-Open="@_drawerOpen">
+    <MudDrawer @bind-Open="@_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
         <NavMenu/>
     </MudDrawer>
 
