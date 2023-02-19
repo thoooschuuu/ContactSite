@@ -13,6 +13,6 @@ updates:
       interval: "daily"
       
   - package-ecosystem: "nuget"
-    directory: "/" # Location of package manifests
+    directory: "/site" # Location of package manifests
     schedule:
       interval: "daily"
