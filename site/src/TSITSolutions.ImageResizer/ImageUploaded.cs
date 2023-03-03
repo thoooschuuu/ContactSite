@@ -1,6 +1,7 @@
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Advanced;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Processing;
 
@@ -18,7 +19,8 @@ public class ImageUploaded
     {
         log.LogInformation("C# Blob trigger function Processed blob\\n Name:{BlobNamee} \\n Size:{BlobLengthth} Bytes", blobName, myBlob.Length);
         
-        using var image = Image.Load(myBlob, out var format);
+        using var image = Image.Load(myBlob);
+        var format = image.Metadata.DecodedImageFormat!;
         Resize(image, 2, imageLarge, format);
         Resize(image, 4, imageMiddle, format);
         Resize(image, 8, imageSmall, format);
