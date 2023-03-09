@@ -1,11 +1,9 @@
-﻿using DotNet.Testcontainers.Builders;
-using DotNet.Testcontainers.Configurations;
-using DotNet.Testcontainers.Containers;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
+using Testcontainers.MongoDb;
 using TSITSolutions.ContactSite.Server.MongoDb;
 using TSITSolutions.ContactSite.Server.MongoDb.Model;
 using Xunit.Abstractions;
@@ -18,13 +16,9 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
     private IMongoCollection<StoreProject>? _storeProjectCollection;
     private IMongoCollection<CultureSpecificStoreProject>? _languageSpecificStoreProjectCollection;
 
-    private readonly TestcontainerDatabase _projectsDatabase = new TestcontainersBuilder<MongoDbTestcontainer>()
-        .WithDatabase(new MongoDbTestcontainerConfiguration
-        {
-            Database = "db",
-            Username = "mongo",
-            Password = "mongo",
-        })
+    private readonly MongoDbContainer _projectsDatabase = new MongoDbBuilder()
+        .WithUsername("mongo")
+        .WithPassword("mongo")
         .Build();
     
     protected override void ConfigureWebHost(IWebHostBuilder builder)
@@ -42,8 +36,8 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
         {
             configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
             {
-                ["ProjectsDatabase:ConnectionString"] = _projectsDatabase.ConnectionString,
-                ["ProjectsDatabase:DatabaseName"] = _projectsDatabase.Database,
+                ["ProjectsDatabase:ConnectionString"] = _projectsDatabase.GetConnectionString(),
+                ["ProjectsDatabase:DatabaseName"] = _projectsDatabase.Name,
                 ["ProjectsDatabase:CollectionName"] = "Projects",
                 ["Caching:Enabled"] = "false"
             });
@@ -69,8 +63,8 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
     public async Task InitializeAsync()
     {
         await _projectsDatabase.StartAsync();
-        var client = new MongoClient(_projectsDatabase.ConnectionString);
-        var database = client.GetDatabase(_projectsDatabase.Database);
+        var client = new MongoClient(_projectsDatabase.GetConnectionString());
+        var database = client.GetDatabase(_projectsDatabase.Name);
         _storeProjectCollection = database.GetCollection<StoreProject>(MongoSpecs.ProjectsCollectionName);
         _languageSpecificStoreProjectCollection = database.GetCollection<CultureSpecificStoreProject>(MongoSpecs.CultureSpecificProjectsCollectionName);
     }

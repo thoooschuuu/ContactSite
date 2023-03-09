@@ -7,6 +7,7 @@
         <DevelopmentDependency>true</DevelopmentDependency>
         <BuildOutputTargetFolder>analyzers</BuildOutputTargetFolder>
         <PackageScribanIncludeSource>true</PackageScribanIncludeSource>
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     </PropertyGroup>
 
     <ItemGroup>
