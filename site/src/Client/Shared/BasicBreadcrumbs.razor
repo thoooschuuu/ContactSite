@@ -1,4 +1,4 @@
-﻿@inject StronglyTypedStringLocalizerForResource Localizer
+﻿@inject IStringLocalizer<Resource> Localizer
 
 <MudBreadcrumbs Items="_items" Separator=">" />
 
@@ -11,7 +11,7 @@
     
     protected override void OnInitialized()
     {
-        _items.Add(new BreadcrumbItem(Localizer.Shared_Home, href: "/"));
+        _items.Add(new BreadcrumbItem(@Localizer["Shared_Home"], href: "/"));
         _items.AddRange(AdditionalItems);
     }
 }

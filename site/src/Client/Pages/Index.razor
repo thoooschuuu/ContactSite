@@ -1,12 +1,12 @@
 ﻿@page "/"
-@inject StronglyTypedStringLocalizerForResource Localizer
+@inject IStringLocalizer<Resource> Localizer
 
-<PageTitle>@Localizer.CompanyName</PageTitle>
+<PageTitle>@Localizer["CompanyName"]</PageTitle>
 
-<MudText Typo="Typo.h3">@Localizer.IndexWelcomeMessage</MudText>
+<MudText Typo="Typo.h3">@Localizer["IndexWelcomeMessage"]</MudText>
 <section>
-    <MudText Typo="Typo.subtitle1">@Localizer.IndexMeLine1</MudText>
-    <MudText Typo="Typo.body1">@Localizer.IndexMeLine2Part1</MudText>
-    <MudText Typo="Typo.body1">@Localizer.IndexMeLine2Part2</MudText>
-    <MudText Typo="Typo.body1">@Localizer.IndexMeLine3Part1</MudText>
+    <MudText Typo="Typo.subtitle1">@Localizer["IndexMeLine1"]</MudText>
+    <MudText Typo="Typo.body1">@Localizer["IndexMeLine2Part1"]</MudText>
+    <MudText Typo="Typo.body1">@Localizer["IndexMeLine2Part2"]</MudText>
+    <MudText Typo="Typo.body1">@Localizer["IndexMeLine3Part1"]</MudText>
 </section>
