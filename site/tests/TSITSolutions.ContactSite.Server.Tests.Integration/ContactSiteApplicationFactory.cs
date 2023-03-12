@@ -12,13 +12,13 @@ namespace TSITSolutions.ContactSite.Server.Tests.Integration;
 
 public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMarker>, IAsyncLifetime
 {
+    private const string ProjectsDatabaseName = "local";
     public ITestOutputHelper? Output { get; set; }
     private IMongoCollection<StoreProject>? _storeProjectCollection;
     private IMongoCollection<CultureSpecificStoreProject>? _languageSpecificStoreProjectCollection;
 
-    private readonly MongoDbContainer _projectsDatabase = new MongoDbBuilder()
+    private readonly MongoDbContainer _projectsDatabaseContainer = new MongoDbBuilder()
         .WithUsername("mongo")
-        .WithPassword("mongo")
         .Build();
     
     protected override void ConfigureWebHost(IWebHostBuilder builder)
@@ -36,8 +36,8 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
         {
             configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
             {
-                ["ProjectsDatabase:ConnectionString"] = _projectsDatabase.GetConnectionString(),
-                ["ProjectsDatabase:DatabaseName"] = _projectsDatabase.Name,
+                ["ProjectsDatabase:ConnectionString"] = _projectsDatabaseContainer.GetConnectionString(),
+                ["ProjectsDatabase:DatabaseName"] = ProjectsDatabaseName,
                 ["ProjectsDatabase:CollectionName"] = "Projects",
                 ["Caching:Enabled"] = "false"
             });
@@ -62,16 +62,16 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
 
     public async Task InitializeAsync()
     {
-        await _projectsDatabase.StartAsync();
-        var client = new MongoClient(_projectsDatabase.GetConnectionString());
-        var database = client.GetDatabase(_projectsDatabase.Name);
+        await _projectsDatabaseContainer.StartAsync();
+        var client = new MongoClient(_projectsDatabaseContainer.GetConnectionString());
+        var database = client.GetDatabase(ProjectsDatabaseName);
         _storeProjectCollection = database.GetCollection<StoreProject>(MongoSpecs.ProjectsCollectionName);
         _languageSpecificStoreProjectCollection = database.GetCollection<CultureSpecificStoreProject>(MongoSpecs.CultureSpecificProjectsCollectionName);
     }
 
     public new async Task DisposeAsync()
     {
-        await _projectsDatabase.StopAsync();
+        await _projectsDatabaseContainer.DisposeAsync().AsTask();
     }
     
     
