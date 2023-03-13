@@ -1,27 +1,27 @@
 ﻿@page "/Projects"
 @using TSITSolutions.ContactSite.Shared.Projects
 @using TSITSolutions.ContactSite.Client.Infrastructure
-@inject StronglyTypedStringLocalizerForResource Localizer
+@inject IStringLocalizer<Resource> Localizer
 @inject ILocalStorageService LocalStorage
 @inject TechnologyService TechnologyService
 @inject HttpClient Http
 
-<PageTitle>@Localizer.CompanyName - @Localizer.ProjectsPageTitle</PageTitle>
+<PageTitle>@Localizer["CompanyName"] - @Localizer["ProjectsPageTitle"]</PageTitle>
 
 <BasicBreadcrumbs AdditionalItems="_breadcrumbs"/>
 
-<MudText Typo="Typo.h3" GutterBottom="true">@Localizer.ProjectsHeader</MudText>
+<MudText Typo="Typo.h3" GutterBottom="true">@Localizer["ProjectsHeader"]</MudText>
 
 @if (_filteredProjects == null)
 {
-    <MudText Typo="Typo.body1">@Localizer.Shared_Loading</MudText>
+    <MudText Typo="Typo.body1">@Localizer["Shared_Loading"]</MudText>
 }
 else
 {
     <MudGrid Spacing="1">
         <MudItem xs="2">
             <MudPaper Elevation="0" Class="d-flex mud-width-full align-center justify-center pa-8">
-                <MudText Typo="Typo.h6">@Localizer.Projects_Toolbar_Filter:</MudText>
+                <MudText Typo="Typo.h6">@Localizer["Projects_Toolbar_Filter"]:</MudText>
             </MudPaper>
         </MudItem>
         <MudItem xs="10">
@@ -78,7 +78,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         _breadcrumbs.Clear();
-        _breadcrumbs.Add(new BreadcrumbItem(Localizer.ProjectsPageTitle, href: null, disabled: true));
+        _breadcrumbs.Add(new BreadcrumbItem(@Localizer["ProjectsPageTitle"], href: null, disabled: true));
         var route = "/api/Projects";
         _currentCulture = await LocalStorage.GetItemAsync<string>("culture");
         if (!string.IsNullOrEmpty(_currentCulture))
@@ -95,7 +95,7 @@ else
 
     private string GetYearRange(ProjectResponse project)
     {
-        var endDate = project.EndDate.HasValue ? project.EndDate.Value.Year.ToString() : Localizer.Projects_Timeline_today;
+        var endDate = project.EndDate.HasValue ? project.EndDate.Value.Year.ToString() : @Localizer["Projects_Timeline_today"];
         return $"{project.StartDate.Year} - {endDate}";
     }
 

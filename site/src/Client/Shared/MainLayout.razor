@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
-@inject StronglyTypedStringLocalizerForResource Localizer
 @inject ILocalStorageService LocalStorage
+@inject IStringLocalizer<Resource> Localizer
 
 <MudThemeProvider @ref="@_mudThemeProvider" Theme="_theme" @bind-IsDarkMode="@IsDarkMode" />
 <MudDialogProvider/>
@@ -14,7 +14,7 @@
             Edge="Edge.Start"
             OnClick="@(DrawerToggle)"/>
         <MudImage Src="images/logo-without-text-nobackground.svg" Height="64"  />
-        <MudText Typo="Typo.body1">@Localizer.CompanyName</MudText>
+        <MudText Typo="Typo.body1">@Localizer["CompanyName"]</MudText>
         
         <MudSpacer/>
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/thoooschuuu/ContactSite" Target="_blank" Edge="Edge.End"/>
@@ -35,9 +35,9 @@
         <MudSpacer/>
         <MudToggleIconButton 
             @bind-Toggled="@IsDarkMode"
-            Icon="@Icons.Filled.DarkMode"
-            ToggledIcon="@Icons.Filled.DarkMode"/>
-        <MudText>@Localizer.Main_DarkMode_Text @(IsDarkMode ? Localizer.Main_DarkMode_On : Localizer.Main_DarkMode_Off)</MudText>
+            Icon="@Icons.Material.Filled.DarkMode"
+            ToggledIcon="@Icons.Material.Filled.DarkMode"/>
+        <MudText>@Localizer["Main_DarkMode_Text"] @(IsDarkMode ? @Localizer["Main_DarkMode_On"] : @Localizer["Main_DarkMode_Off"])</MudText>
     </MudAppBar>
 </MudLayout>
 

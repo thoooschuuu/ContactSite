@@ -1,11 +1,9 @@
-﻿using DotNet.Testcontainers.Builders;
-using DotNet.Testcontainers.Configurations;
-using DotNet.Testcontainers.Containers;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
+using Testcontainers.MongoDb;
 using TSITSolutions.ContactSite.Server.MongoDb;
 using TSITSolutions.ContactSite.Server.MongoDb.Model;
 using Xunit.Abstractions;
@@ -14,17 +12,13 @@ namespace TSITSolutions.ContactSite.Server.Tests.Integration;
 
 public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMarker>, IAsyncLifetime
 {
+    private const string ProjectsDatabaseName = "local";
     public ITestOutputHelper? Output { get; set; }
     private IMongoCollection<StoreProject>? _storeProjectCollection;
     private IMongoCollection<CultureSpecificStoreProject>? _languageSpecificStoreProjectCollection;
 
-    private readonly TestcontainerDatabase _projectsDatabase = new TestcontainersBuilder<MongoDbTestcontainer>()
-        .WithDatabase(new MongoDbTestcontainerConfiguration
-        {
-            Database = "db",
-            Username = "mongo",
-            Password = "mongo",
-        })
+    private readonly MongoDbContainer _projectsDatabaseContainer = new MongoDbBuilder()
+        .WithUsername("mongo")
         .Build();
     
     protected override void ConfigureWebHost(IWebHostBuilder builder)
@@ -42,8 +36,8 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
         {
             configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
             {
-                ["ProjectsDatabase:ConnectionString"] = _projectsDatabase.ConnectionString,
-                ["ProjectsDatabase:DatabaseName"] = _projectsDatabase.Database,
+                ["ProjectsDatabase:ConnectionString"] = _projectsDatabaseContainer.GetConnectionString(),
+                ["ProjectsDatabase:DatabaseName"] = ProjectsDatabaseName,
                 ["ProjectsDatabase:CollectionName"] = "Projects",
                 ["Caching:Enabled"] = "false"
             });
@@ -68,16 +62,16 @@ public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMark
 
     public async Task InitializeAsync()
     {
-        await _projectsDatabase.StartAsync();
-        var client = new MongoClient(_projectsDatabase.ConnectionString);
-        var database = client.GetDatabase(_projectsDatabase.Database);
+        await _projectsDatabaseContainer.StartAsync();
+        var client = new MongoClient(_projectsDatabaseContainer.GetConnectionString());
+        var database = client.GetDatabase(ProjectsDatabaseName);
         _storeProjectCollection = database.GetCollection<StoreProject>(MongoSpecs.ProjectsCollectionName);
         _languageSpecificStoreProjectCollection = database.GetCollection<CultureSpecificStoreProject>(MongoSpecs.CultureSpecificProjectsCollectionName);
     }
 
     public new async Task DisposeAsync()
     {
-        await _projectsDatabase.StopAsync();
+        await _projectsDatabaseContainer.DisposeAsync().AsTask();
     }
     
     

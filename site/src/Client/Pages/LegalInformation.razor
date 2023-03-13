@@ -1,7 +1,7 @@
 ﻿@page "/LegalInformation"
-@inject StronglyTypedStringLocalizerForResource Localizer
+@inject IStringLocalizer<Resource> Localizer
 
-<PageTitle>@Localizer.CompanyName - @Localizer.LegalInformationPageTitle</PageTitle>
+<PageTitle>@Localizer["CompanyName"] - @Localizer["LegalInformationPageTitle"]</PageTitle>
 
 <MudText Typo="Typo.h3">Impressum</MudText>
 
