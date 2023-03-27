@@ -26,7 +26,7 @@
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.4" PrivateAssets="all" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.4" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.4" />
-    <PackageVersion Include="Microsoft.Azure.WebJobs.Extensions.Storage.Blobs" Version="5.1.0" />
+    <PackageVersion Include="Microsoft.Azure.WebJobs.Extensions.Storage.Blobs" Version="5.1.1" />
     <PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="4.5.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.5.0" PrivateAssets="all" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.5.0" />
