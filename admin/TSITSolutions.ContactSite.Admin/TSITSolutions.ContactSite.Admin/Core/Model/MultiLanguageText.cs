@@ -16,4 +16,8 @@ public class MultiLanguageText : Dictionary<string, string>
         new(texts.ToDictionary(x => x.language, x => x.text));
     
     public string GetDefaultText() => this["de-DE"];
+    
+    public new string this[string language] => TryGetValue(language, out var text) ? text : string.Empty;
+    
+    public IEnumerable<string> GetCultures() => Keys;
 }

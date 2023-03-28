@@ -11,13 +11,16 @@ public record Project(
     IReadOnlyCollection<string> Technologies
 )
 {
-    public static Project Empty => new(
-        Guid.Empty, 
-        MultiLanguageText.Empty, 
-        MultiLanguageText.Empty, 
-        MultiLanguageText.Empty, 
-        MultiLanguageText.Empty, 
-        default, 
-        default, 
+    public static Project Empty { get; } = new(
+        Guid.Empty,
+        MultiLanguageText.Empty,
+        MultiLanguageText.Empty,
+        MultiLanguageText.Empty,
+        MultiLanguageText.Empty,
+        default,
+        default,
         Array.Empty<string>());
+    
+    public IEnumerable<string> GetCultures() =>
+        Title.GetCultures().Concat(Description.GetCultures()).Concat(Role.GetCultures()).Concat(CustomerDomain.GetCultures()).Distinct();
 };

@@ -13,7 +13,7 @@ public class GetProjectListEndpoint : EndpointWithoutRequest<ProjectsResponse, G
     {
         _projectRepository = projectRepository;
     }
-    
+
     public override void Configure()
     {
         Get("/projects");
@@ -22,7 +22,7 @@ public class GetProjectListEndpoint : EndpointWithoutRequest<ProjectsResponse, G
 
     public override async Task HandleAsync(CancellationToken ct)
     {
-        var projects = await  _projectRepository.GetAllAsync(ct);
+        var projects = await _projectRepository.GetAllAsync(ct);
         Response = Map.FromEntity(projects);
         await SendAsync(Response, cancellation: ct);
     }

@@ -42,8 +42,6 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
-
 app.UseFastEndpoints(x =>
     {
         x.Endpoints.RoutePrefix = "api";
