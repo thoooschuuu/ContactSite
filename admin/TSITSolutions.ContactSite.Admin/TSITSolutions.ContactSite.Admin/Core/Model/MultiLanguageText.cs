@@ -1,8 +1,11 @@
+using System.Text.Json.Serialization;
+
 namespace TSITSolutions.ContactSite.Admin.Core.Model;
 
 public class MultiLanguageText : Dictionary<string, string>
 {
-    private MultiLanguageText()
+    [JsonConstructor]
+    public MultiLanguageText()
     {
     }
     

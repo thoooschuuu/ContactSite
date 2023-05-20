@@ -3,7 +3,6 @@
 namespace TSITSolutions.ContactSite.Admin.Projects.Contracts;
 
 public record AddProjectRequest(
-        Guid Id,
         MultiLanguageText Title,
         MultiLanguageText? Description,
         MultiLanguageText? Role,

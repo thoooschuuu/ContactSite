@@ -51,4 +51,4 @@ app.UseFastEndpoints(x =>
 
 app.MapRazorPages();
 
-app.Run();
+app.Run("http://localhost:5003");

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using TSITSolutions.ContactSite.Admin.Core.Model;
 using TSITSolutions.ContactSite.Admin.Core.Services;
 using TSITSolutions.ContactSite.Admin.Data.Configuration;
@@ -43,7 +44,10 @@ public class MongoDbProjectRepository : IProjectRepository
     public async ValueTask AddAsync(Project project, CancellationToken ct)
     {
         var storeProject = project.ToStoreProject();
-        var cultureSpecificProjects = project.GetCultures().Select(project.ToCultureSpecificStoreProject);
+        var cultureSpecificProjects =
+            project.GetCultures()
+                .Select(project.ToCultureSpecificStoreProject)
+                .Where(p => p.Culture != "de-DE");
         
         var sessionOptions = new ClientSessionOptions {CausalConsistency = true};
         using var session = await _client.StartSessionAsync(sessionOptions, ct);
