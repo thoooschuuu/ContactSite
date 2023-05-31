@@ -14,7 +14,7 @@ if (!builder.Environment.IsDevelopment())
     {
         var connectionString = builder.Configuration.GetConnectionString("AppConfig");
         var credential = new DefaultAzureCredential();
-        configBuilder.Connect(new Uri(connectionString), credential)
+        configBuilder.Connect(new Uri(connectionString!), credential)
             .ConfigureKeyVault(kv => kv.SetCredential(credential))
             .Select(KeyFilter.Any, "contact-site")
             .ConfigureRefresh(refresh =>
@@ -26,7 +26,7 @@ if (!builder.Environment.IsDevelopment())
 }
 
 builder.Services.AddFastEndpoints();
-builder.Services.AddSwaggerDoc();
+builder.Services.SwaggerDocument();
 builder.Services.AddApplicationInsightsTelemetry();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
