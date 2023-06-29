@@ -49,7 +49,7 @@
     <PackageVersion Include="MudBlazor" Version="6.5.0" />
     <PackageVersion Include="Scriban" Version="5.7.0" />
     <PackageVersion Include="SixLabors.ImageSharp" Version="3.0.1" />
-    <PackageVersion Include="Testcontainers" Version="3.2.0" />
+    <PackageVersion Include="Testcontainers" Version="3.3.0" />
     <PackageVersion Include="Testcontainers.MongoDb" Version="3.3.0" />
     <PackageVersion Include="xunit" Version="2.4.2" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.4.5">
