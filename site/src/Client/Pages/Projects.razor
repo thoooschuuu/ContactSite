@@ -29,7 +29,9 @@ else
                 <MudChipSet MultiSelection="true" Filter="true" SelectedValuesChanged="ApplyTechnologyFilter">
                     @foreach (var technology in _filteredTechnologies)
                     {
-                        <MudChip Value="@technology.Name" Text="@(technology.Name + " (" + technology.Count + ")")" Color="@TechnologyService.GetColor(technology.Name)"></MudChip>
+                        <MudChip Value="@technology.Name">
+                            <MudText Typo="Typo.button">@technology.Name (@technology.Count)</MudText>
+                        </MudChip>
                     }
                 </MudChipSet>
             </MudPaper>

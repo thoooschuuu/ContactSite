@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using MudBlazor.Utilities
+@inherits LayoutComponentBase
 @inject ILocalStorageService LocalStorage
 @inject IStringLocalizer<Resource> Localizer
 
@@ -87,6 +88,14 @@
             {
                 FontFamily = new[] { "Arimo", "Helvetica", "Arial", "sans-serif" }
             }
+        },
+        Palette = new PaletteLight
+        {
+            AppbarBackground = "rgba(255, 194, 80, 1)"
+        },
+        PaletteDark = new PaletteDark
+        {
+            AppbarBackground = "rgba(18, 19, 19, 1)"
         }
     };
 
