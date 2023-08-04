@@ -44,7 +44,7 @@
     <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
     <PackageVersion Include="Microsoft.NET.Build.Containers" Version="7.0.306" />
     <PackageVersion Include="Microsoft.NET.Sdk.Functions" Version="4.2.0" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.7.0" />
     <PackageVersion Include="MongoDB.Driver" Version="2.20.0" />
     <PackageVersion Include="MudBlazor" Version="6.7.0" />
     <PackageVersion Include="Scriban" Version="5.7.0" />
