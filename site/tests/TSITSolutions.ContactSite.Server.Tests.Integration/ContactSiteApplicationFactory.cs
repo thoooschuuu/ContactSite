@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using JetBrains.Annotations;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -10,7 +11,8 @@ using Xunit.Abstractions;
 
 namespace TSITSolutions.ContactSite.Server.Tests.Integration;
 
-public class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMarker>, IAsyncLifetime
+[UsedImplicitly]
+public sealed class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMarker>, IAsyncLifetime
 {
     private const string ProjectsDatabaseName = "local";
     public ITestOutputHelper? Output { get; set; }

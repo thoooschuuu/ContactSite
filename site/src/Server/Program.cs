@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 if (!builder.Environment.IsDevelopment())
 {
-    Console.WriteLine("Not development environment");
+    Console.WriteLine(@"Not development environment");
     builder.Configuration.AddAzureAppConfiguration(configBuilder =>
     {
         var connectionString = builder.Configuration.GetConnectionString("AppConfig");
