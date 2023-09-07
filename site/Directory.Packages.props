@@ -11,7 +11,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageVersion>
-    <PackageVersion Include="FastEndpoints" Version="5.17.1" />
+    <PackageVersion Include="FastEndpoints" Version="5.17.1.1" />
     <PackageVersion Include="FastEndpoints.Swagger" Version="5.17.1.1" />
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />
     <PackageVersion Include="FluentAssertions.Analyzers" Version="0.24.0">
@@ -47,7 +47,7 @@
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
     <PackageVersion Include="MongoDB.Driver" Version="2.21.0" />
     <PackageVersion Include="MudBlazor" Version="6.9.0" />
-    <PackageVersion Include="Scriban" Version="5.8.0" />
+    <PackageVersion Include="Scriban" Version="5.9.0" />
     <PackageVersion Include="SixLabors.ImageSharp" Version="3.0.2" />
     <PackageVersion Include="Testcontainers" Version="3.4.0" />
     <PackageVersion Include="Testcontainers.MongoDb" Version="3.4.0" />
