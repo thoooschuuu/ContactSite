@@ -13,7 +13,6 @@
         <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
         <PackageReference Include="Microsoft.Extensions.Configuration.AzureAppConfiguration" />
-        <PackageReference Include="Microsoft.NET.Build.Containers" />
     </ItemGroup>
 
     <ItemGroup>
@@ -22,6 +21,5 @@
         <ProjectReference Include="..\TSITSolutions.ContactSite.Server.Core\TSITSolutions.ContactSite.Server.Core.csproj" />
         <ProjectReference Include="..\TSITSolutions.ContactSite.Server.MongoDb\TSITSolutions.ContactSite.Server.MongoDb.csproj" />
     </ItemGroup>
-
 
 </Project>
