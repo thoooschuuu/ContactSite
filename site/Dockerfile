@@ -1,9 +1,9 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:7.0 as base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 as base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 RUN dotnet tool install --global wasm-tools
@@ -27,7 +27,7 @@ FROM build as publish
 WORKDIR /app/src/Server
 RUN dotnet publish -c Release -o publish --no-build
 
-FROM mcr.microsoft.com/dotnet/aspnet:7.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=publish /app/src/Server/publish .
 COPY ["src/Server/cert.pfx", "/https/cert.pfx"]

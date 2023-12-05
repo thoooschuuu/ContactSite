@@ -23,7 +23,7 @@ resource "azurerm_linux_function_app" "resize_function" {
     minimum_tls_version                    = 1.2
 
     application_stack {
-      dotnet_version = "7.0"
+      dotnet_version = "8.0"
     }
   }
 

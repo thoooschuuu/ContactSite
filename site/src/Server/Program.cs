@@ -68,7 +68,7 @@ app.UseFastEndpoints(x =>
     );
 
 app.UseOpenApi();
-app.UseSwaggerUi3(s => s.ConfigureDefaults());
+app.UseSwaggerUi(s => s.ConfigureDefaults());
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();

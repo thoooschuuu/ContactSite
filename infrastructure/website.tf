@@ -21,7 +21,7 @@ resource "azurerm_linux_web_app" "website_app" {
     use_32_bit_worker = false
 
     application_stack {
-      dotnet_version = "7.0"
+      dotnet_version = "8.0"
     }
   }
 
