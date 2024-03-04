@@ -8,8 +8,8 @@
     <ItemGroup>
         <PackageReference Include="FluentAssertions" />
         <PackageReference Include="FluentAssertions.Analyzers" />
-        <PackageReference Include="Microsoft.CodeAnalysis.Common" VersionOverride="4.8.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" VersionOverride="4.8.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Common" VersionOverride="4.9.2" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" VersionOverride="4.9.2" />
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.SourceGenerators.Testing.XUnit" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" />
