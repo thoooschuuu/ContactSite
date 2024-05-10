@@ -43,7 +43,7 @@
     <PackageVersion Include="Microsoft.Extensions.Localization" Version="8.0.4" />
     <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.NET.Build.Containers" Version="7.0.403" />
-    <PackageVersion Include="Microsoft.NET.Sdk.Functions" Version="4.3.0" />
+    <PackageVersion Include="Microsoft.NET.Sdk.Functions" Version="4.4.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageVersion Include="MongoDB.Driver" Version="2.25.0" />
     <PackageVersion Include="MudBlazor" Version="6.19.1" />
