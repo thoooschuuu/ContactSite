@@ -48,7 +48,7 @@
     <PackageVersion Include="MongoDB.Driver" Version="2.27.0" />
     <PackageVersion Include="MudBlazor" Version="6.20.0" />
     <PackageVersion Include="Scriban" Version="5.10.0" />
-    <PackageVersion Include="SixLabors.ImageSharp" Version="3.1.4" />
+    <PackageVersion Include="SixLabors.ImageSharp" Version="3.1.5" />
     <PackageVersion Include="Testcontainers" Version="3.6.0" />
     <PackageVersion Include="Testcontainers.MongoDb" Version="3.6.0" />
     <PackageVersion Include="xunit" Version="2.9.0" />
