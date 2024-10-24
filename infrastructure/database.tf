@@ -29,7 +29,7 @@ resource "azurerm_cosmosdb_mongo_database" "db" {
 
 resource "azurerm_key_vault_secret" "projects_database_connection_string" {
   name         = "ProjectsDatabase-ConnectionString"
-  value        = azurerm_cosmosdb_account.db_account.connection_strings[0]
+  value        = azurerm_cosmosdb_account.db_account.primary_mongodb_connection_string
   key_vault_id = azurerm_key_vault.keyvault.id
 
   depends_on = [
