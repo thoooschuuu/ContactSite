@@ -6,6 +6,10 @@ resource "azurerm_resource_group" "rg" {
 
 data "azurerm_client_config" "current" {}
 
+data "azuread_service_principal" "deployment_account" {
+  object_id = data.azurerm_client_config.current.client_id
+}
+
 data "azuread_group" "owner" {
   display_name = var.aad_group_site_owners
 }
