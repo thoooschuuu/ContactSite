@@ -1,12 +1,12 @@
 resource "azurerm_cosmosdb_account" "db_account" {
-  name                            = format(local.resource_type_templates.cosmosdb, "account")
-  location                        = local.location
-  resource_group_name             = azurerm_resource_group.rg.name
-  offer_type                      = "Standard"
-  kind                            = "MongoDB"
-  enable_free_tier                = true
-  enable_automatic_failover       = false
-  enable_multiple_write_locations = false
+  name                             = format(local.resource_type_templates.cosmosdb, "account")
+  location                         = local.location
+  resource_group_name              = azurerm_resource_group.rg.name
+  offer_type                       = "Standard"
+  kind                             = "MongoDB"
+  free_tier_enabled                = true
+  automatic_failover_enabled       = false
+  multiple_write_locations_enabled = false
 
   consistency_policy {
     consistency_level = "Session"
