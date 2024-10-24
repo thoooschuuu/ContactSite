@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "rg" {
 data "azurerm_client_config" "current" {}
 
 data "azuread_service_principal" "deployment_account" {
-  application_id = data.azurerm_client_config.current.client_id
+  client_id = data.azurerm_client_config.current.client_id
 }
 
 data "azuread_group" "owner" {
