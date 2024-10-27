@@ -15,14 +15,30 @@ namespace TSITSolutions.ContactSite.Server.Tests.Integration;
 public sealed class ContactSiteApplicationFactory : WebApplicationFactory<IAssemblyMarker>, IAsyncLifetime
 {
     private const string ProjectsDatabaseName = "local";
-    public ITestOutputHelper? Output { get; set; }
-    private IMongoCollection<StoreProject>? _storeProjectCollection;
-    private IMongoCollection<CultureSpecificStoreProject>? _languageSpecificStoreProjectCollection;
 
     private readonly MongoDbContainer _projectsDatabaseContainer = new MongoDbBuilder()
         .WithUsername("mongo")
         .Build();
-    
+
+    private IMongoCollection<CultureSpecificStoreProject>? _languageSpecificStoreProjectCollection;
+    private IMongoCollection<StoreProject>? _storeProjectCollection;
+    public ITestOutputHelper? Output { get; set; }
+
+    public async Task InitializeAsync()
+    {
+        await _projectsDatabaseContainer.StartAsync();
+        var client = new MongoClient(_projectsDatabaseContainer.GetConnectionString());
+        var database = client.GetDatabase(ProjectsDatabaseName);
+        _storeProjectCollection = database.GetCollection<StoreProject>(MongoSpecs.ProjectsCollectionName);
+        _languageSpecificStoreProjectCollection =
+            database.GetCollection<CultureSpecificStoreProject>(MongoSpecs.CultureSpecificProjectsCollectionName);
+    }
+
+    public new async Task DisposeAsync()
+    {
+        await _projectsDatabaseContainer.DisposeAsync().AsTask();
+    }
+
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.ConfigureLogging(logging =>
@@ -33,7 +49,7 @@ public sealed class ContactSiteApplicationFactory : WebApplicationFactory<IAssem
                 logging.AddXUnit(Output);
             }
         });
-        
+
         builder.ConfigureAppConfiguration(configBuilder =>
         {
             configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
@@ -45,36 +61,21 @@ public sealed class ContactSiteApplicationFactory : WebApplicationFactory<IAssem
             });
         });
     }
-    
+
     public async Task AddProject(StoreProject project)
     {
         await _storeProjectCollection!.InsertOneAsync(project);
     }
-    
+
     public async Task AddCultureSpecificProject(CultureSpecificStoreProject project)
     {
         await _languageSpecificStoreProjectCollection!.InsertOneAsync(project);
     }
-    
+
     public async Task ClearCollections()
     {
         await _storeProjectCollection!.DeleteManyAsync(FilterDefinition<StoreProject>.Empty);
-        await _languageSpecificStoreProjectCollection!.DeleteManyAsync(FilterDefinition<CultureSpecificStoreProject>.Empty);
+        await _languageSpecificStoreProjectCollection!.DeleteManyAsync(FilterDefinition<CultureSpecificStoreProject>
+            .Empty);
     }
-
-    public async Task InitializeAsync()
-    {
-        await _projectsDatabaseContainer.StartAsync();
-        var client = new MongoClient(_projectsDatabaseContainer.GetConnectionString());
-        var database = client.GetDatabase(ProjectsDatabaseName);
-        _storeProjectCollection = database.GetCollection<StoreProject>(MongoSpecs.ProjectsCollectionName);
-        _languageSpecificStoreProjectCollection = database.GetCollection<CultureSpecificStoreProject>(MongoSpecs.CultureSpecificProjectsCollectionName);
-    }
-
-    public new async Task DisposeAsync()
-    {
-        await _projectsDatabaseContainer.DisposeAsync().AsTask();
-    }
-    
-    
 }

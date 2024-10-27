@@ -2,5 +2,5 @@
 
 public class ProjectsResponse
 {
-    public IEnumerable<ProjectResponse> Projects { get; set; } = Enumerable.Empty<ProjectResponse>();
+    public IEnumerable<ProjectResponse> Projects { get; set; } = [];
 }

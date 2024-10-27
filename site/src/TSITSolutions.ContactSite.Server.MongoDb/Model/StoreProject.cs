@@ -1,9 +1,11 @@
-﻿using TSITSolutions.ContactSite.Server.Core;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using TSITSolutions.ContactSite.Server.Core;
 
 namespace TSITSolutions.ContactSite.Server.MongoDb.Model;
 
 public record StoreProject(
-    Guid Id, 
+    [property:BsonGuidRepresentation(GuidRepresentation.CSharpLegacy)] Guid Id, 
     string Title, 
     string Description, 
     string Role,

@@ -19,8 +19,8 @@ if (!builder.Environment.IsDevelopment())
             .Select(KeyFilter.Any, "contact-site")
             .ConfigureRefresh(refresh =>
             {
-                refresh.Register("contact-site:Cache:Refresh", refreshAll: true)
-                    .SetCacheExpiration(TimeSpan.FromMinutes(30));
+                refresh.Register("contact-site:Cache:Refresh", true)
+                    .SetRefreshInterval(TimeSpan.FromMinutes(30));
             });
     });
 }
@@ -33,10 +33,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddHealthChecks();
 
 builder.Services.Configure<CachingSettings>(builder.Configuration.GetSection("Caching"));
-builder.Services.AddResponseCaching(options =>
-{
-    options.UseCaseSensitivePaths = false;
-});
+builder.Services.AddResponseCaching(options => { options.UseCaseSensitivePaths = false; });
 
 builder.Services.AddMongoDbStore(builder.Configuration);
 
@@ -58,14 +55,14 @@ else
 }
 
 app.UseHttpsRedirection();
-if(!app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
     app.UseResponseCaching();
 }
 
 app.UseFastEndpoints(x =>
     x.Errors.ResponseBuilder = (failures, _, _) => failures.Select(f => f.ErrorMessage)
-    );
+);
 
 app.UseOpenApi();
 app.UseSwaggerUi(s => s.ConfigureDefaults());

@@ -4,5 +4,6 @@ public static class LocalizerSettings
 {
     public const string NeutralCulture = "de-DE";
 
-    public static readonly (string, string)[] SupportedCulturesWithName = { ("Deutsch", NeutralCulture), ("English", "en-US") };
+    public static readonly (string, string)[] SupportedCulturesWithName = [("Deutsch", NeutralCulture), ("English", "en-US")
+    ];
 }
