@@ -8,12 +8,12 @@ using TSITSolutions.ContactSite.Admin.Data.Services;
 namespace TSITSolutions.ContactSite.Admin.Data;
 
 public static class Registration
-{    
+{
     public static IServiceCollection AddMongoDbStore(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<MongoDbOptions>(configuration.GetSection("ProjectsDatabase"));
         services.AddSingleton<IProjectRepository, MongoDbProjectRepository>();
-        BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+        BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.CSharpLegacy));
         return services;
     }
 }

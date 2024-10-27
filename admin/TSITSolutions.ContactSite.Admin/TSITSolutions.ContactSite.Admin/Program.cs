@@ -11,13 +11,13 @@ if (!builder.Environment.IsDevelopment())
     {
         var connectionString = builder.Configuration.GetConnectionString("AppConfig");
         var credential = new DefaultAzureCredential();
-        configBuilder.Connect(new Uri(connectionString), credential)
+        configBuilder.Connect(new Uri(connectionString!), credential)
             .ConfigureKeyVault(kv => kv.SetCredential(credential))
             .Select(KeyFilter.Any, "contact-site")
             .ConfigureRefresh(refresh =>
             {
-                refresh.Register("contact-site:Cache:Refresh", refreshAll: true)
-                    .SetCacheExpiration(TimeSpan.FromMinutes(30));
+                refresh.Register("contact-site:Cache:Refresh", true)
+                    .SetRefreshInterval(TimeSpan.FromMinutes(30));
             });
     });
 }
