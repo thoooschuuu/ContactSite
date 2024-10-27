@@ -364,6 +364,7 @@ __queuestorage__
 # Terraform
 *.tfstate
 .terraform.lock.hcl
+.terraform/
 
 *.exe
 

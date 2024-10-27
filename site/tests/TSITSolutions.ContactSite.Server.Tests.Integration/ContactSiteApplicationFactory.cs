@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using Testcontainers.MongoDb;
 using TSITSolutions.ContactSite.Server.MongoDb;
@@ -62,6 +65,7 @@ public sealed class ContactSiteApplicationFactory : WebApplicationFactory<IAssem
         await _languageSpecificStoreProjectCollection!.DeleteManyAsync(FilterDefinition<CultureSpecificStoreProject>.Empty);
     }
 
+    private static bool standardGuidSerializerRegistered = false;
     public async Task InitializeAsync()
     {
         await _projectsDatabaseContainer.StartAsync();

@@ -1,4 +1,7 @@
-﻿using TSITSolutions.ContactSite.Admin.Core.Services;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
+using TSITSolutions.ContactSite.Admin.Core.Services;
 using TSITSolutions.ContactSite.Admin.Data.Configuration;
 using TSITSolutions.ContactSite.Admin.Data.Services;
 
@@ -10,6 +13,7 @@ public static class Registration
     {
         services.Configure<MongoDbOptions>(configuration.GetSection("ProjectsDatabase"));
         services.AddSingleton<IProjectRepository, MongoDbProjectRepository>();
+        BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
         return services;
     }
 }

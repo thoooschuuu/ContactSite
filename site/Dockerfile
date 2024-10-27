@@ -12,10 +12,6 @@ COPY ["TSITSolutions.ContactSite.sln","."]
 COPY ["./src/Client/TSITSolutions.ContactSite.Client.csproj","src/Client/"]
 COPY ["./src/Server/TSITSolutions.ContactSite.Server.csproj","src/Server/"]
 COPY ["./src/Shared/TSITSolutions.ContactSite.Shared.csproj","src/Shared/"]
-COPY ["./src/StringLocalizerSourceGenerator/TSITSolutions.StringLocalizerSourceGenerator.csproj","src/StringLocalizerSourceGenerator/"]
-COPY ["./src/TSITSolutions.ImageResizer/TSITSolutions.ImageResizer.csproj","src/TSITSolutions.ImageResizer/"]
-COPY ["./tests/TSITSolutions.StringLocalizerSourceGenerator.Tests.Integration/TSITSolutions.StringLocalizerSourceGenerator.Tests.Integration.csproj","tests/TSITSolutions.StringLocalizerSourceGenerator.Tests.Integration/"]
-
 RUN dotnet restore
 
 COPY . .

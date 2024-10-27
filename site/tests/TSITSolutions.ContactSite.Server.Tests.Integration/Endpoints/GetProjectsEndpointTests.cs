@@ -19,8 +19,10 @@ public class GetProjectsEndpointTests : IClassFixture<ContactSiteApplicationFact
     [Fact]
     public async Task Endpoint_ReturnsAllProjects_WhenAskedTo()
     {
-        await _factory.AddProject(new StoreProject(Guid.NewGuid(), "p1", "d1", "r1", "cd1", new DateTime(2023,1,1), null, new []{ "t1", "t2" }));
-        await _factory.AddProject(new StoreProject(Guid.NewGuid(), "p2", "d2", "r2", "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31), new []{ "t3", "t4" }));
+        await _factory.AddProject(new StoreProject(Guid.NewGuid(), "p1", "d1", "r1", "cd1", new DateTime(2023,1,1), null,
+            ["t1", "t2"]));
+        await _factory.AddProject(new StoreProject(Guid.NewGuid(), "p2", "d2", "r2", "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31),
+            ["t3", "t4"]));
         
         var client = _factory.CreateClient();
         var response = await client.GetAsync("/api/projects");
@@ -37,8 +39,10 @@ public class GetProjectsEndpointTests : IClassFixture<ContactSiteApplicationFact
     {
         var id1 = Guid.NewGuid();
         var id2 = Guid.NewGuid();
-        await _factory.AddProject(new StoreProject(id1, "p1", "d1", "r1", "cd1", new DateTime(2023,1,1), null, new []{ "t1", "t2" }));
-        await _factory.AddProject(new StoreProject(id2, "p2", "d2", "r2", "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31), new []{ "t3", "t4" }));
+        await _factory.AddProject(new StoreProject(id1, "p1", "d1", "r1", "cd1", new DateTime(2023,1,1), null, ["t1", "t2"
+        ]));
+        await _factory.AddProject(new StoreProject(id2, "p2", "d2", "r2", "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31),
+            ["t3", "t4"]));
         await _factory.AddCultureSpecificProject(new CultureSpecificStoreProject(Guid.NewGuid(), id1, "en1", "d1-en", "r1-en", "cd1-en", "en-US"));
         await _factory.AddCultureSpecificProject(new CultureSpecificStoreProject(Guid.NewGuid(), id2, "en2", "d2-en", "r2-en", "cd2-en", "en-US"));
 
@@ -67,7 +71,8 @@ public class GetProjectsEndpointTests : IClassFixture<ContactSiteApplicationFact
     public async Task Endpoint_ReturnsAllProjectsWithCultureSpecificOverrides_WhenAskedTo()
     {
         var id2 = Guid.NewGuid();
-        await _factory.AddProject(new StoreProject(id2, "p2", "d2", "r2", "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31), new []{ "t3", "t4" }));
+        await _factory.AddProject(new StoreProject(id2, "p2", "d2", "r2", "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31),
+            ["t3", "t4"]));
         await _factory.AddCultureSpecificProject(new CultureSpecificStoreProject(Guid.NewGuid(), id2, "en", "p2-en", "d2-en", "r2-en", "en-US"));
         
         var client = _factory.CreateClient();
