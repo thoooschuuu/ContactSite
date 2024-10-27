@@ -21,8 +21,10 @@ public class GetProjectEndpointTests : IClassFixture<ContactSiteApplicationFacto
     {
         var id1 = Guid.NewGuid();
         var id2 = Guid.NewGuid();
-        await _factory.AddProject(new StoreProject(id1, "p1", "d1", "r1", "cd1", new DateTime(2023,1,1), null, new []{ "t1", "t2" }));
-        await _factory.AddProject(new StoreProject(id2, "p2", "d2", "r2", "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31), new []{ "t3", "t4" }));
+        await _factory.AddProject(new StoreProject(id1, "p1", "d1", "r1", "cd1", new DateTime(2023,1,1), null, ["t1", "t2"
+        ]));
+        await _factory.AddProject(new StoreProject(id2, "p2", "d2", "r2", "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31),
+            ["t3", "t4"]));
         
         var client = _factory.CreateClient();
         var response = await client.GetAsync($"/api/projects/{id2}");
@@ -41,7 +43,8 @@ public class GetProjectEndpointTests : IClassFixture<ContactSiteApplicationFacto
         var id = Guid.NewGuid();
         const string descriptionWithMarkdown = "This is a [desc](https://www.google.com)";
         const string roleWithMarkdown = "This is a [role](https://www.google.com)";
-        await _factory.AddProject(new StoreProject(id, "p2", descriptionWithMarkdown, roleWithMarkdown, "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31), new []{ "t3", "t4" }));
+        await _factory.AddProject(new StoreProject(id, "p2", descriptionWithMarkdown, roleWithMarkdown, "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31),
+            ["t3", "t4"]));
         
         var client = _factory.CreateClient();
         var response = await client.GetAsync($"/api/projects/{id}");
@@ -58,7 +61,8 @@ public class GetProjectEndpointTests : IClassFixture<ContactSiteApplicationFacto
     public async Task Endpoint_ReturnsSingleProjectWithCultureSpecificOverrides_WhenAskedTo()
     {
         var id2 = Guid.NewGuid();
-        await _factory.AddProject(new StoreProject(id2, "p2", "d2", "r2", "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31), new []{ "t3", "t4" }));
+        await _factory.AddProject(new StoreProject(id2, "p2", "d2", "r2", "cd2", new DateTime(2022,1,1), new DateTime(2022,12,31),
+            ["t3", "t4"]));
         await _factory.AddCultureSpecificProject(new CultureSpecificStoreProject(Guid.NewGuid(), id2, "en", "p2-en", "d2-en", "r2-en", "en-US"));
         
         var client = _factory.CreateClient();
