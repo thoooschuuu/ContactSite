@@ -4,6 +4,7 @@ resource "azurerm_cosmosdb_account" "db_account" {
   resource_group_name              = azurerm_resource_group.rg.name
   offer_type                       = "Standard"
   kind                             = "MongoDB"
+  mongo_server_version             = "4.2"
   free_tier_enabled                = true
   automatic_failover_enabled       = false
   multiple_write_locations_enabled = false
