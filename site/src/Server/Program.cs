@@ -20,7 +20,7 @@ if (!builder.Environment.IsDevelopment())
             .ConfigureRefresh(refresh =>
             {
                 refresh.Register("contact-site:Cache:Refresh", true)
-                    .SetCacheExpiration(TimeSpan.FromMinutes(30));
+                    .SetRefreshInterval(TimeSpan.FromMinutes(30));
             });
     });
 }

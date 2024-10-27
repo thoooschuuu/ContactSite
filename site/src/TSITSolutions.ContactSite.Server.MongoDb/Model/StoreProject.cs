@@ -5,7 +5,7 @@ using TSITSolutions.ContactSite.Server.Core;
 namespace TSITSolutions.ContactSite.Server.MongoDb.Model;
 
 public record StoreProject(
-    [property:BsonGuidRepresentation(GuidRepresentation.Standard)] Guid Id, 
+    [property:BsonGuidRepresentation(GuidRepresentation.CSharpLegacy)] Guid Id, 
     string Title, 
     string Description, 
     string Role,
