@@ -37,8 +37,10 @@ jobs:
         /p:CoverletOutputFormat=opencover
         
     - name: Upload Coverage to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v5
       with:
         files: ./coverage/coverage.opencover.xml
         fail_ci_if_error: true
         verbose: true
+        token: ${{ secrets.CODECOV_TOKEN }}
+        slug: thoooschuuu/ContactSite
