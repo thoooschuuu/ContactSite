@@ -30,17 +30,5 @@ jobs:
     - name: Build
       run: dotnet build ./site/TSITSolutions.ContactSite.sln --no-restore
     
-    - name: Test with Coverage
-      run: |
-        dotnet test ./site/TSITSolutions.ContactSite.sln --no-build --verbosity normal \
-        /p:CollectCoverage=true /p:CoverletOutput=./coverage/ \
-        /p:CoverletOutputFormat=opencover
-        
-    - name: Upload Coverage to Codecov
-      uses: codecov/codecov-action@v5
-      with:
-        files: ./coverage/coverage.opencover.xml
-        fail_ci_if_error: true
-        verbose: true
-        token: ${{ secrets.CODECOV_TOKEN }}
-        slug: thoooschuuu/ContactSite
+    - name: Test
+      run: dotnet test ./site/TSITSolutions.ContactSite.sln --no-build --verbosity normal
