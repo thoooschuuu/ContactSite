@@ -16,3 +16,7 @@ updates:
     directory: "/site" # Location of package manifests
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "FluentAssertions"
+      # starting version 8, there is a commercial license
+        versions: ["8.*"]
