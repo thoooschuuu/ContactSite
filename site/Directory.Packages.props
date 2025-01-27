@@ -13,7 +13,7 @@
     </PackageVersion>
     <PackageVersion Include="FastEndpoints" Version="5.33.0" />
     <PackageVersion Include="FastEndpoints.Swagger" Version="5.33.0" />
-    <PackageVersion Include="FluentAssertions" Version="7.0.0" />
+    <PackageVersion Include="FluentAssertions" Version="7.1.0" />
     <PackageVersion Include="FluentAssertions.Analyzers" Version="0.34.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
