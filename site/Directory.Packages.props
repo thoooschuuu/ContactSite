@@ -11,7 +11,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageVersion>
-    <PackageVersion Include="FastEndpoints" Version="5.33.0" />
+    <PackageVersion Include="FastEndpoints" Version="5.34.0" />
     <PackageVersion Include="FastEndpoints.Swagger" Version="5.33.0" />
     <PackageVersion Include="FluentAssertions" Version="7.1.0" />
     <PackageVersion Include="FluentAssertions.Analyzers" Version="0.34.1">
