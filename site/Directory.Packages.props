@@ -38,7 +38,7 @@
     <PackageVersion Include="MudBlazor" Version="6.20.0" />
     <PackageVersion Include="Scriban" Version="5.10.0" />
     <PackageVersion Include="Testcontainers" Version="4.2.0" />
-    <PackageVersion Include="Testcontainers.MongoDb" Version="3.10.0" />
+    <PackageVersion Include="Testcontainers.MongoDb" Version="4.2.0" />
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.2">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
