@@ -4,7 +4,7 @@
     <NoWarn>NU1507</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Azure.Identity" Version="1.13.2" />
+    <PackageVersion Include="Azure.Identity" Version="1.14.2" />
     <PackageVersion Include="Basic.Reference.Assemblies.NetStandard20" Version="1.7.9" />
     <PackageVersion Include="Blazored.LocalStorage" Version="4.5.0" />
     <PackageVersion Include="coverlet.collector" Version="6.0.4">
