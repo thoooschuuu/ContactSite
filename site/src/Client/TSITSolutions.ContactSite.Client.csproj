@@ -32,6 +32,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="JetBrains.Annotations" VersionOverride="2025.2.0" />
         <EmbeddedResource Update="Shared\Resources\Resource.de.resx">
             <Generator>PublicResXFileCodeGenerator</Generator>
         </EmbeddedResource>
