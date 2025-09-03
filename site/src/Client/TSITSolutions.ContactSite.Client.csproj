@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <RunAOTCompilation Condition="!$([MSBuild]::IsOSPlatform('OSX'))">false</RunAOTCompilation>
+        <RunAOTCompilation Condition="!$([MSBuild]::IsOSPlatform('OSX'))">true</RunAOTCompilation>
         <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
         <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
     </PropertyGroup>
